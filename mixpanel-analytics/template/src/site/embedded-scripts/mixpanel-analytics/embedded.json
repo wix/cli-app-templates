@@ -1,0 +1,6 @@
+{
+    "id": "<%= generatePageID() %>",
+    "name": "Mixpanel Analytics",
+    "scriptType": "ANALYTICS",
+    "placement": "HEAD"
+}

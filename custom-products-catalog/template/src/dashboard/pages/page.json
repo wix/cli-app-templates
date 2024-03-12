@@ -1,0 +1,4 @@
+{
+  "id": "<%= generatePageID() %>",
+  "title": "Custom Products Catalog"
+}
