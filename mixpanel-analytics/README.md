@@ -39,13 +39,13 @@ Before getting started, make sure you have the following set up:
 #### npm
 
 ```bash
-npm create @wix/app@latest -t git@github.com:wix-private/cli-app-templates.git -tp /mixpanel-analytics/template
+npm create @wix/app@latest -t git@github.com:wix/cli-app-templates.git -tp /mixpanel-analytics/template
 ```
 
 #### yarn
 
 ```bash
-yarn create @wix/app -t git@github.com:wix-private/cli-app-templates.git -tp /mixpanel-analytics/template
+yarn create @wix/app -t git@github.com:wix/cli-app-templates.git -tp /mixpanel-analytics/template
 ```
 
 After the app was created, permissions needs to be assigned so the app could access embeds API:

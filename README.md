@@ -23,7 +23,6 @@ The repo contains the following app templates to get you started:
 
 + [Custom Products Catalog](./custom-products-catalog/README.md)
 + [Mixpanel Analytics](./mixpanel-analytics/README.md)
-+ [Site Popup](./site-popup/README.md)
 
 ## More templates
 
