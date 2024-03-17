@@ -39,7 +39,7 @@ Before getting started, make sure you have the following set up:
 #### npm
 
 ```bash
-npm create @wix/app@latest -t git@github.com:wix/cli-app-templates.git -tp /mixpanel-analytics/template
+npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /mixpanel-analytics/template
 ```
 
 #### yarn
