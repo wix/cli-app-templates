@@ -103,7 +103,7 @@ function Products() {
           <Box align="center" verticalAlign="middle" height="50vh">
             <Loader text="Loading..." />
           </Box>
-        ) : products ? (
+        ) : products.isError ? (
           <EmptyState
             theme="page-no-border"
             image={
