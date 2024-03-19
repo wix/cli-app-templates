@@ -26,7 +26,7 @@ The repo contains the following app templates to get you started:
 
 ## More templates
 
-Wix also offers templates for developers using other development models:
+Wix also offers templates for developers using other development frameworks:
 
 * [Wix Blocks](https://dev.wix.com/apps-templates?filter=blocks): Build a native-style Wix app in a responsive drag-and-drop editor and incorporate sophisticated functionality with Velo.
 * [Self-hosted](https://dev.wix.com/apps-templates?filter=self-hosted): Develop and host an app on any platform, and integrate with Wix using the Developers Center.
