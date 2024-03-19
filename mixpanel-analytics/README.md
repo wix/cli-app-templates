@@ -4,7 +4,7 @@ The Mixpanel Analytics Wix app template is part of the [Wix app templates collec
 
 This Wix CLI template demonstrates the use of the embedded script extension to integrate Mixpanel analytics code into Wix sites. It is an excellent example for developers looking to build applications using embedded scripts. It also demonstrates the basic functionality of the React SDK, the Dashboard React SDK, and the Wix Design System.
 
-The template creates an embedded script containing Mixpanel's code snippet, and a dashboard page where the site owner can enter their Mixpanel project token, and inject the embedded script code.
+The template creates an embedded script containing Mixpanel's code snippet, and a dashboard page where the site owner can enter their Mixpanel project token to inject the embedded script code.
 
 ## About Wix app templates
 
@@ -104,16 +104,14 @@ The development environment is set up for hot reloading, so any changes you make
 
 ### Enter your Mixpanel Project Token
 
-To complete this app's setup, you must provide a Mixpanel Project Token.
+To complete this app's setup, you must provide a Mixpanel project token.
 
-To get the token:
+1. Go to your chosen [Mixpanel](https://mixpanel.com/) project, or create a new one.
+1. Navigate to **Project Settings > Overview** and find your **Project Token** under **Access Keys**. Save the token.
 
-+ Go to your chosen Mixpanel project, or create a new one.
-+ Navigate to **Project Settings > Overview**, and find your **Project Token** underneath **Access Keys**.
+    ![Mixpanel project token](./images/project-token.png)
 
-![Mixpanel project token](./images/project-token.png)
-
-Enter this token in the app's dashboard page and press **Activate**. This will both add the token to your embedded script parameters, and inject the code for the embedded script into the DOM of your site.
+1. Return to the app’s page in your development site dashboard. In the text field under **Setup**, enter the token you saved and click **Activate**. This will both add the token to your embedded script parameters, and inject the code for the embedded script into the DOM of your site.
 
 ## Extend and customize the app
 
@@ -127,28 +125,28 @@ Customize the dashboard page to fit your specific needs, whether it's updating t
 
 **Development entry point:** [`template/src/dashboard/pages/page.tsx`](./template/scr/dashboard/pages/page.tsx)
 
-This file contains the parent component for the dashboard interface. It contains the ProjectToken component described below.
+This file contains the parent component for the dashboard interface. It contains the `ProjectToken` component described below.
 
-### ProjectToken component customization
+### `ProjectToken` component customization
 
 The ProjectToken component uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/api-reference/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
 
 It defines a component that appears on your dashboard page with text, a button, and a text input box.
 
-When a project token is provided, this component calls the [Embed Script](https://dev.wix.com/docs/rest/api-reference/app-management/apps/embedded-scripts/embed-script) using the fetch method from the Wix React SDK to inject the script into the DOM of the site. The provided project token is passed as a parameter in the Embed Script call.
+When a project token is provided, this component calls the [Embed Script API](https://dev.wix.com/docs/rest/api-reference/app-management/apps/embedded-scripts/embed-script) using the `fetch()` method from the Wix React SDK to inject the script into the DOM of the site. The provided project token is passed as a parameter in the Embed Script API call.
 
-Customize this component to change the appearance or content of the component.
+Customize this component to change the appearance or functionality of the component.
 
 **Development entry point:** [`template/src/dashboard/components/ProjectToken.tsx`](./template/src/dashboard/components/ProjectToken.tsx)
 
-This file contains the ProjectToken component. It uses the hook functions defined in [`template/src/dashboard/hooks/wix-embeds.ts`](./template/src/dashboard/hooks/wix-embeds.ts) to embed the HTML fragment in the embedded script on the site.
+This file contains the `ProjectToken` component. It uses the hook functions defined in [`template/src/dashboard/hooks/wix-embeds.ts`](./template/src/dashboard/hooks/wix-embeds.ts) to embed the HTML fragment in the embedded script on the site.
 
 ## Deployment
 
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others.
-+ Create new versions of your app on the Developers Center.
++ Create new versions of your app in the Dev Center.
 
 ### Build the app
 
@@ -180,7 +178,7 @@ To create an app version, run the following command:
 npm run create-version
 ```
 
-This guides you through creating a new app version in the Wix Developers Center. Once the app version is created, you can optionally [submit it for review](https://devforum.wix.com/kb/en/article/submit-your-app-for-review) and publish it to the [Wix App Market](https://www.wix.com/app-market).
+This guides you through creating a new app version in the Wix Dev Center. Once the app version is created, you can optionally [submit it for review](https://devforum.wix.com/kb/en/article/submit-your-app-for-review) and publish it to the [Wix App Market](https://www.wix.com/app-market).
 
 To learn more about app versions, see [App Versions and Deployment](../workflow/app_versions_and_deployment.md).
 
