@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Button, Box, Loader } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import * as Icons from '@wix/wix-ui-icons-common';
@@ -9,19 +9,19 @@ type MixpanelEmbeds = {
 };
 
 export default function ProjectToken() {
-  const { injectEmbeds, queryEmbeds } = useEmbeds<MixpanelEmbeds>();
+  const { embedScript, getEmbeddedScript } = useEmbeds<MixpanelEmbeds>();
   const [projectToken, setProjectToken] = useState<string>('');
 
   useEffect(() => {
-    setProjectToken(queryEmbeds.data?.projectToken || '');
-  }, [queryEmbeds.data]);
+    setProjectToken(getEmbeddedScript.data?.projectToken || '');
+  }, [getEmbeddedScript.data]);
 
   const ButtonContent = () => {
-    if (injectEmbeds.isLoading) {
+    if (embedScript.isLoading) {
       return <Loader size="tiny" />;
     }
 
-    if (!queryEmbeds.data?.projectToken) {
+    if (!getEmbeddedScript.data?.projectToken) {
       return (
         <Box gap={1}>
           Activate
@@ -35,22 +35,22 @@ export default function ProjectToken() {
 
   return (
     <Box gap={3} marginTop={3}>
-      {queryEmbeds.isLoading ? (
+      {getEmbeddedScript.isLoading ? (
         <Loader size="small" />
       ) : (
         <>
           <Input
-            disabled={injectEmbeds.isLoading}
+            disabled={embedScript.isLoading}
             placeholder={'project-token'}
             value={projectToken}
             onChange={(e) => setProjectToken(e.currentTarget.value)}
           />
           <Button
             disabled={
-              queryEmbeds.data?.projectToken === projectToken ||
+              getEmbeddedScript.data?.projectToken === projectToken ||
               projectToken.length !== 32
             }
-            onClick={() => injectEmbeds.mutate({ projectToken })}
+            onClick={() => embedScript.mutate({ projectToken })}
           >
             <ButtonContent />
           </Button>
