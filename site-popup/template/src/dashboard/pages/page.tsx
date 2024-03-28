@@ -39,7 +39,7 @@ function SitePopup() {
     <Page height="100vh">
       <Page.Header
         title="Site Popup"
-        subtitle="configure site popup setting & preview as it will appear on your site."
+        subtitle="Configure site popup setting & preview as it will appear on your site."
         actionsBar={
           <Button
             skin="inverted"
