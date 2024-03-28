@@ -155,7 +155,7 @@ npm run build
 
 ### Preview the app
 
-You can create an online preview of your built app using one of the following commands:
+You can create an online preview of your built app using the following command:
 
 ```bash
 npm run preview
