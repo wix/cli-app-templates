@@ -1,0 +1,6 @@
+{
+    "id": "<%= generatePageID() %>",
+    "name": "Site Popup",
+    "scriptType": "FUNCTIONAL",
+    "placement": "BODY_START"
+}
