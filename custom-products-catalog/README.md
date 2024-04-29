@@ -56,7 +56,7 @@ This process registers a new app in the Wix Dev Center and generates a new app p
 
 The project includes:
 
-+ Initial boilerplate code for a simple app with a [dashboard page]((https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages)) and a [dashboard modal](https://dev.wix.com/docs/build-apps/developer-tools/extensions/dashboard-modal-extensions).
++ Initial boilerplate code for a simple app with a [dashboard page](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages) and a [dashboard modal](https://dev.wix.com/docs/build-apps/developer-tools/extensions/dashboard-modal-extensions).
 + [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) integration, with methods for querying, creating, and deleting products.
 + A `package.json` file with your app's dependencies.
 
