@@ -1,89 +1,58 @@
 import { products } from '@wix/stores';
 import { useWixModules } from '@wix/sdk-react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useDashboard } from '@wix/dashboard-react';
+import { useCallback } from "react";
+import { CollectionOptimisticActions } from '@wix/patterns';
 
-export function useProductsQuery() {
-  const { queryProducts } = useWixModules(products);
-  return useQuery({
-    queryKey: ['products'],
-    refetchOnWindowFocus: false,
-    queryFn: async () => {
-      const { items } = await queryProducts().descending('lastUpdated').find();
-      return items;
-    },
-  });
+export function useCreateProduct(optimisticActions: CollectionOptimisticActions<Product.product>) {
+  const {createProduct} = useWixModules(products);
+
+  return useCallback((productName: string) => {
+    const newProduct = {
+      id: window.Date().toString(),
+      name: productName,
+      createdDate: new window.Date(),
+      productType: 'physical',
+      description: 'New Product Description',
+      priceData: {
+        currency: 'USD',
+        price: 10,
+      },
+    };
+    optimisticActions.createOne(newProduct, {
+      submit: async (products) => {
+        const response = await createProduct(products[0]);
+        console.log(response.product)
+        return [response.product];
+      },
+      successToast: {
+        message: `${newProduct.name} was successfully created`,
+        type: 'SUCCESS',
+      },
+      errorToast: () => 'Failed to create product',
+    })
+  }, [optimisticActions, createProduct]);
+
 }
 
-export function useCreateProduct() {
-  const queryClient = useQueryClient();
-  const { showToast } = useDashboard();
-  const { createProduct } = useWixModules(products);
+export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<Product.product>) {
+  const {deleteProduct} = useWixModules(products);
 
-  return useMutation({
-    mutationKey: ['createProduct'],
-    mutationFn: (createProductRequest?: products.CreateProductRequest) => {
-      return createProduct({
-        name: 'New Product',
-        description: 'New Product Description',
-        priceData: {
-          currency: 'USD',
-          price: 10,
-        },
-        productType: products.ProductType.physical,
-        ...createProductRequest?.product,
-      });
-    },
-    onError: () =>
-      showToast({ message: 'Failed to create product', type: 'error' }),
-    onSuccess: ({ product }) => {
-      queryClient.setQueryData<products.Product[]>(
-        ['products'],
-        (oldProducts = []) =>
-          product ? [product, ...oldProducts] : oldProducts
-      );
-      showToast({
-        message: 'Product created successfully',
-        type: 'success',
-      });
-    },
-  });
-}
-
-export function useDeleteProducts({
-  productIdsToDelete,
-  onSuccess,
-}: {
-  productIdsToDelete: Set<string>;
-  onSuccess?: () => void;
-}) {
-  const queryClient = useQueryClient();
-  const { showToast } = useDashboard();
-  const { deleteProduct } = useWixModules(products);
-
-  return useMutation<products.DeleteProductResponse>({
-    mutationKey: ['deleteProducts'],
-    mutationFn: () =>
-      Promise.all(
-        [...productIdsToDelete].map((productId) => deleteProduct(productId))
-      ),
-    onError: () =>
-      showToast({ message: 'Failed to delete products', type: 'error' }),
-    onSuccess: () => {
-      queryClient.setQueryData<products.Product[]>(
-        ['products'],
-        (oldProducts = []) =>
-          oldProducts.filter(
-            (product: products.Product) => !productIdsToDelete.has(product._id!)
-          )
-      );
-      showToast({
+  return useCallback(({products}: { products: Products.product[] }) => {
+    optimisticActions.deleteMany(products, {
+      submit: async (productsToDelete) => {
+        await Promise.all(
+          productsToDelete.map((product) => deleteProduct(product._id))
+        )
+      },
+      successToast: {
         message: `${
-          productIdsToDelete.size > 1 ? 'Products' : 'Product'
+          products.size > 1 ? 'Products' : 'Product'
         } deleted successfully`,
-        type: 'success',
-      });
-      onSuccess?.();
-    },
-  });
+        type: 'SUCCESS',
+      },
+      errorToast: () => `Failed to delete ${
+        products.size > 1 ? 'Products' : 'Product'
+      }`,
+    });
+  }, [optimisticActions, deleteProduct]);
 }
