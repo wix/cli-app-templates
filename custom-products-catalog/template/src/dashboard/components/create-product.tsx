@@ -7,7 +7,7 @@ import {
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 
-export function CreateProductModal({ showModal, onSave }: { shown: boolean }) {
+export function CreateProductModal({ showModal, onSave }: { showModal: boolean, onSave: (name: string) => void }) {
   const [productName, setProductName] = useState('');
   const [shown, setShown] = useState(showModal);
 
@@ -34,7 +34,7 @@ export function CreateProductModal({ showModal, onSave }: { shown: boolean }) {
           disabled: !productName,
           children: 'Save',
         }}
-        primaryButtonOnClick={async () => {
+        primaryButtonOnClick={() => {
           onSave(productName)
           setProductName('')
         }}

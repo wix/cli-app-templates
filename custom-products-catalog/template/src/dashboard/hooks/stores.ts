@@ -21,7 +21,6 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
     optimisticActions.createOne(newProduct, {
       submit: async (products) => {
         const response = await createProduct(products[0]);
-        console.log(response.product)
         return [response.product];
       },
       successToast: {

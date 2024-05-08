@@ -48,7 +48,6 @@ function Products() {
         });
       }
       return queryBuilder.find().then(({ items = [], totalCount: total }) => {
-        console.log(items, total)
         return {
           items,
           total,
@@ -76,12 +75,11 @@ function Products() {
     <CollectionPage height="100vh">
       <CollectionPage.Header
         title={{ text: 'Custom Products Catalog' }}
-        subtitle={{ text: 'all products in my store' }}
         breadcrumbs={
           <Breadcrumbs
             activeId="2"
             items={[
-              { id: '1', value: 'Apps' },
+              { id: '1', value: 'Apps', disabled: true },
               { id: '2', value: 'Custom Products Catalog' },
             ]}
           />
