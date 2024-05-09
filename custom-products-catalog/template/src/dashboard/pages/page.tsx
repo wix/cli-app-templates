@@ -62,7 +62,10 @@ function Products() {
     orderBy: () => [],
     predicate: ({ search }) => {
       return (product) => {
-        return product.name.startsWith(search)
+        if (search) {
+          return product.name.startsWith(search)
+        }
+        return true
       }
 
 
@@ -114,7 +117,7 @@ function Products() {
                       openConfirmModal({
                         theme: 'destructive',
                         primaryButtonOnClick: () => {
-                          deleteProducts({ products: selectedValues })
+                          deleteProducts(selectedValues)
                         },
                       });
                     },

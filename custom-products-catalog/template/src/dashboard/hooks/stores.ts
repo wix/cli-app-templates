@@ -3,7 +3,7 @@ import { useWixModules } from '@wix/sdk-react';
 import { useCallback } from "react";
 import { CollectionOptimisticActions } from '@wix/patterns';
 
-export function useCreateProduct(optimisticActions: CollectionOptimisticActions<Product.product>) {
+export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product>) {
   const {createProduct} = useWixModules(products);
 
   return useCallback((productName: string) => {
@@ -19,7 +19,7 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
       },
     };
     optimisticActions.createOne(newProduct, {
-      submit: async (products) => {
+      submit: async (products: products.Product[]) => {
         const response = await createProduct(products[0]);
         return [response.product];
       },
@@ -33,24 +33,24 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
 
 }
 
-export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<Product.product>) {
-  const {deleteProduct} = useWixModules(products);
+export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product>) {
+  const { deleteProduct } = useWixModules(products);
 
-  return useCallback(({products}: { products: Products.product[] }) => {
-    optimisticActions.deleteMany(products, {
-      submit: async (productsToDelete) => {
+  return useCallback((productsToDelete: products.Product[] ) => {
+    optimisticActions.deleteMany(productsToDelete, {
+      submit: async (deletedProducts: products.Product[]) => (
         await Promise.all(
-          productsToDelete.map((product) => deleteProduct(product._id))
+          deletedProducts.map((product) => deleteProduct(product._id))
         )
-      },
+      ),
       successToast: {
         message: `${
-          products.size > 1 ? 'Products' : 'Product'
+          productsToDelete.length > 1 ? 'Products' : 'Product'
         } deleted successfully`,
         type: 'SUCCESS',
       },
       errorToast: () => `Failed to delete ${
-        products.size > 1 ? 'Products' : 'Product'
+        productsToDelete.length > 1 ? 'Products' : 'Product'
       }`,
     });
   }, [optimisticActions, deleteProduct]);
