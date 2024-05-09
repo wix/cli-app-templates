@@ -77,13 +77,13 @@ function Products() {
   return (
     <CollectionPage height="100vh">
       <CollectionPage.Header
-        title={{ text: 'Custom Products Catalog' }}
+        title={{ text: 'Products' }}
         breadcrumbs={
           <Breadcrumbs
             activeId="2"
             items={[
               { id: '1', value: 'Apps', disabled: true },
-              { id: '2', value: 'Custom Products Catalog' },
+              { id: '2', value: 'Products' },
             ]}
           />
         }
