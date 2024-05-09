@@ -26,7 +26,7 @@ function Products() {
   const [shown, setShown] = useState(false);
   const { queryProducts, deleteProduct } = useWixModules(products);
   const tableState = useTableCollection<products.Product>({
-    queryName: 'custom-products-catalog',
+    queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
     itemName: (contact: products.Product) => contact.name!,
     limit: 20,
