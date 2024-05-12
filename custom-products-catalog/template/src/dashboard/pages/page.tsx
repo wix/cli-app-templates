@@ -18,7 +18,8 @@ import {
   PrimaryPageButton,
   useOptimisticActions,
   deleteSecondaryAction,
-  MultiBulkActionToolbar
+  MultiBulkActionToolbar,
+  CustomColumns
 } from '@wix/patterns'
 import { useWixModules } from '@wix/sdk-react';
 
@@ -125,13 +126,18 @@ function Products() {
                 ]}
               />)
           }}
+          customColumns={<CustomColumns />}
           columns={[
             {
+              id: 'avatar',
+              name: 'Avatar',
               title: '',
               width: '72px',
-              render: (product) => <Image src={product.media?.mainMedia?.image?.url}/>
+              render: (product) => <Image src={product.media?.mainMedia?.image?.url}/>,
+              reorderDisabled: true,
             },
             {
+              id: 'name',
               title: 'Name',
               render: (row: products.Product) => (
                 <Box direction="vertical" gap="3px">
@@ -144,15 +150,18 @@ function Products() {
                 </Box>
               ),
               width: '40%',
+              reorderDisabled: true,
+              hideable: false
             },
             {
               id: 'price',
               title: 'Price',
               render: (row: products.Product) => `$${row.priceData?.price}`,
               width: '20%',
-              sortable: true
+              sortable: true,
             },
             {
+              id: 'type',
               title: 'Type',
               render: (row: products.Product) => row.productType,
               width: '20%',
