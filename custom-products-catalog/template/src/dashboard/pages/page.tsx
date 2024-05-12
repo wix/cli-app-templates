@@ -135,6 +135,7 @@ function Products() {
               width: '72px',
               render: (product) => <Image src={product.media?.mainMedia?.image?.url}/>,
               reorderDisabled: true,
+              hiddenFromCustomColumnsSelection: true
             },
             {
               id: 'name',
