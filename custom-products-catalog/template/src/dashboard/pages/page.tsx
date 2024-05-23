@@ -243,10 +243,10 @@ function Products() {
                     )
                   ),
                   successToast: {
-                    message: `${_product.name} deleted successfully`,
+                    message: `${_product.name} deleted successfully.`,
                     type: 'SUCCESS',
                   },
-                  errorToast: () => 'An error',
+                  errorToast: () => 'Product deletion failed.',
                 }),
               ]
             }
