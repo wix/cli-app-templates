@@ -1,17 +1,17 @@
 import { products } from '@wix/stores';
 import { useWixModules } from '@wix/sdk-react';
-import { useCallback } from "react";
+import { useCallback } from 'react';
 import { CollectionOptimisticActions } from '@wix/patterns';
 
-export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product>) {
+export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
   const {createProduct} = useWixModules(products);
 
   return useCallback((productName: string) => {
-    const newProduct = {
-      id: window.Date().toString(),
+    const newProduct: products.Product = {
+      _id: Date().toString(),
       name: productName,
-      createdDate: new window.Date(),
-      productType: 'physical',
+      _createdDate: new Date(),
+      productType: products.ProductType.physical,
       description: 'New Product Description',
       priceData: {
         currency: 'USD',
@@ -20,8 +20,9 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
     };
     optimisticActions.createOne(newProduct, {
       submit: async (products: products.Product[]) => {
-        const response = await createProduct(products[0]);
-        return [response.product];
+        const createdProduct = products[0]
+        const response = await createProduct(createdProduct);
+        return response.product ? [response.product] : [];
       },
       successToast: {
         message: `${newProduct.name} was successfully created`,
@@ -33,14 +34,14 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
 
 }
 
-export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product>) {
+export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
   const { deleteProduct } = useWixModules(products);
 
   return useCallback((productsToDelete: products.Product[] ) => {
     optimisticActions.deleteMany(productsToDelete, {
       submit: async (deletedProducts: products.Product[]) => (
         await Promise.all(
-          deletedProducts.map((product) => deleteProduct(product._id))
+          deletedProducts.map((product) => deleteProduct(product._id!))
         )
       ),
       successToast: {
