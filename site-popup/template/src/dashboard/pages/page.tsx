@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
-import { withDashboard } from '@wix/dashboard-react';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
@@ -73,4 +72,4 @@ function SitePopup() {
   );
 }
 
-export default withDashboard(withProviders(SitePopup));
+export default withProviders(SitePopup);
