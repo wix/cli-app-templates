@@ -15,7 +15,6 @@ import {
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import * as Icons from '@wix/wix-ui-icons-common';
-import { withDashboard } from '@wix/dashboard-react';
 import type { products } from '@wix/stores';
 import { withProviders } from '../withProviders';
 import { useDeleteProducts, useProductsQuery } from '../hooks/stores';
@@ -159,4 +158,4 @@ function Products() {
   );
 }
 
-export default withDashboard(withProviders(Products));
+export default withProviders(Products);
