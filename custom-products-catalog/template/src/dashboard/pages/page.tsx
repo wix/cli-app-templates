@@ -6,7 +6,6 @@ import {
   Breadcrumbs
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
-import { withDashboard } from '@wix/dashboard-react';
 import { products } from '@wix/stores';
 import { withProviders } from '../withProviders';
 import { useCreateProduct, useDeleteProducts } from '../hooks/stores';
@@ -282,4 +281,4 @@ function Products() {
   );
 }
 
-export default withDashboard(withProviders(Products));
+export default withProviders(Products);

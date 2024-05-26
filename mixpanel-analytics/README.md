@@ -133,7 +133,7 @@ The ProjectToken component uses the [Wix Design System](https://www.wixdesignsys
 
 It defines a component that appears on your dashboard page with text, a button, and a text input box.
 
-When a project token is provided, this component calls the [Embed Script API](https://dev.wix.com/docs/rest/api-reference/app-management/apps/embedded-scripts/embed-script) using the `fetch()` method from the Wix React SDK to inject the script into the DOM of the site. The provided project token is passed as a parameter in the Embed Script API call.
+When a project token is provided, this component calls the [embedScript()](https://dev.wix.com/docs/sdk/backend-modules/app-market/embedded-scripts/embed-script) method from the Wix SDK to inject the script into the DOM of the site. The provided project token is passed as a parameter in the Embed Script API call.
 
 Customize this component to change the appearance or functionality of the component.
 
