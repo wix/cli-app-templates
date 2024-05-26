@@ -1,7 +1,6 @@
 import React from 'react';
 import { Page, Card, Box, Text, TextButton } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
-import { withDashboard } from '@wix/dashboard-react';
 import { withProviders } from '../withProviders';
 import ProjectToken from '../components/ProjectToken.js';
 
@@ -37,4 +36,4 @@ function MixpanelAnalytics() {
   );
 }
 
-export default withDashboard(withProviders(MixpanelAnalytics));
+export default withProviders(MixpanelAnalytics);

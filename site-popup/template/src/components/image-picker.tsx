@@ -17,15 +17,11 @@ export const ImagePicker: FC<Props> = ({ onChange, imageTitle }) => {
       <TextButton
         prefixIcon={<Icons.Edit />}
         onClick={() =>
-          openMediaManager().then((val) => {
-            if (val?.[0]) {
-              const mediaItem = val[0] as {
-                fileUrl: string;
-                title: string;
-              };
+          openMediaManager().then((response) => {
+            if (response?.items[0]) {
               onChange(
-                `https://static.wixstatic.com/${mediaItem.fileUrl}`,
-                mediaItem.title
+                response?.items[0].url || '',
+                response?.items[0].displayName || ''
               );
             }
           })
