@@ -11,6 +11,7 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
       _id: Date().toString(),
       name: productName,
       _createdDate: new Date(),
+      lastUpdated: new Date(),
       productType: products.ProductType.physical,
       description: 'New Product Description',
       priceData: {

@@ -67,9 +67,15 @@ function Products() {
         }
 
         if (lastUpdated) {
-          queryBuilder = queryBuilder
-            .gt('lastUpdated', lastUpdated.from)
+          if (lastUpdated.from) {
+            queryBuilder = queryBuilder
+            .gt('lastUpdated', lastUpdated.from)  
+          }
+
+          if (lastUpdated.to) {
+            queryBuilder = queryBuilder
             .lt('lastUpdated', lastUpdated.to);
+          }
         }
       }
 
@@ -100,12 +106,31 @@ function Products() {
 
   const optimisticActions = useOptimisticActions(tableState.collection, {
     orderBy: () => [],
-    predicate: ({ search }) => {
+    predicate: ({ search, filters }) => {
       return (product) => {
-        if (search) {
-          return product.name?.startsWith(search) ?? false
+        if (search && !product.name?.startsWith(search)) {
+          return false;
         }
-        return true
+
+        if (filters.productType && product.productType && filters.productType.indexOf(product.productType) === -1) {
+          return false;
+        }
+
+        if (filters.lastUpdated && product.lastUpdated) {
+          const from = filters.lastUpdated.from
+          const to = filters.lastUpdated.to
+          const productLastUpdated = (new Date(product.lastUpdated)).getTime()
+
+          if (from && productLastUpdated < from.getTime()) {
+            return false
+          }
+        
+          if (to && productLastUpdated > to.getTime()) {
+            return false
+          }
+        }
+
+        return true;
       }
     },
   });
