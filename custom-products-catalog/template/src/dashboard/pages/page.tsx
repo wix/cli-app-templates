@@ -1,160 +1,283 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
-  Page,
-  Table,
   Box,
   Text,
-  TextButton,
-  Card,
-  TableToolbar,
   Image,
-  Checkbox,
-  Loader,
-  EmptyState,
+  Breadcrumbs
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
-import * as Icons from '@wix/wix-ui-icons-common';
-import type { products } from '@wix/stores';
+import { products } from '@wix/stores';
 import { withProviders } from '../withProviders';
-import { useDeleteProducts, useProductsQuery } from '../hooks/stores';
-import { CreateProduct } from '../components/create-product';
-import EmptyStateServerError from '../svg/EmptyState_ServerError.svg';
+import { useCreateProduct, useDeleteProducts } from '../hooks/stores';
+import { CreateProductModal } from '../components/create-product';
+import { CollectionPage } from '@wix/patterns/page';
+import {
+  useTableCollection,
+  Table,
+  PrimaryPageButton,
+  useOptimisticActions,
+  deleteSecondaryAction,
+  MultiBulkActionToolbar,
+  CustomColumns,
+  Filter,
+  CollectionToolbarFilters,
+  dateRangeFilter,
+  RangeItem,
+  DateRangeFilter,
+  RadioGroupFilter,
+  stringsArrayFilter,
+} from '@wix/patterns'
+import { useWixModules } from '@wix/sdk-react';
+
+type TableFilters = {
+  productType: Filter<products.ProductType[]>;
+  lastUpdated: Filter<RangeItem<Date>>;
+}
+
+type SupportedQueryFields = Parameters<products.ProductsQueryBuilder['ascending']>[0] | Parameters<products.ProductsQueryBuilder['descending']>[0]
+
+const productTypeToDisplayName: {[key in products.ProductType] : string | undefined} = {
+  [products.ProductType.physical]: 'Physical',
+  [products.ProductType.digital]: 'Digital',
+  [products.ProductType.unspecified_product_type]: undefined
+}
 
 function Products() {
-  const [productIdsToDelete, setProductIdsToDelete] = useState<Set<string>>(
-    new Set()
-  );
-  const products = useProductsQuery();
+  const [shown, setShown] = useState(false);
+  const { queryProducts, deleteProduct } = useWixModules(products);
+  const tableState = useTableCollection<products.Product, TableFilters>({
+    queryName: 'products-catalog',
+    itemKey: (product: products.Product) => product._id!,
+    itemName: (contact: products.Product) => contact.name!,
+    limit: 20,
+    fetchData: (query) => {
+      const { limit, offset, search, sort, filters } = query;
+      let queryBuilder = queryProducts().limit(limit).skip(offset);
 
-  const deleteProducts = useDeleteProducts({
-    productIdsToDelete,
-    onSuccess: () => setProductIdsToDelete(new Set()),
+      if (search) {
+        queryBuilder = queryBuilder.startsWith("name", search)
+      }
+
+      if (filters) {
+        const { productType, lastUpdated } = filters
+
+        if (productType) {
+          queryBuilder = queryBuilder.in('productType', productType)
+        }
+
+        if (lastUpdated) {
+          if (lastUpdated.from) {
+            queryBuilder = queryBuilder
+            .gt('lastUpdated', lastUpdated.from)  
+          }
+
+          if (lastUpdated.to) {
+            queryBuilder = queryBuilder
+            .lt('lastUpdated', lastUpdated.to);
+          }
+        }
+      }
+
+      if (sort) {
+        sort.forEach(s => {
+          const fieldName = s.fieldName as SupportedQueryFields;
+          if (s.order === 'asc') {
+            queryBuilder = queryBuilder.ascending(fieldName);
+          } else if (s.order === 'desc') {
+            queryBuilder = queryBuilder.descending(fieldName);
+          }
+        });
+      }
+
+      return queryBuilder.find().then(({ items = [], totalCount: total }) => {
+        return {
+          items,
+          total,
+        };
+      });
+    },
+    fetchErrorMessage: () => 'Error fetching products',
+    filters: {
+      lastUpdated: dateRangeFilter(),
+      productType: stringsArrayFilter({ itemName: (p) => productTypeToDisplayName[p] ?? p })
+    },
   });
 
-  const addProductToDelete = async (productId: string) => {
-    if (productIdsToDelete.has(productId)) {
-      productIdsToDelete.delete(productId);
-      setProductIdsToDelete(new Set(productIdsToDelete));
-    } else {
-      productIdsToDelete.add(productId);
-      setProductIdsToDelete(new Set(productIdsToDelete));
-    }
-  };
+  const optimisticActions = useOptimisticActions(tableState.collection, {
+    orderBy: () => [],
+    predicate: ({ search, filters }) => {
+      return (product) => {
+        if (search && !product.name?.startsWith(search)) {
+          return false;
+        }
 
-  const columns = useMemo(
-    () => [
-      {
-        title: '',
-        width: '20px',
-        render: (row: products.Product) => (
-          <Box align="center">
-            <Checkbox
-              checked={productIdsToDelete.has(row._id!)}
-              onChange={() => addProductToDelete(row._id!)}
-            />
-          </Box>
-        ),
-      },
-      {
-        title: '',
-        width: '72px',
-        render: (row: products.Product) => (
-          <Image src={row.media?.mainMedia?.image?.url} />
-        ),
-      },
-      {
-        title: 'Name',
-        render: (row: products.Product) => (
-          <Box direction="vertical" gap="3px">
-            <Text size="medium" weight="normal">
-              {row.name}
-            </Text>
-            <Text size="tiny" weight="thin" secondary>
-              {row.description}
-            </Text>
-          </Box>
-        ),
-        width: '40%',
-      },
-      {
-        title: 'Price',
-        render: (row: products.Product) => `$${row.priceData?.price}`,
-        width: '15%',
-      },
-      {
-        title: 'Type',
-        render: (row: products.Product) => row.productType,
-        width: '15%',
-      },
-    ],
-    [productIdsToDelete, addProductToDelete]
-  );
+        if (filters.productType && product.productType && filters.productType.indexOf(product.productType) === -1) {
+          return false;
+        }
+
+        if (filters.lastUpdated && product.lastUpdated) {
+          const from = filters.lastUpdated.from
+          const to = filters.lastUpdated.to
+          const productLastUpdated = (new Date(product.lastUpdated)).getTime()
+
+          if (from && productLastUpdated < from.getTime()) {
+            return false
+          }
+        
+          if (to && productLastUpdated > to.getTime()) {
+            return false
+          }
+        }
+
+        return true;
+      }
+    },
+  });
+
+  const createProduct = useCreateProduct(optimisticActions);
+  const deleteProducts = useDeleteProducts(optimisticActions);
 
   return (
-    <Page height="100vh">
-      <Page.Header
-        title="Products"
-        actionsBar={products.isSuccess && <CreateProduct />}
+    <CollectionPage height="100vh">
+      <CollectionPage.Header
+        title={{ text: 'Products' }}
+        breadcrumbs={
+          <Breadcrumbs
+            activeId="2"
+            items={[
+              { id: '1', value: 'Apps', disabled: true },
+              { id: '2', value: 'Products' },
+            ]}
+          />
+        }
+        primaryAction={
+          <PrimaryPageButton
+            text="Add Product"
+            onClick={() => setShown(!shown)}
+          />
+        }
       />
-      <Page.Content>
-        {products.isLoading ? (
-          <Box align="center" verticalAlign="middle" height="50vh">
-            <Loader text="Loading..." />
-          </Box>
-        ) : products.isError ? (
-          <EmptyState
-            theme="page-no-border"
-            image={
-              <Image width="120px" src={EmptyStateServerError} transparent />
+      <CollectionPage.Content>
+        <CreateProductModal showModal={shown} onSave={(productName: string) => {
+          createProduct(productName)
+          setShown(false)
+        }}/>
+        <Table
+          state={tableState}
+          maxSelection={20}
+          filters={
+            <CollectionToolbarFilters>
+              <RadioGroupFilter
+                accordionItemProps={{ label: 'Type' }}
+                filter={tableState.collection.filters.productType}
+                data={[products.ProductType.physical, products.ProductType.digital]}
+              />
+              <DateRangeFilter
+                filter={tableState.collection.filters.lastUpdated}
+                accordionItemProps={{ label: 'Last Updated' }}
+              />
+            </CollectionToolbarFilters>
+          }
+          bulkActionToolbar={({ selectedValues, openConfirmModal }) => {
+            const disabled = selectedValues.length > 20;
+            return (
+              <MultiBulkActionToolbar
+                primaryActionItems={[
+                  {
+                    label: 'Delete',
+                    tooltip: disabled
+                      ? 'Deleting is supported for up to 20 items'
+                      : undefined,
+                    disabled,
+                    onClick: () => {
+                      openConfirmModal({
+                        theme: 'destructive',
+                        primaryButtonOnClick: () => {
+                          deleteProducts(selectedValues)
+                        },
+                      });
+                    },
+                  },
+                ]}
+              />)
+          }}
+          customColumns={<CustomColumns />}
+          columns={[
+            {
+              id: 'avatar',
+              name: 'Avatar',
+              title: '',
+              width: '72px',
+              render: (product) => <Image src={product.media?.mainMedia?.image?.url}/>,
+              reorderDisabled: true,
+              hiddenFromCustomColumnsSelection: true
+            },
+            {
+              id: 'name',
+              title: 'Product / Description',
+              render: (row: products.Product) => (
+                <Box direction="vertical" gap="3px">
+                  <Text size="medium" weight="normal">
+                    {row.name}
+                  </Text>
+                  <Text size="tiny" weight="thin" secondary>
+                    {row.description}
+                  </Text>
+                </Box>
+              ),
+              width: 'auto',
+              reorderDisabled: true,
+              hideable: false
+            },
+            {
+              id: 'price',
+              title: 'Price',
+              render: (row: products.Product) => `$${row.priceData?.price}`,
+              width: '100px',
+              sortable: true,
+            },
+            {
+              id: 'type',
+              title: 'Type',
+              render: (row: products.Product) => {
+                if (!row.productType) {
+                  return ''
+                }
+
+                return productTypeToDisplayName[row.productType] ?? row.productType
+              },
+              width: '100px',
+            },
+            {
+              id: 'last-updated',
+              title: 'Last Updated',
+              render: (row: products.Product) => row.lastUpdated,
+              width: '200px',
+              defaultHidden: true,
+            },
+          ]}
+          actionCell={(_product, _index, actionCellAPI) => ({
+              secondaryActions: [
+                deleteSecondaryAction({
+                  optimisticActions,
+                  actionCellAPI,
+                  submit: (products: products.Product[]) => (
+                    Promise.all(
+                      products.map((product: products.Product) => deleteProduct(product._id!))
+                    )
+                  ),
+                  successToast: {
+                    message: `${_product.name} deleted successfully.`,
+                    type: 'SUCCESS',
+                  },
+                  errorToast: () => 'Product deletion failed.',
+                }),
+              ]
             }
-            title="We couldn't load this page"
-            // You likely didn't added required permissions or installed stores app in your site, please check the template documentation for more information.
-            subtitle={"Looks like there was a technical issue"}
-          >
-            <TextButton
-              onClick={() => products.refetch()}
-              prefixIcon={<Icons.Refresh />}
-            >
-              Try Again
-            </TextButton>
-          </EmptyState>
-        ) : (
-          <Table data={products.data || []} columns={columns}>
-            <Page.Sticky>
-              <Card>
-                <TableToolbar>
-                  <TableToolbar.ItemGroup position="start">
-                    <TableToolbar.Item>
-                      <TableToolbar.Label>
-                        {productIdsToDelete.size > 0
-                          ? `${productIdsToDelete.size}/${products.data?.length} selected`
-                          : `${products.data?.length || 0} products`}
-                      </TableToolbar.Label>
-                    </TableToolbar.Item>
-                  </TableToolbar.ItemGroup>
-                  {productIdsToDelete.size > 0 && (
-                    <TableToolbar.ItemGroup position="end">
-                      <TableToolbar.Item>
-                        <Button
-                          skin="destructive"
-                          prefixIcon={<Icons.DeleteSmall />}
-                          onClick={() => deleteProducts.mutate()}
-                        >
-                          Delete
-                        </Button>
-                      </TableToolbar.Item>
-                    </TableToolbar.ItemGroup>
-                  )}
-                </TableToolbar>
-                <Table.Titlebar />
-              </Card>
-            </Page.Sticky>
-            <Table.Content titleBarVisible={false} />
-          </Table>
-        )}
-      </Page.Content>
-    </Page>
+          )}
+        />
+      </CollectionPage.Content>
+    </CollectionPage>
   );
 }
 
