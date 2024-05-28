@@ -251,7 +251,10 @@ function Products() {
             {
               id: 'last-updated',
               title: 'Last Updated',
-              render: (row: products.Product) => row.lastUpdated,
+              render: (row: products.Product) =>
+                row.lastUpdated
+                  ? new Date(row.lastUpdated).toLocaleDateString()
+                  : "",
               width: '200px',
               defaultHidden: true,
             },
