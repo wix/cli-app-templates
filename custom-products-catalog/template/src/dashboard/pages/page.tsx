@@ -48,7 +48,7 @@ function Products() {
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
-    itemName: (contact: products.Product) => contact.name!,
+    itemName: (product: products.Product) => product.name!,
     limit: 20,
     fetchData: (query) => {
       const { limit, offset, search, sort, filters } = query;
@@ -251,8 +251,11 @@ function Products() {
             {
               id: 'last-updated',
               title: 'Last Updated',
-              render: (row: products.Product) => row.lastUpdated,
-              width: '200px',
+              render: (row: products.Product) =>
+                row.lastUpdated
+                  ? new Date(row.lastUpdated).toLocaleDateString()
+                  : '',
+              width: '100px',
               defaultHidden: true,
             },
           ]}
