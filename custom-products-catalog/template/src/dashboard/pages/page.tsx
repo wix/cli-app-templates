@@ -48,7 +48,7 @@ function Products() {
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
-    itemName: (contact: products.Product) => contact.name!,
+    itemName: (product: products.Product) => product.name!,
     limit: 20,
     fetchData: (query) => {
       const { limit, offset, search, sort, filters } = query;
