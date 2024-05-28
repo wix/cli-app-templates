@@ -254,8 +254,8 @@ function Products() {
               render: (row: products.Product) =>
                 row.lastUpdated
                   ? new Date(row.lastUpdated).toLocaleDateString()
-                  : "",
-              width: '200px',
+                  : '',
+              width: '100px',
               defaultHidden: true,
             },
           ]}
