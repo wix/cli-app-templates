@@ -1,0 +1,4 @@
+{
+  "appId": "<%= devCenter.appId %>",
+  "projectId": "<%= packageName %>"
+}

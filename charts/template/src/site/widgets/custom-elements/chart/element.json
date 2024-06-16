@@ -1,0 +1,16 @@
+{
+  "id": "<%= generatePageID() %>",
+  "name": "Chart",
+  "width": {
+    "defaultWidth": 400,
+    "allowStretch": true
+  },
+  "height": {
+    "defaultHeight": 400
+  },
+  "installation": {
+    "autoAddToSite": true,
+    "essential": false,
+    "maxInstances": 0
+  }
+}
