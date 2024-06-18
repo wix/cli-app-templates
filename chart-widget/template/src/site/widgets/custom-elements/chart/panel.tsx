@@ -25,15 +25,13 @@ function Panel() {
     <SidePanel width="300">
       {loaded && (
         <SidePanel.Content noPadding>
-          <SidePanel.Section title="General">
-            <ChartType
-              type={type}
-              onChange={(type) => {
-                setType(type);
-                setProp('type', type);
-              }}
-            />
-          </SidePanel.Section>
+          <ChartType
+            type={type}
+            onChange={(type) => {
+              setType(type);
+              setProp('type', type);
+            }}
+          />
           {items.map((item, index) => (
             <Slice
               title={`Slice ${index + 1}`}
