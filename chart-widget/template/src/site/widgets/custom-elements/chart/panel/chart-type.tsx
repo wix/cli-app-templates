@@ -40,7 +40,8 @@ export function ChartType({ type, onChange }: Props) {
               <Icon />
             </Box>
           </Thumbnail>
-        ))}      </FieldSet>
+        ))}
+      </FieldSet>
     </SidePanel.Field>
   );
 }
