@@ -3,11 +3,38 @@ import { CloseButton } from '../close-button.js';
 import { SitePopupOptions } from '../../types.js';
 import './index.css';
 
+function formatDateWithLocale(dateInMillis: string, locale: string) {
+  const date = new Date(Number(dateInMillis));
+  const formatter = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  return formatter.format(date);
+}
+
 export const Popup: FC<
   SitePopupOptions & {
-    onClose?: (hideForever?: boolean) => void;
+  regionalSettings: string;
+  onClose?: (hideForever?: boolean) => void;
+}
+> = ({
+       headline,
+       text,
+       imageUrl,
+       imageTitle,
+       onClose,
+       startDate,
+       endDate,
+       regionalSettings,
+     }) => {
+  let formattedText = text;
+  if (startDate) {
+    formattedText = formattedText.replace(/{startDate}/g, formatDateWithLocale(startDate, regionalSettings));
   }
-> = ({ headline, text, imageUrl, imageTitle, onClose }) => {
+  if (endDate) {
+    formattedText = formattedText.replace(/{endDate}/g, formatDateWithLocale(endDate, regionalSettings));
+  }
   return (
     <div className="rounded-lg shadow-2xl grid md:grid md:grid-cols-2">
       <div id="close-btn" className="absolute z-[1000]">
@@ -19,7 +46,7 @@ export const Popup: FC<
             {headline}
           </h4>
           <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
-            {text}
+            {formattedText}
           </p>
         </div>
         <div className="flex justify-center items-center p-4">
