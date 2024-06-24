@@ -67,7 +67,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                   label="Text"
                   infoContent={
                     options.activationMode == 'timed'
-                      ? 'You can include the variables {startDate} and {endDate}, they will be replaced by the timed start and end dates, formatted per the site regional settings.'
+                      ? 'Include the placeholders {startDate} and {endDate} to show the start and end dates, formatted according to the site\'s regional settings.'
                       : undefined
                   }
                   {...getFieldStatus('text')}
