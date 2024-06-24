@@ -6,7 +6,7 @@ import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
 import { useEmbeds } from '../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
-import { useDashboardSdk } from '../hooks/useDashboardClient';
+import { useDashboardClient } from '../hooks/useDashboardClient';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -25,7 +25,7 @@ function SitePopup() {
     sitePopupDefaultOptions
   );
 
-  const { observeState } = useDashboardSdk();
+  const { observeState } = useDashboardClient();
 
   const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
 
