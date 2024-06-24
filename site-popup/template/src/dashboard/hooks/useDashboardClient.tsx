@@ -1,4 +1,4 @@
-import { SDK, dashboard } from "@wix/dashboard";
+import { SDK, dashboard } from '@wix/dashboard';
 import { createClient } from '@wix/sdk';
 
 export const useDashboardSdk = (): SDK => {

@@ -4,7 +4,7 @@ import { site as siteSdk } from '@wix/site';
 import { site } from '@wix/site-site';
 import { appId } from '../../../wix.config.json';
 
-export const useWixSiteSdk = () => {
+export const useWixSiteClient = () => {
   const sdk = useMemo(() => {
     return createClient({
       host: siteSdk.host({ applicationId: appId }),
