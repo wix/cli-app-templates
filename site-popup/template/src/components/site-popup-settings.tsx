@@ -65,6 +65,11 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                 <FormField
                   labelSize="small"
                   label="Text"
+                  infoContent={
+                    options.activationMode == 'timed'
+                      ? 'Include the placeholders {startDate} and {endDate} to show the start and end dates, formatted according to the site\'s regional settings.'
+                      : undefined
+                  }
                   {...getFieldStatus('text')}
                 >
                   <InputArea

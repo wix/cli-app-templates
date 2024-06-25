@@ -6,6 +6,7 @@ import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
 import { useEmbeds } from '../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
+import { useDashboardClient } from '../hooks/useDashboardClient';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -23,6 +24,14 @@ function SitePopup() {
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
   );
+
+  const { observeState } = useDashboardClient();
+
+  const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
+
+  observeState((_, environmentState) => {
+    setRegionalSettings(environmentState.locale);
+  });
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
@@ -63,7 +72,7 @@ function SitePopup() {
               />
             </Cell>
             <Cell>
-              <Popup {...sitePopupOptions} />
+              <Popup {...sitePopupOptions} regionalSettings={regionalSettings} />
             </Cell>
           </Layout>
         )}

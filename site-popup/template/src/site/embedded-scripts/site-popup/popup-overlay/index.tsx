@@ -3,11 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Popup } from '../../../../components/popup/index.js';
 import { SitePopupOptions } from '../../../../types.js';
 import './index.css';
+import { useWixSiteClient } from '../../../hooks/useWixSiteClient';
 
 const PopupOverlay = () => {
   const [shown, setShown] = useState<boolean>(false);
   const el = document.querySelector('#popup-data') as HTMLElement;
   const popupParams = el?.dataset as SitePopupOptions;
+
+  const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
+
+  const siteClient = useWixSiteClient();
+
+  useEffect(() => {
+    siteClient.site.regionalSettings().then(setRegionalSettings);
+  }, []);
 
   useEffect(() => {
     const isPopupShownStorage = localStorage.getItem('isPopupShown');
@@ -42,7 +51,7 @@ const PopupOverlay = () => {
       }
     >
       <div className="w-9/12">
-        <Popup {...popupParams} onClose={closePopup} />
+        <Popup {...popupParams} regionalSettings={regionalSettings} onClose={closePopup} />
       </div>
     </div>
   );
