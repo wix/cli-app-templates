@@ -1,8 +1,8 @@
-# Wix CLI App Template: Charts
+# Wix CLI App Template: Chart Widget
 
-The Charts Wix app template is part of the [Wix app templates collection](https://dev.wix.com/apps-templates).
+The Chart Widget Wix app template is parrt of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to add a Chart with a [site widget](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/site-widgets). The app creates a site widget where site admins can customize the chart's characteristics, such as the data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
+This Wix CLI template demonstrates how to add a chart with a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli). The app creates a site widget where site admins can customize the chart's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
 
 The template also demonstrates the basic functionality of the React SDK, the Editor SDK, and the Wix Design System.
 
@@ -10,7 +10,7 @@ The template also demonstrates the basic functionality of the React SDK, the Edi
 
 [Wix apps](https://dev.wix.com/docs/build-apps) enhance the functionality of Wix sites by adding new features such as custom pages, dashboard components, third-party integrations, or site analytics. Starting with an app template fast-tracks the development process, providing a working foundational app that developers can modify and build upon. This approach saves valuable time, allowing for a quick transition from concept to a fully functional app.
 
-Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
+Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
 
 ## Template features
 
@@ -32,12 +32,12 @@ Before getting started, make sure you have the following set up:
 
 We first need to create local files for our app project and set up a local development environment for preview and testing.
 
-## Step 1 | Create a new app project with the Charts template
+## Step 1 | Create a new app project with the Chart Widget template
 
 In the directory where you want to create your project, run the following command:
 
 ```bash
-npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /site-popup/template
+npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /chart-widget/template
 ```
 
 When asked what you would like to create, choose **A new Wix App**.
@@ -69,21 +69,17 @@ This will prompt you with a CLI menu. Follow the instructions to open a browser 
 
 The development environment is set up to automatically reflect your code changes in the browser.
 
-## Extend and customize the app
-
-The template is designed for easy customization and extension. Here are some suggested entry points where you can add your own custom logic or functionality:
-
 ### Customize the panel
 
 The panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to provide a simple UI where users can edit their chart. It includes default options that define the chart's type, data, text, and color.
 
-You can change these options so users see a different example when they open the site widget. You can also customize the overall layout and appearance of the panel to fit your specific needs.
+You can change these options so users see a different example when they open the page with the site widget. You can also customize the layout and appearance of the panel to fit your specific needs.
 
 **Development entry point**: [`template/src/site/widgets/custom-elements/chart/panel.tsx`](template/src/site/widgets/custom-elements/chart/panel.tsx)
 
 ### Modify the site widget
 
-The site widget's `element.tsx` file is the entry point for the component that will be rendered on the user's site. Alter the component to fit your needs. You can change the component’s appearance and options, for example by adding support for another type of chart.
+The site widget's `element.tsx` file serves as the entry point for the component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
 
 **Development entry point**: [`template/src/site/widgets/custom-elements/chart/element.tsx`](template/src/site/widgets/custom-elements/chart/element.tsx)
 
@@ -130,6 +126,6 @@ This guides you through creating a new app version in the Wix Developers Center.
 
 For more information:
 
-+ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template).
++ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
 + Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
 + See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
