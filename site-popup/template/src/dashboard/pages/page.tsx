@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
+import { useEnvironment } from '@wix/sdk-react';
+import { EnvironmentState } from '@wix/dashboard';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
 import { useEmbeds } from '../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
-import { useUserLocale } from '../hooks/useUserLocale';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -25,7 +26,7 @@ function SitePopup() {
     sitePopupDefaultOptions
   );
 
-  const regionalSettings = useUserLocale();
+  const { locale: regionalSettings } = useEnvironment<EnvironmentState>();
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
