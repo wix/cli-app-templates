@@ -1,8 +1,8 @@
 # Wix CLI App Template: Chart Widget
 
-The Chart Widget Wix app template is parrt of the [Wix app template collection](https://dev.wix.com/apps-templates).
+The Chart Widget Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to add a chart with a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli). The app creates a site widget where site admins can customize the chart's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
+This Wix CLI template demonstrates how to use a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli) extension to define a "chart" widget that can be addrd to a site once the app is installed. Site admins can customize the chart widget's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
 
 The template also demonstrates the basic functionality of the React SDK, the Editor SDK, and the Wix Design System.
 
@@ -44,8 +44,8 @@ When asked what you would like to create, choose **A new Wix App**.
 
 In the creation process, you will be asked for:
 
-+ A **Wix app name**. This is the name of your app in the [Wix Developer Center](https://dev.wix.com/apps/my-apps).
-+ A test site to install your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/build-your-app/testing/how-to-test-your-app-on-a-free-premium-development-site#create-a-premium-development-site).
++ A **Wix app name**. This is the name of your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
++ A site to install and test your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/get-started/quick-start#development-site).
 + A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
@@ -54,7 +54,7 @@ This process registers a new app in the Wix Dev Center and generates a new app p
 
 The project includes:
 
-+ Initial boilerplate code for a simple app with a site widget.
++ Initial boilerplate code for a simple app with a site widget extension.
 + A `package.json` file with your app’s dependencies.
 
 ## Step 2 | Test the app
@@ -65,7 +65,7 @@ The app creation process installs the app on your chosen development site. Howev
 npm run dev
 ```
 
-This will prompt you with a CLI menu. Follow the instructions to open a browser window with a preview of the app's site widget.
+This will prompt you with a CLI menu. Follow the instructions to open a browser window with a preview of the app's site widget on a site page.
 
 The development environment is set up to automatically reflect your code changes in the browser.
 
@@ -73,13 +73,13 @@ The development environment is set up to automatically reflect your code changes
 
 The panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to provide a simple UI where users can edit their chart. It includes default options that define the chart's type, data, text, and color.
 
-You can change these options so users see a different example when they open the page with the site widget. You can also customize the layout and appearance of the panel to fit your specific needs.
+You can update these options to change the display of the chart widget on the user's site page. You can also customize the layout and appearance of the panel to fit your specific needs.
 
 **Development entry point**: [`template/src/site/widgets/custom-elements/chart/panel.tsx`](template/src/site/widgets/custom-elements/chart/panel.tsx)
 
 ### Modify the site widget
 
-The site widget's `element.tsx` file serves as the entry point for the component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
+The site widget is defined in a `CustomElement` React component. The `element.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
 
 **Development entry point**: [`template/src/site/widgets/custom-elements/chart/element.tsx`](template/src/site/widgets/custom-elements/chart/element.tsx)
 
