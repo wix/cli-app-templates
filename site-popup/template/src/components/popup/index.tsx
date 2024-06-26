@@ -15,7 +15,7 @@ function formatDateWithLocale(dateInMillis: string, locale: string) {
 
 export const Popup: FC<
   SitePopupOptions & {
-  regionalSettings: string;
+  locale: string;
   onClose?: (hideForever?: boolean) => void;
 }
 > = ({
@@ -26,14 +26,14 @@ export const Popup: FC<
        onClose,
        startDate,
        endDate,
-       regionalSettings,
+       locale,
      }) => {
   let formattedText = text;
   if (startDate) {
-    formattedText = formattedText.replace(/{startDate}/g, formatDateWithLocale(startDate, regionalSettings));
+    formattedText = formattedText.replace(/{startDate}/g, formatDateWithLocale(startDate, locale));
   }
   if (endDate) {
-    formattedText = formattedText.replace(/{endDate}/g, formatDateWithLocale(endDate, regionalSettings));
+    formattedText = formattedText.replace(/{endDate}/g, formatDateWithLocale(endDate, locale));
   }
   return (
     <div className="rounded-lg shadow-2xl grid md:grid md:grid-cols-2">

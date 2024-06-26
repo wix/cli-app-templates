@@ -51,7 +51,7 @@ const PopupOverlay = () => {
       }
     >
       <div className="w-9/12">
-        <Popup {...popupParams} regionalSettings={regionalSettings} onClose={closePopup} />
+        <Popup {...popupParams} locale={regionalSettings} onClose={closePopup} />
       </div>
     </div>
   );
