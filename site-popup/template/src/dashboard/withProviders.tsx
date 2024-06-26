@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 
 export function withProviders<P extends {} = {}>(Component: React.FC<P>) {
   return withDashboard(function DashboardProviders(props: P) {
-    const { locale} = useEnvironment<EnvironmentState>();
+    const { locale } = useEnvironment<EnvironmentState>();
     return (
       <WixDesignSystemProvider locale={locale} features={{ newColorsBranding: true }}>
         <QueryClientProvider client={queryClient}>
