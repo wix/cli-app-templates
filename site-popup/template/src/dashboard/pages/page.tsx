@@ -6,7 +6,7 @@ import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
 import { useEmbeds } from '../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
-import { useDashboardClient } from '../hooks/useDashboardClient';
+import { useUserLocale } from '../hooks/useUserLocale';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -25,13 +25,7 @@ function SitePopup() {
     sitePopupDefaultOptions
   );
 
-  const { observeState } = useDashboardClient();
-
-  const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
-
-  observeState((_, environmentState) => {
-    setRegionalSettings(environmentState.locale);
-  });
+  const regionalSettings = useUserLocale();
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
