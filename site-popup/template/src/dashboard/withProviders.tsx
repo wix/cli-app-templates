@@ -1,9 +1,8 @@
 import React from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { WixDesignSystemProvider } from '@wix/design-system';
-import { withDashboard } from '@wix/dashboard-react';
+import { withDashboard, EnvironmentState } from '@wix/dashboard-react';
 import { useEnvironment } from '@wix/sdk-react';
-import { EnvironmentState } from '@wix/dashboard';
 
 const queryClient = new QueryClient();
 
