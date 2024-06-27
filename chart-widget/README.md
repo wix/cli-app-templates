@@ -65,7 +65,7 @@ The app creation process installs the app on your chosen development site. Howev
 npm run dev
 ```
 
-This will prompt you with a CLI menu. Follow the instructions to open a browser window with a preview of the app's site widget on a site page.
+This will prompt you with a CLI menu. Follow the instructions to open a browser window with a preview of the app's site widget on a site page. The first time you run this command for a new site widget, you'll be prompted to open the site editor to complete the installation. 
 
 The development environment is set up to automatically reflect your code changes in the browser.
 
