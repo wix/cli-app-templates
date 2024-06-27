@@ -1,9 +1,8 @@
 import React from 'react';
 import { WixDesignSystemProvider } from '@wix/design-system';
-import { withDashboard } from '@wix/dashboard-react';
+import { withDashboard, EnvironmentState} from '@wix/dashboard-react';
 import { WixPatternsProvider } from '@wix/patterns/provider';
 import { useEnvironment } from '@wix/sdk-react';
-import type { EnvironmentState } from '@wix/dashboard';
 
 export function withProviders<P extends {} = {}>(Component: React.FC<P>) {
   return withDashboard(function DashboardProviders(props: P) {
