@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dev.wix.com/wix-cli/schemas/custom-element.json",
   "id": "<%= generatePageID() %>",
   "name": "Chart",
   "width": {
@@ -10,7 +11,6 @@
   },
   "installation": {
     "autoAddToSite": true,
-    "essential": false,
-    "maxInstances": 0
+    "essential": false
   }
 }
