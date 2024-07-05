@@ -1,0 +1,34 @@
+---
+to: package.json
+---
+{
+  "name": "<%= packageName %>",
+  "version": "1.0.0",
+  "dependencies": {
+    "@wix/design-system": "^1.0.0",
+    "@wix/editor": "^1.0.0",
+    "@wix/sdk-react": "^0.5.0",
+    "@wix/wix-ui-icons-common": "^3.0.0",
+    "react-to-webcomponent": "^2.0.0",
+    "recharts": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "@wix/cli": "^1.0.0",
+    "@wix/cli-app": "^1.0.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "typescript": "^5.4.0"
+  },
+  "scripts": {
+    "build": "wix app build",
+    "create-version": "wix app create-version",
+    "dev": "wix app dev",
+    "preview": "wix app preview",
+    "serve": "wix app serve",
+    "logs": "wix app logs",
+    "generate": "wix app generate",
+    "typecheck": "tsc --noEmit"
+  }
+}
