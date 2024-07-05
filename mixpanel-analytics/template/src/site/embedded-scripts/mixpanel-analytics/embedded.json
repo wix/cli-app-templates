@@ -1,4 +1,5 @@
 {
+    "$schema": "https://dev.wix.com/wix-cli/schemas/embedded-script.json",
     "id": "<%= generatePageID() %>",
     "name": "Mixpanel Analytics",
     "scriptType": "ANALYTICS",
