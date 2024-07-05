@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
+import { useEnvironment } from '@wix/sdk-react';
+import { EnvironmentState } from '@wix/dashboard-react';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
@@ -23,6 +25,8 @@ function SitePopup() {
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
   );
+
+  const { locale } = useEnvironment<EnvironmentState>();
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
@@ -63,7 +67,7 @@ function SitePopup() {
               />
             </Cell>
             <Cell>
-              <Popup {...sitePopupOptions} />
+              <Popup {...sitePopupOptions} locale={locale} />
             </Cell>
           </Layout>
         )}

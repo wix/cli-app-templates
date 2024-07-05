@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dev.wix.com/wix-cli/schemas/dashboard-page.json",
   "id": "<%= generatePageID() %>",
   "title": "Custom Products Catalog"
 }

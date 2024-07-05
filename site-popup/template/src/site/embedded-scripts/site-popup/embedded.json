@@ -1,4 +1,5 @@
 {
+    "$schema": "https://dev.wix.com/wix-cli/schemas/embedded-script.json",
     "id": "<%= generatePageID() %>",
     "name": "Site Popup",
     "scriptType": "FUNCTIONAL",
