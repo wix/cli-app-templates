@@ -1,5 +1,5 @@
 import { useWixModules } from '@wix/sdk-react';
-import { embeddedScripts } from '@wix/app-market';
+import { embeddedScripts } from '@wix/app-management';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const QUERY_EMBEDS = 'queryEmbeds';
