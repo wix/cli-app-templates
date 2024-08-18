@@ -7,7 +7,6 @@ import {
   SidePanel,
   Box,
 } from '@wix/design-system';
-import { useWixModules } from '@wix/sdk-react';
 import { inputs } from '@wix/editor';
 import type { ChartItem } from '../common.js';
 
@@ -18,7 +17,7 @@ interface Props {
 }
 
 export default function Slice({ title, item, onChange }: Props) {
-  const { selectColor } = useWixModules(inputs);
+  const { selectColor } = inputs;
 
   return (
     <SidePanel.Section title={title}>
@@ -55,7 +54,7 @@ export default function Slice({ title, item, onChange }: Props) {
             <FillPreview
               fill={item.color}
               onClick={() =>
-                selectColor(item.color, (value) => {
+                selectColor({ color: item.color }, (value) => {
                   const newItem = { ...item, color: value.color };
                   onChange(newItem);
                 })
