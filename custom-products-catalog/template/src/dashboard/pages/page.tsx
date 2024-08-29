@@ -26,56 +26,64 @@ import {
   DateRangeFilter,
   RadioGroupFilter,
   stringsArrayFilter,
-} from '@wix/patterns'
+} from '@wix/patterns';
+import { useWixModules } from '@wix/sdk-react';
 
+// Defining the types for filters used in the table
 type TableFilters = {
   productType: Filter<products.ProductType[]>;
   lastUpdated: Filter<RangeItem<Date>>;
 }
 
+// Defining the type for supported query fields
 type SupportedQueryFields = Parameters<products.ProductsQueryBuilder['ascending']>[0] | Parameters<products.ProductsQueryBuilder['descending']>[0]
 
-const productTypeToDisplayName: {[key in products.ProductType] : string | undefined} = {
+// Mapping product types to display names
+const productTypeToDisplayName: { [key in products.ProductType]: string | undefined } = {
   [products.ProductType.physical]: 'Physical',
   [products.ProductType.digital]: 'Digital',
   [products.ProductType.unspecified_product_type]: undefined
 }
 
 function Products() {
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(false); 
+
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
     itemName: (product: products.Product) => product.name!,
-    limit: 20,
-    fetchData: (query) => {
+    limit: 20, // Number of items per page
+    fetchData: (query) => { // Function to fetch product data based on the given query
       const { limit, offset, search, sort, filters } = query;
+
+      // Setting initial query parameters
       let queryBuilder = products.queryProducts().limit(limit).skip(offset);
 
+      // If search term is provided, filter products by name
       if (search) {
-        queryBuilder = queryBuilder.startsWith("name", search)
+        queryBuilder = queryBuilder.startsWith("name", search);
       }
 
+      // If filters are applied, add them to the query
       if (filters) {
-        const { productType, lastUpdated } = filters
+        const { productType, lastUpdated } = filters;
 
         if (productType) {
-          queryBuilder = queryBuilder.in('productType', productType)
+          queryBuilder = queryBuilder.in('productType', productType);
         }
 
         if (lastUpdated) {
           if (lastUpdated.from) {
-            queryBuilder = queryBuilder
-            .gt('lastUpdated', lastUpdated.from)  
+            queryBuilder = queryBuilder.gt('lastUpdated', lastUpdated.from);
           }
 
           if (lastUpdated.to) {
-            queryBuilder = queryBuilder
-            .lt('lastUpdated', lastUpdated.to);
+            queryBuilder = queryBuilder.lt('lastUpdated', lastUpdated.to);
           }
         }
       }
 
+      // If sorting is applied, add sorting conditions to the query
       if (sort) {
         sort.forEach(s => {
           const fieldName = s.fieldName as SupportedQueryFields;
@@ -87,6 +95,7 @@ function Products() {
         });
       }
 
+      // Execute the query and return the items and total count
       return queryBuilder.find().then(({ items = [], totalCount: total }) => {
         return {
           items,
@@ -96,11 +105,12 @@ function Products() {
     },
     fetchErrorMessage: () => 'Error fetching products',
     filters: {
-      lastUpdated: dateRangeFilter(),
-      productType: stringsArrayFilter({ itemName: (p) => productTypeToDisplayName[p] ?? p })
+      lastUpdated: dateRangeFilter(), // Filter by date range
+      productType: stringsArrayFilter({ itemName: (p) => productTypeToDisplayName[p] ?? p }) // Filter by product type
     },
   });
 
+  // Optimistic actions to handle changes before server confirmation
   const optimisticActions = useOptimisticActions(tableState.collection, {
     orderBy: () => [],
     predicate: ({ search, filters }) => {
@@ -114,16 +124,16 @@ function Products() {
         }
 
         if (filters.lastUpdated && product.lastUpdated) {
-          const from = filters.lastUpdated.from
-          const to = filters.lastUpdated.to
-          const productLastUpdated = (new Date(product.lastUpdated)).getTime()
+          const from = filters.lastUpdated.from;
+          const to = filters.lastUpdated.to;
+          const productLastUpdated = (new Date(product.lastUpdated)).getTime();
 
           if (from && productLastUpdated < from.getTime()) {
-            return false
+            return false;
           }
-        
+     
           if (to && productLastUpdated > to.getTime()) {
-            return false
+            return false;
           }
         }
 
@@ -157,28 +167,29 @@ function Products() {
       />
       <CollectionPage.Content>
         <CreateProductModal showModal={shown} onSave={(productName: string) => {
-          createProduct(productName)
-          setShown(false)
+          createProduct(productName);
+          setShown(false);
         }}/>
         <Table
           state={tableState}
-          maxSelection={20}
+          maxSelection={20} // Max selection for bulk actions
           filters={
             <CollectionToolbarFilters>
               <RadioGroupFilter
-                accordionItemProps={{ label: 'Type' }}
+                accordionItemProps={{ label: 'Type' }} // Filter by product type
                 filter={tableState.collection.filters.productType}
                 data={[products.ProductType.physical, products.ProductType.digital]}
               />
               <DateRangeFilter
-                filter={tableState.collection.filters.lastUpdated}
+                filter={tableState.collection.filters.lastUpdated} // Filter by last updated date
                 accordionItemProps={{ label: 'Last Updated' }}
               />
             </CollectionToolbarFilters>
           }
           bulkActionToolbar={({ selectedValues, openConfirmModal }) => {
-            const disabled = selectedValues.length > 20;
+            const disabled = selectedValues.length > 20; // Disable delete if more than 20 items selected
             return (
+              // Custom toolbar for bulk actions
               <MultiBulkActionToolbar
                 primaryActionItems={[
                   {
@@ -191,15 +202,16 @@ function Products() {
                       openConfirmModal({
                         theme: 'destructive',
                         primaryButtonOnClick: () => {
-                          deleteProducts(selectedValues)
+                          deleteProducts(selectedValues);
                         },
                       });
                     },
                   },
                 ]}
-              />)
+              />
+            )
           }}
-          customColumns={<CustomColumns />}
+          customColumns={<CustomColumns />} // Enable custom columns for the table
           columns={[
             {
               id: 'avatar',
@@ -242,7 +254,7 @@ function Products() {
                   return ''
                 }
 
-                return productTypeToDisplayName[row.productType] ?? row.productType
+                return productTypeToDisplayName[row.productType] ?? row.productType;
               },
               width: '100px',
             },
@@ -251,14 +263,15 @@ function Products() {
               title: 'Last Updated',
               render: (row: products.Product) =>
                 row.lastUpdated
-                  ? new Date(row.lastUpdated).toLocaleDateString()
-                  : '',
+                ? new Date(row.lastUpdated).toLocaleDateString()
+                : '',
               width: '100px',
               defaultHidden: true,
             },
           ]}
           actionCell={(_product, _index, actionCellAPI) => ({
               secondaryActions: [
+              // Use predefined delete action 
                 deleteSecondaryAction({
                   optimisticActions,
                   actionCellAPI,
@@ -282,4 +295,5 @@ function Products() {
   );
 }
 
+// Wrapping the Products component with providers
 export default withProviders(Products);
