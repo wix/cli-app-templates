@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type FC } from 'react';
 import {
   Bar,
   BarChart as RechartsBarChart,
@@ -14,7 +14,7 @@ type Props = {
   items: ChartItem[];
 };
 
-export function BarChart({ items }: Props) {
+export const BarChart: FC<Props> = ({ items }) => {
   const data = [
     {
       name: 'Slices',
@@ -49,4 +49,4 @@ export function BarChart({ items }: Props) {
       </RechartsBarChart>
     </ResponsiveContainer>
   );
-}
+};

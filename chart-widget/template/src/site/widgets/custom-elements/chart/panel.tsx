@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { type FC, useState, useEffect } from 'react';
 import { widget } from '@wix/editor';
 import { SidePanel, WixDesignSystemProvider } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
@@ -6,7 +6,7 @@ import { DEFAULT_TYPE, DEFAULT_ITEMS, type ChartItem } from './common.js';
 import Slice from './panel/slice.js';
 import { ChartType } from './panel/chart-type.js';
 
-export default () => {
+const Panel: FC = () => {
   const { setProp, getProp } = widget;
   const [loaded, setLoaded] = useState(false);
   const [type, setType] = useState<string>('');
@@ -51,3 +51,5 @@ export default () => {
     </WixDesignSystemProvider>
   );
 };
+
+export default Panel;

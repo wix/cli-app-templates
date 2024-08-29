@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { type FC, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import reactToWebComponent from 'react-to-webcomponent';
 import { DEFAULT_TYPE, DEFAULT_ITEMS, type ChartItem } from './common.js';
@@ -10,7 +10,7 @@ type Props = {
   items: ChartItem[];
 };
 
-function CustomElement({ type = DEFAULT_TYPE, items = DEFAULT_ITEMS }: Props) {
+const CustomElement: FC<Props> = ({ type = DEFAULT_TYPE, items = DEFAULT_ITEMS }) => {
   const Chart = useMemo(() => {
     const charts = {
       pie: PieChart,
@@ -20,7 +20,7 @@ function CustomElement({ type = DEFAULT_TYPE, items = DEFAULT_ITEMS }: Props) {
   }, [type]);
 
   return <Chart items={items} />;
-}
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const WrappedCustomElement = (props: any) => <CustomElement {...props} />;

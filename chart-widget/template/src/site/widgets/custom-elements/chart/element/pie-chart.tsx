@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type FC } from 'react';
 import {
   Cell,
   Legend,
@@ -12,7 +12,7 @@ type Props = {
   items: ChartItem[];
 };
 
-export function PieChart({ items }: Props) {
+export const PieChart: FC<Props> = ({ items }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RechartsPieChart>
@@ -36,4 +36,4 @@ export function PieChart({ items }: Props) {
       </RechartsPieChart>
     </ResponsiveContainer>
   );
-}
+};

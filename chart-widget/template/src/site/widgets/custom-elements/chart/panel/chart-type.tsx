@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type FC } from 'react';
 import { Box, FieldSet, SidePanel, Thumbnail } from '@wix/design-system';
 import { PieChart, BarChartSplit } from '@wix/wix-ui-icons-common';
 
@@ -12,7 +12,7 @@ const options = [
   { value: 'bar', icon: BarChartSplit },
 ];
 
-export function ChartType({ type, onChange }: Props) {
+export const ChartType: FC<Props> = ({ type, onChange }) => {
   return (
     <SidePanel.Field>
       <FieldSet
@@ -44,4 +44,4 @@ export function ChartType({ type, onChange }: Props) {
       </FieldSet>
     </SidePanel.Field>
   );
-}
+};

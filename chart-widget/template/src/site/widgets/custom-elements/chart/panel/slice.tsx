@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type FC } from 'react';
 import {
   FormField,
   FillPreview,
@@ -16,7 +16,7 @@ interface Props {
   onChange: (item: ChartItem) => void;
 }
 
-export default function Slice({ title, item, onChange }: Props) {
+const Slice: FC<Props> = ({ title, item, onChange }) => {
   const { selectColor } = inputs;
 
   return (
@@ -65,4 +65,6 @@ export default function Slice({ title, item, onChange }: Props) {
       </SidePanel.Field>
     </SidePanel.Section>
   );
-}
+};
+
+export default Slice;
