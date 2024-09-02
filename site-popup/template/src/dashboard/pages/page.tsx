@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { dashboard } from '@wix/dashboard';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
-import { useEnvironment } from '@wix/sdk-react';
-import { EnvironmentState } from '@wix/dashboard-react';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
@@ -22,11 +21,14 @@ function SitePopup() {
   const { embedScript, getEmbeddedScript } =
     useEmbeds<Partial<SitePopupOptions>>();
 
+  const [ language, setLanguage ] = useState('');
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
   );
 
-  const { language } = useEnvironment<EnvironmentState>();
+  useEffect(() => {
+    dashboard.getLanguage().then((lang) => setLanguage(lang));
+  }, []);
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
