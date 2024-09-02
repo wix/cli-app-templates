@@ -26,7 +26,7 @@ function SitePopup() {
     sitePopupDefaultOptions
   );
 
-  const { locale } = useEnvironment<EnvironmentState>();
+  const { language } = useEnvironment<EnvironmentState>();
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
@@ -67,7 +67,7 @@ function SitePopup() {
               />
             </Cell>
             <Cell>
-              <Popup {...sitePopupOptions} locale={locale} />
+              <Popup {...sitePopupOptions} locale={language} />
             </Cell>
           </Layout>
         )}
