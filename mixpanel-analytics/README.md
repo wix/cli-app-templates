@@ -18,8 +18,7 @@ This Wix app template incorporates the following features:
 
 + **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
 + **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix React SDK:** Simplify API requests to the Wix ecosystem.
-+ **Wix Dashboard React SDK:** Integrate custom dashboard components with the Wix site dashboard.
++ **Wix Dashboard SDK:** Integrate custom dashboard components with the Wix site dashboard.
 + **Embedded script extension:** Embed an HTML code fragment on users' sites. For more information, see [Embedded Scripts](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/embedded-scripts).
 
 ## Prerequisites
