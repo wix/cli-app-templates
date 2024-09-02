@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Popup } from '../../../../components/popup/index.js';
 import { SitePopupOptions } from '../../../../types.js';
 import './index.css';
-import { useWixSiteClient } from '../../../hooks/useWixSiteClient';
+import { site } from '@wix/site-site';
 
 const PopupOverlay = () => {
   const [shown, setShown] = useState<boolean>(false);
@@ -12,10 +12,8 @@ const PopupOverlay = () => {
 
   const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
 
-  const siteClient = useWixSiteClient();
-
   useEffect(() => {
-    siteClient.site.regionalSettings().then(setRegionalSettings);
+    site.regionalSettings().then(setRegionalSettings);
   }, []);
 
   useEffect(() => {

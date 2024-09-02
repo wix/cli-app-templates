@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Input, Button, Box, Loader } from '@wix/design-system';
-import '@wix/design-system/styles.global.css';
 import * as Icons from '@wix/wix-ui-icons-common';
 import { useEmbeds } from '../hooks/wix-embeds.js';
 

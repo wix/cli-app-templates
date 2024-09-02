@@ -17,8 +17,6 @@ interface Props {
 }
 
 const Slice: FC<Props> = ({ title, item, onChange }) => {
-  const { selectColor } = inputs;
-
   return (
     <SidePanel.Section title={title}>
       <SidePanel.Field>
@@ -54,7 +52,7 @@ const Slice: FC<Props> = ({ title, item, onChange }) => {
             <FillPreview
               fill={item.color}
               onClick={() =>
-                selectColor({ color: item.color }, (value) => {
+                inputs.selectColor({ color: item.color }, (value) => {
                   const newItem = { ...item, color: value.color };
                   onChange(newItem);
                 })
