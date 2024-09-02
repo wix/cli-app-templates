@@ -7,18 +7,17 @@ import Slice from './panel/slice.js';
 import { ChartType } from './panel/chart-type.js';
 
 const Panel: FC = () => {
-  const { setProp, getProp } = widget;
   const [loaded, setLoaded] = useState(false);
   const [type, setType] = useState<string>('');
   const [items, setItems] = useState<ChartItem[]>([]);
 
   useEffect(() => {
-    Promise.all([getProp('type'), getProp('items')]).then(([type, items]) => {
+    Promise.all([widget.getProp('type'), widget.getProp('items')]).then(([type, items]) => {
       setType(type ?? DEFAULT_TYPE);
       setItems(JSON.parse(items) ?? DEFAULT_ITEMS);
       setLoaded(true);
     });
-  }, [getProp]);
+  }, []);
 
   return (
     <WixDesignSystemProvider>
@@ -29,7 +28,7 @@ const Panel: FC = () => {
               type={type}
               onChange={(type) => {
                 setType(type);
-                setProp('type', type);
+                widget.setProp('type', type);
               }}
             />
             {items.map((item, index) => (
@@ -41,7 +40,7 @@ const Panel: FC = () => {
                   const newItems = [...items];
                   newItems[index] = item;
                   setItems(newItems);
-                  setProp('items', JSON.stringify(newItems));
+                  widget.setProp('items', JSON.stringify(newItems));
                 }}
               />
             ))}

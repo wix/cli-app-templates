@@ -1,11 +1,8 @@
 import { products } from '@wix/stores';
-import { useWixModules } from '@wix/sdk-react';
 import { useCallback } from 'react';
 import { CollectionOptimisticActions } from '@wix/patterns';
 
 export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
-  const {createProduct} = useWixModules(products);
-
   return useCallback((productName: string) => {
     const newProduct: products.Product = {
       _id: Date().toString(),
@@ -20,9 +17,8 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
       },
     };
     optimisticActions.createOne(newProduct, {
-      submit: async (products: products.Product[]) => {
-        const createdProduct = products[0]
-        const response = await createProduct(createdProduct);
+      submit: async ([product]: products.Product[]) => {
+        const response = await products.createProduct(product);
         return response.product ? [response.product] : [];
       },
       successToast: {
@@ -31,18 +27,16 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
       },
       errorToast: () => 'Failed to create product',
     })
-  }, [optimisticActions, createProduct]);
+  }, [optimisticActions]);
 
 }
 
 export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
-  const { deleteProduct } = useWixModules(products);
-
   return useCallback((productsToDelete: products.Product[] ) => {
     optimisticActions.deleteMany(productsToDelete, {
       submit: async (deletedProducts: products.Product[]) => (
         await Promise.all(
-          deletedProducts.map((product) => deleteProduct(product._id!))
+          deletedProducts.map((product) => products.deleteProduct(product._id!))
         )
       ),
       successToast: {
@@ -55,5 +49,5 @@ export function useDeleteProducts(optimisticActions: CollectionOptimisticActions
         productsToDelete.length > 1 ? 'Products' : 'Product'
       }`,
     });
-  }, [optimisticActions, deleteProduct]);
+  }, [optimisticActions]);
 }

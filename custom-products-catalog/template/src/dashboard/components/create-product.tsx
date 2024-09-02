@@ -5,7 +5,6 @@ import {
   FormField,
   Input,
 } from '@wix/design-system';
-import '@wix/design-system/styles.global.css';
 
 export function CreateProductModal({ showModal, onSave }: { showModal: boolean, onSave: (name: string) => void }) {
   const [productName, setProductName] = useState('');

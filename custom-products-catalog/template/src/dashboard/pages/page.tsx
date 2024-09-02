@@ -27,7 +27,6 @@ import {
   RadioGroupFilter,
   stringsArrayFilter,
 } from '@wix/patterns'
-import { useWixModules } from '@wix/sdk-react';
 
 type TableFilters = {
   productType: Filter<products.ProductType[]>;
@@ -44,7 +43,6 @@ const productTypeToDisplayName: {[key in products.ProductType] : string | undefi
 
 function Products() {
   const [shown, setShown] = useState(false);
-  const { queryProducts, deleteProduct } = useWixModules(products);
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
@@ -52,7 +50,7 @@ function Products() {
     limit: 20,
     fetchData: (query) => {
       const { limit, offset, search, sort, filters } = query;
-      let queryBuilder = queryProducts().limit(limit).skip(offset);
+      let queryBuilder = products.queryProducts().limit(limit).skip(offset);
 
       if (search) {
         queryBuilder = queryBuilder.startsWith("name", search)
@@ -264,9 +262,9 @@ function Products() {
                 deleteSecondaryAction({
                   optimisticActions,
                   actionCellAPI,
-                  submit: (products: products.Product[]) => (
+                  submit: (deletedProducts: products.Product[]) => (
                     Promise.all(
-                      products.map((product: products.Product) => deleteProduct(product._id!))
+                      deletedProducts.map((product: products.Product) => products.deleteProduct(product._id!))
                     )
                   ),
                   successToast: {

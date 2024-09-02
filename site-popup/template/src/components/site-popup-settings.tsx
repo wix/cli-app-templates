@@ -8,7 +8,6 @@ import {
   FormField,
   FormFieldProps,
 } from '@wix/design-system';
-import '@wix/design-system/styles.global.css';
 import { SitePopupOptions } from '../types.js';
 import { ActivationConfiguration } from './activation-configuration.js';
 import { ImagePicker } from './image-picker.js';
