@@ -1,7 +1,7 @@
 {
   "$schema": "https://dev.wix.com/wix-cli/schemas/custom-element.json",
   "id": "<%= generatePageID() %>",
-  "name": "Chart",
+  "name": "Chart Widget",
   "width": {
     "defaultWidth": 400,
     "allowStretch": true

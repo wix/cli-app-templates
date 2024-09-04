@@ -74,13 +74,13 @@ The panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wi
 
 You can update these options to change the display of the chart widget on the user's site page. You can also customize the layout and appearance of the panel to fit your specific needs.
 
-**Development entry point**: [`template/src/site/widgets/custom-elements/chart/panel.tsx`](template/src/site/widgets/custom-elements/chart/panel.tsx)
+**Development entry point**: [`template/src/site/widgets/custom-elements/chart-widget/panel.tsx`](template/src/site/widgets/custom-elements/chart-widget/panel.tsx)
 
 ### Modify the site widget
 
 The site widget is defined in a `CustomElement` React component. The `element.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
 
-**Development entry point**: [`template/src/site/widgets/custom-elements/chart/element.tsx`](template/src/site/widgets/custom-elements/chart/element.tsx)
+**Development entry point**: [`template/src/site/widgets/custom-elements/chart-widget/element.tsx`](template/src/site/widgets/custom-elements/chart-widget/element.tsx)
 
 ## Deployment
 
