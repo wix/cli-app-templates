@@ -2,7 +2,7 @@
 
 The Chart Widget Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to use a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli) extension to define a "chart" widget that can be addrd to a site once the app is installed. Site admins can customize the chart widget's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
+This Wix CLI template demonstrates how to use a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli) extension to define a "chart" widget that can be added to a site once the app is installed. Site admins can customize the chart widget's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
 
 The template also demonstrates the basic functionality of the React SDK, the Editor SDK, and the Wix Design System.
 
