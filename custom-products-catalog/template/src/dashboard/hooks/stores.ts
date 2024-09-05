@@ -2,19 +2,18 @@ import { products } from '@wix/stores';
 import { useCallback } from 'react';
 import { CollectionOptimisticActions } from '@wix/patterns';
 
-// Custom hook to create a new product with optimistic UI update
 export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
   return useCallback((productName: string) => {
     const newProduct: products.Product = {
       _id: Date().toString(),
       name: productName,
       _createdDate: new Date(),
-      lastUpdated: new Date(), 
+      lastUpdated: new Date(),
       productType: products.ProductType.physical,
-      description: 'New Product Description', 
+      description: 'New Product Description',
       priceData: {
         currency: 'USD',
-        price: 10, 
+        price: 10,
       },
     };
     
@@ -35,9 +34,10 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
 
 }
 
-// Custom hook to delete products with optimistic UI update
 export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
   return useCallback((productsToDelete: products.Product[] ) => {
+   
+    // Performing optimistic UI update for product deletation
     optimisticActions.deleteMany(productsToDelete, {
       submit: async (deletedProducts: products.Product[]) => (
         await Promise.all(
@@ -53,7 +53,7 @@ export function useDeleteProducts(optimisticActions: CollectionOptimisticActions
       },
       errorToast: () => `Failed to delete ${
         productsToDelete.length > 1 ? 'Products' : 'Product'
-      }`, // Error message based on the number of products
+      }`,
     });
   }, [optimisticActions]);
 }
