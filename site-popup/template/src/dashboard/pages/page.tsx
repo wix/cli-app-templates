@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { dashboard } from '@wix/dashboard';
+import { i18n } from '@wix/essentials';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
@@ -18,17 +18,14 @@ const sitePopupDefaultOptions: SitePopupOptions = {
 };
 
 function SitePopup() {
+  const [locale] = useState(i18n.getLocale());
+
   const { embedScript, getEmbeddedScript } =
     useEmbeds<Partial<SitePopupOptions>>();
 
-  const [ language, setLanguage ] = useState('');
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
   );
-
-  useEffect(() => {
-    dashboard.getLanguage().then((lang) => setLanguage(lang));
-  }, []);
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
@@ -69,7 +66,7 @@ function SitePopup() {
               />
             </Cell>
             <Cell>
-              <Popup {...sitePopupOptions} locale={language} />
+              <Popup {...sitePopupOptions} locale={locale} />
             </Cell>
           </Layout>
         )}
