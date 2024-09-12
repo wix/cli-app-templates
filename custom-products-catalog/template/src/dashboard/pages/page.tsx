@@ -27,18 +27,17 @@ import {
   RadioGroupFilter,
   stringsArrayFilter,
 } from '@wix/patterns';
-import { useWixModules } from '@wix/sdk-react';
 
-// Defining the types for filters used in the table
+// Define filter types for the table.
 type TableFilters = {
   productType: Filter<products.ProductType[]>;
   lastUpdated: Filter<RangeItem<Date>>;
 }
 
-// Defining the type for supported query fields
+// Define the type for supported query fields.
 type SupportedQueryFields = Parameters<products.ProductsQueryBuilder['ascending']>[0] | Parameters<products.ProductsQueryBuilder['descending']>[0]
 
-// Mapping product types to display names
+// Map product types to display names.
 const productTypeToDisplayName: { [key in products.ProductType]: string | undefined } = {
   [products.ProductType.physical]: 'Physical',
   [products.ProductType.digital]: 'Digital',
@@ -52,19 +51,19 @@ function Products() {
     queryName: 'products-catalog',
     itemKey: (product: products.Product) => product._id!,
     itemName: (product: products.Product) => product.name!,
-    limit: 20, // Number of items per page
+    limit: 20, // Max items per page
     fetchData: (query) => { // Function to fetch product data based on the given query
       const { limit, offset, search, sort, filters } = query;
 
-      // Setting initial query parameters
+      // Set the initial query parameters.
       let queryBuilder = products.queryProducts().limit(limit).skip(offset);
 
-      // If search term is provided, filter products by name
+      // If a search string is provided, filter the products by name.
       if (search) {
         queryBuilder = queryBuilder.startsWith("name", search);
       }
 
-      // If filters are applied, add them to the query
+      // If filters are provided, add them to the query.
       if (filters) {
         const { productType, lastUpdated } = filters;
 
@@ -83,7 +82,7 @@ function Products() {
         }
       }
 
-      // If sorting is applied, add sorting conditions to the query
+      // If sorting is provided, add them to the query.
       if (sort) {
         sort.forEach(s => {
           const fieldName = s.fieldName as SupportedQueryFields;
@@ -95,7 +94,7 @@ function Products() {
         });
       }
 
-      // Execute the query and return the items and total count
+      // Execute the query, and then return the items and total count.
       return queryBuilder.find().then(({ items = [], totalCount: total }) => {
         return {
           items,
@@ -110,7 +109,7 @@ function Products() {
     },
   });
 
-  // Optimistic actions to handle changes before server confirmation
+  // Set optimistic actions for changes to the product data.
   const optimisticActions = useOptimisticActions(tableState.collection, {
     orderBy: () => [],
     predicate: ({ search, filters }) => {
@@ -187,9 +186,9 @@ function Products() {
             </CollectionToolbarFilters>
           }
           bulkActionToolbar={({ selectedValues, openConfirmModal }) => {
-            const disabled = selectedValues.length > 20; // Disable delete if more than 20 items selected
+            const disabled = selectedValues.length > 20; // If more than 20 items are selected, disable delete.
             return (
-              // Custom toolbar for bulk actions
+              // Add a Custom Toolbar for bulk actions.
               <MultiBulkActionToolbar
                 primaryActionItems={[
                   {
@@ -211,7 +210,8 @@ function Products() {
               />
             )
           }}
-          customColumns={<CustomColumns />} // Enable custom columns for the table
+          // Enable Custom Columns for the table.
+          customColumns={<CustomColumns />}
           columns={[
             {
               id: 'avatar',
@@ -271,7 +271,7 @@ function Products() {
           ]}
           actionCell={(_product, _index, actionCellAPI) => ({
               secondaryActions: [
-              // Use predefined delete action 
+              // Use the predefined deleteSecondaryAction function.
                 deleteSecondaryAction({
                   optimisticActions,
                   actionCellAPI,
@@ -295,5 +295,5 @@ function Products() {
   );
 }
 
-// Wrapping the Products component with providers
+// Wrap the Products component with withProviders.
 export default withProviders(Products);
