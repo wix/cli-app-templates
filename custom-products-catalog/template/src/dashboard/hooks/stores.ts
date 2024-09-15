@@ -16,8 +16,11 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
         price: 10,
       },
     };
+    
+    // Set optimistic actions for product creation.
     optimisticActions.createOne(newProduct, {
       submit: async ([product]: products.Product[]) => {
+        // Call the createProduct() API.
         const response = await products.createProduct(product);
         return response.product ? [response.product] : [];
       },
@@ -33,9 +36,12 @@ export function useCreateProduct(optimisticActions: CollectionOptimisticActions<
 
 export function useDeleteProducts(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {
   return useCallback((productsToDelete: products.Product[] ) => {
+   
+    // Set optimistic actions for product deletion.
     optimisticActions.deleteMany(productsToDelete, {
       submit: async (deletedProducts: products.Product[]) => (
         await Promise.all(
+        // Call the deleteProduct() API.
           deletedProducts.map((product) => products.deleteProduct(product._id!))
         )
       ),
