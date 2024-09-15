@@ -52,6 +52,7 @@ function Products() {
     itemKey: (product: products.Product) => product._id!,
     itemName: (product: products.Product) => product.name!,
     limit: 20, // Max items per page
+
     // Define a function to fetch product data based on the query provided.
     fetchData: (query) => {
       const { limit, offset, search, sort, filters } = query;
