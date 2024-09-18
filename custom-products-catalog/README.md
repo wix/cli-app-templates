@@ -40,7 +40,7 @@ We first need to create local files for our app project and set up a local devel
 Run the following command to create a new app project using this template:
 
 ```bash
-npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /custom-products-catalog/template
+npm create @wix/app@latest -- --template 24493a0d-18f2-4f68-b6d5-55992cef7daa
 ```
 
 When asked what you would like to create, choose **A new Wix App**.

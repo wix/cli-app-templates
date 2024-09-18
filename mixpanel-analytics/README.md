@@ -39,7 +39,7 @@ We first need to create local files for our app project and set up a local devel
 Run the following command to create a new app project using this template:
 
 ```bash
-npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /mixpanel-analytics/template
+npm create @wix/app@latest -- --template c442b755-2276-4336-918a-915865a9fa2b
 ```
 
 When asked what you would like to create, choose **A new Wix App**.
