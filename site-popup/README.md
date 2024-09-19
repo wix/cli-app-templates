@@ -10,7 +10,7 @@ The template also demonstrates the basic functionality of the React SDK, the Das
 
 [Wix apps](https://dev.wix.com/docs/build-apps) enhance the functionality of Wix sites by adding new features such as custom pages, dashboard components, third-party integrations, or site analytics. Starting with an app template fast-tracks the development process, providing a working foundational app that developers can modify and build upon. This approach saves valuable time, allowing for a quick transition from concept to a fully functional app.
 
-Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
+Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
 
 ## Template features
 
@@ -51,30 +51,14 @@ In the creation process, you will be asked for:
 
 ### What you get
 
-This process registers a new app in the Wix Dev Center and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
+This process registers a new app in the Wix Dev Center with the required permissions pre-configured, and it generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
 
 The project includes:
 
 + Initial boilerplate code for a simple app with a dashboard page.
 + A `package.json` file with your app’s dependencies.
 
-> **Note:** Setup is not yet complete at this stage. For your app to function correctly you must first complete steps 2 and 3 below.
-
-## Step 2 | Configure permissions for your app
-
-The app makes API calls that require site owners' permission to add an embedded script to their site. Therefore, we need to configure it to request these permissions when installed. You can add this configuration in the Wix Dev Center.
-
-1. Locate your app in the Wix Dev Center and click **Edit**.
-1. Click the **Permissions** tab in the left menu.
-1. Click **Add Permissions**.
-1. Click **Search by name or ID** and search for “Manage Embedded Scripts”.
-1. **Manage Embedded Scripts** will appear under **Choose Permission Scopes**. Click the checkbox next to it, and then click **Save**.
-
-You should see the permission scopes for your app configured as follows:
-
-![Site Popup app permissions](./images/permissions.png)
-
-## Step 3 | Test the app
+## Step 2 | Test the app
 
 The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your development site until you build the app and create a version. To test the app during development, set up a local development environment using the following command:
 
@@ -92,7 +76,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Customize the dashboard page
 
-The dashboard page uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/api-reference/dashboard/introduction) to provide a simple UI where users can edit their popup. It includes default options that define the popup’s title, image, and other characteristics.
+The dashboard page uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/host-modules/dashboard/introduction) to provide a simple UI where users can edit their popup. It includes default options that define the popup’s title, image, and other characteristics.
 
 You can change these options so users see a different example when they open the dashboard page. You can also customize the overall layout and appearance of the dashboard to fit your specific needs.
 
@@ -147,6 +131,6 @@ This guides you through creating a new app version in the Wix Developers Center.
 
 For more information:
 
-+ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template).
++ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
 + Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
 + See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).

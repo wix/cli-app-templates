@@ -12,7 +12,7 @@ The template handles basic Wix Stores functionalities, laying the groundwork for
 
 [Wix apps](https://dev.wix.com/docs/build-apps) enhance the functionality of Wix sites by adding new features such as custom pages, dashboard components, third-party integrations, or site analytics. Starting with an app template fast-tracks the development process, providing a working foundational app that developers can modify and build upon. This approach saves valuable time, allowing for a quick transition from concept to a fully functional app.
 
-Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
+Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
 
 ## Template features
 
@@ -52,7 +52,7 @@ In the creation process, you will be asked for a Wix app name and a package name
 
 ### What you get
 
-This process registers a new app in the Wix Dev Center and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
+This process registers a new app in the Wix Dev Center with the required permissions pre-configured, and it generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
 
 The project includes:
 
@@ -60,25 +60,7 @@ The project includes:
 + [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) integration, with methods for querying, creating, and deleting products.
 + A `package.json` file with your app's dependencies.
 
-> **Note:** Setup is not yet complete at this stage. For your app to function correctly you must first complete steps 2 and 3 below.
-
-## Step 2 | Configure permissions for your app
-
-This app makes API calls that require site owners' permission to access and manage their Wix Stores data. This app must be configured in the Wix Dev Center to request those permissions when installed.
-
-1. Locate your app in the [Wix Dev Center](https://dev.wix.com/apps) and click **Edit**.
-1. Click the **Permissions** tab in the left menu.
-1. Click **Add Permissions**.
-1. Click **Search by name or ID** and enter "Manage Stores - all permissions".
-1. **Manage Stores - all permissions** will appear under **Choose Permission Scopes**. Click the checkbox next to it, and then click **Save**.
-
-You should see the permission scopes for your app configured as follows:
-
-![Custom Products Catalog App Permissions](./images/permissions.png)
-
-This scope contains the necessary permissions to make Wix Stores API calls.
-
-## Step 3 | Test the app
+## Step 2 | Test the app
 
 The app creation process installs the app on your chosen development site. However, there is still some configuration required before your app will function.
 
@@ -111,7 +93,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Dashboard page customization
 
-The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/api-reference/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
+The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/host-modules/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
 
 It utilizes the [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) to:
 
@@ -183,6 +165,6 @@ To learn more about app versions, see [App Versions and Deployment](../workflow/
 
 For more information:
 
-+ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/developer-tools/templates-and-examples/get-started-from-an-app-template).
++ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
 + Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
 + See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
