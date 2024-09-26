@@ -2,7 +2,7 @@
 
 The Chart Widget Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to use a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli) extension to define a "chart" widget that can be addrd to a site once the app is installed. Site admins can customize the chart widget's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
+This Wix CLI template demonstrates how to use a [site widget](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-widgets/add-a-site-widget-extension-in-the-cli) extension to define a "chart" widget that can be added to a site once the app is installed. Site admins can customize the chart widget's characteristics, such as the chart type, data, text, and colors. This is an excellent starting point for building apps that use site widgets to add customizable features to a site.
 
 The template also demonstrates the basic functionality of the React SDK, the Editor SDK, and the Wix Design System.
 
@@ -74,13 +74,13 @@ The panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wi
 
 You can update these options to change the display of the chart widget on the user's site page. You can also customize the layout and appearance of the panel to fit your specific needs.
 
-**Development entry point**: [`template/src/site/widgets/custom-elements/chart/panel.tsx`](template/src/site/widgets/custom-elements/chart/panel.tsx)
+**Development entry point**: [`template/src/site/widgets/custom-elements/chart-widget/panel.tsx`](template/src/site/widgets/custom-elements/chart-widget/panel.tsx)
 
 ### Modify the site widget
 
 The site widget is defined in a `CustomElement` React component. The `element.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
 
-**Development entry point**: [`template/src/site/widgets/custom-elements/chart/element.tsx`](template/src/site/widgets/custom-elements/chart/element.tsx)
+**Development entry point**: [`template/src/site/widgets/custom-elements/chart-widget/element.tsx`](template/src/site/widgets/custom-elements/chart-widget/element.tsx)
 
 ## Deployment
 
