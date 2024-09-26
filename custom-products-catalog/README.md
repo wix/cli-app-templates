@@ -93,7 +93,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Dashboard page customization
 
-The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/host-modules/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
+The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/).
 
 It utilizes the [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) to:
 
@@ -108,7 +108,7 @@ This file contains the parent component for the dashboard interface. It uses the
 
 ### Modal component customization
 
-The modal component page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/api-reference/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
+The modal component page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/).
 
 It defines a modal that opens up on top of your dashboard page.
 
