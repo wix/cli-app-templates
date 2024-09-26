@@ -18,7 +18,7 @@ const sitePopupDefaultOptions: SitePopupOptions = {
 };
 
 function SitePopup() {
-  const [locale] = useState(i18n.getLocale());
+  const locale = i18n.getLocale();
 
   const { embedScript, getEmbeddedScript } =
     useEmbeds<Partial<SitePopupOptions>>();
