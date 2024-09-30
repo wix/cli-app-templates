@@ -1,14 +1,13 @@
 import React from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { WixDesignSystemProvider } from '@wix/design-system';
-import { withDashboard, EnvironmentState } from '@wix/dashboard-react';
-import { useEnvironment } from '@wix/sdk-react';
+import { i18n } from '@wix/essentials';
 
 const queryClient = new QueryClient();
 
 export function withProviders<P extends {} = {}>(Component: React.FC<P>) {
-  return withDashboard(function DashboardProviders(props: P) {
-    const { locale } = useEnvironment<EnvironmentState>();
+  return function DashboardProviders(props: P) {
+    const locale = i18n.getLocale();
     return (
       <WixDesignSystemProvider locale={locale} features={{ newColorsBranding: true }}>
         <QueryClientProvider client={queryClient}>
@@ -16,5 +15,5 @@ export function withProviders<P extends {} = {}>(Component: React.FC<P>) {
         </QueryClientProvider>
       </WixDesignSystemProvider>
     );
-  });
+  };
 }

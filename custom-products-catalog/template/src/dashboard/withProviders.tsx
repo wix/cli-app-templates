@@ -1,12 +1,12 @@
 import React from 'react';
 import { WixDesignSystemProvider } from '@wix/design-system';
-import { withDashboard, EnvironmentState} from '@wix/dashboard-react';
+import { withDashboard } from '@wix/dashboard-react';
 import { WixPatternsProvider } from '@wix/patterns/provider';
-import { useEnvironment } from '@wix/sdk-react';
+import { i18n } from '@wix/essentials';
 
 export function withProviders<P extends {} = {}>(Component: React.FC<P>) {
   return withDashboard(function DashboardProviders(props: P) {
-    const { locale } = useEnvironment<EnvironmentState>();
+    const locale = i18n.getLocale();
     return (
       <WixDesignSystemProvider locale={locale} features={{ newColorsBranding: true }}>
         <WixPatternsProvider>

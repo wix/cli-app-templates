@@ -2,7 +2,7 @@
 
 The Mixpanel Analytics Wix app template is part of the [Wix app templates collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates the use of the embedded script extension to integrate Mixpanel analytics code into Wix sites. It is an excellent example for developers looking to build applications using embedded scripts. It also demonstrates the basic functionality of the React SDK, the Dashboard React SDK, and the Wix Design System.
+This Wix CLI template demonstrates the use of the embedded script extension to integrate Mixpanel analytics code into Wix sites. It is an excellent example for developers looking to build applications using embedded scripts. It also demonstrates the basic functionality of the Wix Design System.
 
 The template creates an embedded script containing Mixpanel's code snippet, and a dashboard page where the site owner can enter their Mixpanel project token to inject the embedded script code.
 
@@ -18,8 +18,6 @@ This Wix app template incorporates the following features:
 
 + **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
 + **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix React SDK:** Simplify API requests to the Wix ecosystem.
-+ **Wix Dashboard React SDK:** Integrate custom dashboard components with the Wix site dashboard.
 + **Embedded script extension:** Embed an HTML code fragment on users' sites. For more information, see [Embedded Scripts](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/embedded-scripts).
 
 ## Prerequisites
@@ -101,7 +99,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Dashboard page customization
 
-The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/host-modules/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
+The dashboard page is pre-integrated with the [Wix Design System](https://www.wixdesignsystem.com/).
 
 Customize the dashboard page to fit your specific needs, whether it's updating the UI or adding new features.
 
@@ -111,7 +109,7 @@ This file contains the parent component for the dashboard interface. It contains
 
 ### `ProjectToken` component customization
 
-The ProjectToken component uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/api-reference/dashboard/introduction), providing a simple user interface that includes support for server-side rendering.
+The ProjectToken component uses the [Wix Design System](https://www.wixdesignsystem.com/).
 
 It defines a component that appears on your dashboard page with text, a button, and a text input box.
 

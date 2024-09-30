@@ -4,7 +4,7 @@ The Site Popup Wix app template is part of the [Wix app templates collection](ht
 
 This Wix CLI template demonstrates how to add a site popup with an [embedded script](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/embedded-scripts#before-you-begin). The app creates a dashboard page where site admins can customize the popup’s characteristics, such as the displayed image, text, and when it is active (always or during certain dates). This is an excellent starting point for building apps that use embedded scripts to add customizable features to a site.
 
-The template also demonstrates the basic functionality of the React SDK, the Dashboard React SDK, and the Wix Design System.
+The template also demonstrates the basic functionality of the Wix Design System.
 
 ## About Wix app templates
 
@@ -18,8 +18,6 @@ This Wix app template incorporates the following features:
 
 + **Wix CLI**: Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the Wix CLI for  apps.
 + **Wix Design System**: Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix React SDK**: Simplify API requests to the Wix ecosystem.
-+ **Wix Dashboard React SDK**: Integrate custom dashboard components with the Wix site dashboard.
 + **Wix App Market SDK**: Use the Embedded Scripts API to inject HTML code into a user’s site.
 
 ## Prerequisites
@@ -76,7 +74,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Customize the dashboard page
 
-The dashboard page uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Dashboard SDK](https://dev.wix.com/docs/sdk/host-modules/dashboard/introduction) to provide a simple UI where users can edit their popup. It includes default options that define the popup’s title, image, and other characteristics.
+The dashboard page uses the [Wix Design System](https://www.wixdesignsystem.com/) to provide a simple UI where users can edit their popup. It includes default options that define the popup’s title, image, and other characteristics.
 
 You can change these options so users see a different example when they open the dashboard page. You can also customize the overall layout and appearance of the dashboard to fit your specific needs.
 
