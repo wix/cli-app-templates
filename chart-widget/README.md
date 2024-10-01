@@ -36,7 +36,7 @@ We first need to create local files for our app project and set up a local devel
 In the directory where you want to create your project, run the following command:
 
 ```bash
-npm create @wix/app@latest -- -t git@github.com:wix/cli-app-templates.git -tp /chart-widget/template
+npm create @wix/app@latest -- -t 5fcf03b8-46ba-499b-8dbb-40ecf811aceb
 ```
 
 When asked what you would like to create, choose **A new Wix App**.
