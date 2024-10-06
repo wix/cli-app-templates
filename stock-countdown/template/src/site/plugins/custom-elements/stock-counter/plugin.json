@@ -1,7 +1,7 @@
 {
   "$schema": "https://dev.wix.com/wix-cli/schemas/site-plugin.json",
-  "id": "476b0697-c952-4f1a-8459-1a8e28a76184",
-  "referenceComponentId": "24dd72de-71d5-4f1a-a110-5c2223bdc4e2",
+  "id": "<%= generatePageID() %>",
+  "referenceComponentId": "<%= generatePageID() %>",
   "marketData": {
     "name": "Stock Countdown",
     "logoUrl": "{{PUBLIC_URL}}/stock-counter/site-plugin-logo.png"
