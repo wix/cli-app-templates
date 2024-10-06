@@ -1,0 +1,36 @@
+---
+to: package.json
+---
+{
+  "name": "<%= packageName %>",
+  "version": "1.0.0",
+  "dependencies": {
+    "@wix/dashboard": "^1.3.21",
+    "@wix/design-system": "^1.0.0",
+    "@wix/editor": "^1.308.0",
+    "@wix/site-window": "^1.19.0",
+    "@wix/stores": "^1.0.239",
+    "@wix/wix-ui-icons-common": "^3.0.0",
+    "react-to-webcomponent": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "@wix/cli": "https://cdn.dev.wixpress.com/@wix/cli/4e4899a5b133621037b346e21827c69ad29be4e1593532215defe006.tar.gz",
+    "@wix/cli-app": "https://cdn.dev.wixpress.com/@wix/cli-app/48c0b12e179f8fa5cbeac0f78121f7fc15e4cc6af8ae8b39093136e7.tar.gz",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "typescript": "^5.4.0"
+  },
+  "scripts": {
+    "wix": "wix",
+    "build": "wix app build",
+    "create-version": "wix app create-version",
+    "dev": "wix app dev",
+    "preview": "wix app preview",
+    "serve": "wix app serve",
+    "generate": "wix app generate",
+    "logs": "wix app logs",
+    "typecheck": "tsc --noEmit"
+  }
+}

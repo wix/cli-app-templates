@@ -1,0 +1,24 @@
+{
+  "$schema": "https://dev.wix.com/wix-cli/schemas/site-plugin.json",
+  "id": "476b0697-c952-4f1a-8459-1a8e28a76184",
+  "referenceComponentId": "24dd72de-71d5-4f1a-a110-5c2223bdc4e2",
+  "marketData": {
+    "name": "Stock Countdown",
+    "logoUrl": "{{PUBLIC_URL}}/stock-counter/site-plugin-logo.png"
+  },
+  "placements": [
+    {
+      "appDefinitionId": "1380b703-ce81-ff05-f115-39571d94dfcd",
+      "widgetId": "13a94f09-2766-3c40-4a32-8edb5acdd8bc",
+      "slotId": "product-page-details-5"
+    },
+    {
+      "appDefinitionId": "a0c68605-c2e7-4c8d-9ea1-767f9770e087",
+      "widgetId": "6a25b678-53ec-4b37-a190-65fcd1ca1a63",
+      "slotId": "product-page-details-5"
+    }
+  ],
+  "installation": {
+    "autoAddToSite": true
+  }
+}
