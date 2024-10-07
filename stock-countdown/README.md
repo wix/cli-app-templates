@@ -61,6 +61,12 @@ The project includes:
 
 ## Step 2 | Test the app
 
+### Install the Wix Stores App
+
+This app makes calls to the [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) to create and manage the store products. Before you can test this app on your development site, you must first install the [Wix Stores app](https://www.wix.com/app-market/wix-stores).
+
+### Testing Steps
+
 The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
 
 1. Set up a local development environment using the following command:
