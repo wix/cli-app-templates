@@ -91,8 +91,7 @@ The app creation process installs the app on your chosen development site. Howev
 
 1. Publish your site.
 1. Return to the CLI menu and select the option to view your site plugin on your site. This will open your site in the local development environment.
-1. Navigate to the page that contains your plugin slot. Your plugin should be visible in the slot.
-
+1. Navigate to a product page. Your plugin should be visible in the slot.
 
 The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
