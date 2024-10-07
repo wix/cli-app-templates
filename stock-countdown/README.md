@@ -63,7 +63,7 @@ The project includes:
 
 ### Install the Wix Stores App
 
-This app makes calls to the [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) to create and manage the store products. Before you can test this app on your development site, you must first install the [Wix Stores app](https://www.wix.com/app-market/wix-stores).
+This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction) to retrieve the number of items in stock. Before you can test this app on your development site, you must first install the [Wix Stores app](https://www.wix.com/app-market/wix-stores).
 
 ### Testing Steps
 
