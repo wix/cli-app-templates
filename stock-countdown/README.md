@@ -95,7 +95,7 @@ The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem
 
 Customize the panel to add more settings or change the appearance.
 
-**Development entry point**: [`template/src/site/plugins/custom-elements/chart-widget/panel.tsx`](template/src/site/widgets/custom-elements/chart-widget/panel.tsx)
+**Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/panel.tsx`](template/src/site/widgets/custom-elements/stock-counter/panel.tsx)
 
 ### Modify the site plugin's custom element
 
