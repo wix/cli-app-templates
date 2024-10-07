@@ -6,6 +6,7 @@
     "name": "Stock Countdown",
     "logoUrl": "{{PUBLIC_URL}}/stock-counter/site-plugin-logo.svg"
   },
+  // Here we have added the same slot for both the new and old Wix Stores app to accomodate all users. For more information see the Wix Stores product page lots documentation: https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/wix-stores/wix-stores-product-page
   "placements": [
     {
       "appDefinitionId": "1380b703-ce81-ff05-f115-39571d94dfcd",
