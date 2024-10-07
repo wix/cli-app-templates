@@ -15,11 +15,11 @@ type Props = {
 
 function getInventoryStock(productId: string) {
   return (
+    // For more information about the Inventory API, see https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory
     inventory
-      // https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory
       .queryInventory({
         query: {
-          // https://dev.wix.com/docs/rest/articles/getting-started/api-query-language#the-filter-section
+          // For more information about query filters, see https://dev.wix.com/docs/rest/articles/getting-started/api-query-language#the-filter-section
           filter: JSON.stringify({ productId: { ['$eq']: productId } }),
         },
       })

@@ -2,9 +2,9 @@
 
 The Stock Countdown Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock. 
+This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock, which it retrieves using the Wix Stores [Invetory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction). 
 
-The template also demonstrates the basic functionality of the Site Window SDK, the Editor SDK, and the Wix Design System.
+The template also demonstrates the basic functionality of the Site Window SDK, the React SDK, the Editor SDK, and the Wix Design System.
 
 ## About Wix app templates
 
@@ -16,10 +16,12 @@ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-sta
 
 This Wix app template incorporates the following features:
 
-+ **Wix CLI**: Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the Wix CLI for apps.
-+ **Wix Design System**: Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
++ **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with one command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
++ **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
++ **Wix React SDK:** Simplify API requests to the Wix ecosystem.
 + **Wix Editor SDK**: Integrate panels with the Wix editor.
 + **Wix Site Window SDK**: Contains functionality for working with the browser window.
++ **Wix Stores SDK**: Access and manage data stored on Wix sites. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
 
 ## Prerequisites
 
@@ -59,27 +61,47 @@ The project includes:
 
 ## Step 2 | Test the app
 
-The app creation process installs the app on your chosen development site. To test the app during development, set up a local development environment using the following command:
+The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
 
-```bash
-npm run dev
-```
+1. Set up a local development environment using the following command:
 
-This will prompt you with a CLI menu. Follow the instructions to open a browser window with a preview of the app's site plugin on a site page. Then navigate to your selected widget containing your selected slot, learn about the different slots here: https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/about-slots. Once you are in the widget page click on the widget and look for the Plug Icon to open the plugins explorer to find your plugin.
+    ```bash
+    npm run dev
+    ```
 
-![Plugin explorer product page](./images/plugin-explorer-product-page.png)
+    This will prompt you with a CLI menu. 
+
+1. Press **E** to open a browser window with your site editor in your local development environment. 
+
+1. In the editor, navigate to your **Products** page, then find the widget containing the plugin slot as shown in the image below. Learn more about [plugin slots](https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/about-slots). 
+
+1. Click on the widget and then click on the **plug icon** to open the plugin explorer.
+
+    ![Plugin explorer product page](./images/plugin-explorer-product-page.png)
+
+1. Find your plugin in the plugin explorer and add it to the slot.
 
 The development environment is set up to automatically reflect your code changes in the browser.
 
-### Customize the panel
+> **Note**: Your plugin will not appear on your site in the local development environment until your publish your site in the editor.
 
-The panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to allow selecting the stock threshold to display the counter.
+## Extend and customize the app
 
-**Development entry point**: [`template/src/site/plugins/custom-elements/chart-widget/panel.tsx`](template/src/site/widgets/custom-elements/chart-widget/panel.tsx)
+The template is designed for easy customization and extension. Here are some suggested entry points where you can add your own custom logic or functionality:
 
-### Modify the site widget
+### Site plugin panel customization
 
-The site widget is defined in a `CustomElement` React component. The `element.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance and options, such as adding support for another type of chart.
+The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be to displayed.
+
+Customize the panel to add more settings or change the appearance.
+
+**Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/panel.tsx`](template/src/site/widgets/custom-elements/stock-counter/panel.tsx)
+
+### Modify the site plugin's custom element
+
+The site plugin is defined in a `CustomElement` React component. The `plugin.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. 
+
+Customize the component to add more functionality or change the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/plugin.tsx`](template/src/site/plugins/custom-elements/stock-counter/plugin.tsx)
 
