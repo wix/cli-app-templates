@@ -67,21 +67,19 @@ The project includes:
 
 This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction) to retrieve the number of items in stock. Before you can test this app on your development site, you must first install the [Wix Stores app](https://www.wix.com/app-market/wix-stores).
 
-### Testing Steps
-
 ### Set up a local development environment
 
 The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
 
-1. Set up a local development environment using the following command:
+Set up a local development environment using the following command:
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
 
-    The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
+The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
-### Test the app
+### Testing Steps
 
 1. After setting up the local development environment, the CLI will prompt you with a menu. Press **E** to open a browser window with your site editor in your local development environment. 
 
