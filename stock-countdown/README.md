@@ -46,13 +46,13 @@ When asked what you would like to create, choose **A new Wix App**.
 
 In the creation process, you will be asked for:
 
-+ A **Wix app name**. This is the name of your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
++ A **Wix app name**. This is the name of your app in the [App Dashboard](https://manage.wix.com/studio/custom-apps).
 + A site to install and test your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/get-started/quick-start#development-site).
 + A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
 
-This process registers a new app in the Wix Dev Center and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
+This process registers a new app in the App Dashboard and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
 
 The project includes:
 
@@ -116,7 +116,7 @@ Customize the component to add more functionality or change the appearance.
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others
-+ Create new versions of your app on the Dev Center.
++ Create new versions of your app in the App Dashboard.
 
 ### Build the app
 
