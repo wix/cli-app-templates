@@ -23,7 +23,19 @@ function getInventoryStock(productId: string) {
           filter: JSON.stringify({ productId: { ['$eq']: productId } }),
         },
       })
-      .then((result) => result.inventoryItems[0].variants[0].quantity)
+      .then((result) => {
+        let stock = 0;
+
+        result.inventoryItems[0].variants.forEach((variant) => {
+          if (variant.inStock) {
+            return undefined;
+          } else {
+            stock += variant.quantity || 0;
+          }
+        });
+
+        return stock;
+      })
   );
 }
 
