@@ -15,8 +15,8 @@ type Props = {
 
 function getInventoryStock(productId: string) {
   return (
-    // For more information about the Inventory API, see https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory
     inventory
+      // For more information about the Inventory API, see https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory
       .queryInventory({
         query: {
           // For more information about query filters, see https://dev.wix.com/docs/rest/articles/getting-started/api-query-language#the-filter-section
@@ -43,7 +43,7 @@ const CustomElement: FC<Props> = (props) => {
         setItemsInStock(threshold - 1);
       }
     });
-  }, [props.productId]);
+  }, [props.productId, threshold]);
 
   if (!itemsInStock || threshold < itemsInStock) {
     return null;
