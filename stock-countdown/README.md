@@ -60,8 +60,8 @@ The project includes:
 
 ## Step 2 | Test the app
 
- The app creation process installs the app on your chosen development site. To test the app during development:
- 
+The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
+
 1. Set up a local development environment using the following command:
 
     ```bash
@@ -74,11 +74,15 @@ The project includes:
 
 1. In the editor, navigate to your **Products** page, then find the widget containing the plugin slot as shown in the image below. Learn more about [plugin slots](https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/about-slots). 
 
-1. Click on the widget and then click on the **plug icon** to open the plugin explorer and find your plugin.
+1. Click on the widget and then click on the **plug icon** to open the plugin explorer.
 
-![Plugin explorer product page](./images/plugin-explorer-product-page.png)
+    ![Plugin explorer product page](./images/plugin-explorer-product-page.png)
+
+1. Find your plugin and add it to the slot.
 
 The development environment is set up to automatically reflect your code changes in the browser.
+
+> **Note**: Your plugin will not appear on your site in the local development environment until your publish your site in the editor.
 
 ## Extend and customize the app
 
@@ -86,13 +90,17 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Site plugin panel customization
 
-The plugin panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold to display the counter. The threshold is the 
+The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be to displayed.
+
+Customize the panel to add more settings or change the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/chart-widget/panel.tsx`](template/src/site/widgets/custom-elements/chart-widget/panel.tsx)
 
 ### Modify the site plugin's custom element
 
-The site plugin is defined in a `CustomElement` React component. The `plugin.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. Alter the component to fit your needs. For example, you can change the component’s appearance or add more functionality.
+The site plugin is defined in a `CustomElement` React component. The `plugin.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. 
+
+Customize the component to add more functionality or change the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/plugin.tsx`](template/src/site/plugins/custom-elements/stock-counter/plugin.tsx)
 
