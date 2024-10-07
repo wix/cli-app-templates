@@ -69,6 +69,8 @@ This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/
 
 ### Testing Steps
 
+### Set up a local development environment
+
 The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
 
 1. Set up a local development environment using the following command:
@@ -77,9 +79,11 @@ The app creation process installs the app on your chosen development site. Howev
     npm run dev
     ```
 
-    This will prompt you with a CLI menu. 
+    The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
-1. Press **E** to open a browser window with your site editor in your local development environment. 
+### Test the app
+
+1. After setting up the local development environment, the CLI will prompt you with a menu. Press **E** to open a browser window with your site editor in your local development environment. 
 
 1. In the editor, navigate to your **Products** page, then find the widget containing the plugin slot as shown in the image below. Learn more about [plugin slots](https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/about-slots). 
 
@@ -94,8 +98,6 @@ The app creation process installs the app on your chosen development site. Howev
 1. Publish your site.
 1. Return to the CLI menu and select the option to view your site plugin on your site. This will open your site in the local development environment.
 1. Navigate to a product page. Your plugin should be visible in the slot.
-
-The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
 ## Extend and customize the app
 
