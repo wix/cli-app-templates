@@ -21,7 +21,7 @@ This Wix app template incorporates the following features:
 + **Wix React SDK:** Simplify API requests to the Wix ecosystem.
 + **Wix Editor SDK**: Integrate panels with the Wix editor.
 + **Wix Site Window SDK**: Contains functionality for working with the browser window.
-+ **Wix Stores SDK**: Access and manage data stored on Wix sites. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
++ **Wix Stores API**: Access and manage Wix Stores data on a Wix site. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
 
 ## Prerequisites
 
@@ -89,7 +89,7 @@ The app creation process installs the app on your chosen development site. Howev
 
 The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
-> **Note**: Your plugin will not appear on your site in the local development environment until your publish your site in the editor.
+> **Note**: Your plugin will not appear on your site in the local development environment until you publish your site in the editor.
 
 ## Extend and customize the app
 
