@@ -52,7 +52,7 @@ In the creation process, you will be asked for:
 
 ### What you get
 
-This process registers a new app in the App Dashboard and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
+This process registers a new app in the Wix Dev Center with the required permissions pre-configured, and it generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
 
 The project includes:
 
@@ -87,7 +87,7 @@ The app creation process installs the app on your chosen development site. Howev
 
 1. Find your plugin in the plugin explorer and add it to the slot.
 
-The development environment is set up to automatically reflect your code changes in the browser.
+The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
 > **Note**: Your plugin will not appear on your site in the local development environment until your publish your site in the editor.
 
