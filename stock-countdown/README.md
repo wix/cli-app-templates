@@ -6,6 +6,8 @@ This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.
 
 The template also demonstrates the basic functionality of the Site Window SDK, the React SDK, the Editor SDK, and the Wix Design System.
 
+> **Note:** This app is intended for Wix sites with the Wix Stores app installed. For it to function correctly, the site owner must [install the Wix Stores app](https://www.wix.com/app-market/wix-stores) from the app market.
+
 ## About Wix app templates
 
 [Wix apps](https://dev.wix.com/docs/build-apps) enhance the functionality of Wix sites by adding new features such as custom pages, dashboard components, third-party integrations, or site analytics. Starting with an app template fast-tracks the development process, providing a working foundational app that developers can modify and build upon. This approach saves valuable time, allowing for a quick transition from concept to a fully functional app.
