@@ -78,7 +78,7 @@ The app creation process installs the app on your chosen development site. Howev
 
     ![Plugin explorer product page](./images/plugin-explorer-product-page.png)
 
-1. Find your plugin and add it to the slot.
+1. Find your plugin in the plugin explorer and add it to the slot.
 
 The development environment is set up to automatically reflect your code changes in the browser.
 
