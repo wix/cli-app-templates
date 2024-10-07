@@ -9,10 +9,12 @@ import {
 import '@wix/design-system/styles.global.css';
 
 const Panel: FC = () => {
-  const [threshold, setThreshold] = useState<number>(3);
+  const [threshold, setThreshold] = useState<string>('3');
 
   useEffect(() => {
-    widget.getProp('threshold').then(threshold => setThreshold(Number(threshold) ?? 3));
+    widget
+      .getProp('threshold')
+      .then((threshold) => setThreshold(threshold || '3'));
   }, [setThreshold]);
 
   return (
@@ -25,9 +27,10 @@ const Panel: FC = () => {
                 type="number"
                 value={threshold}
                 onChange={(event) => {
-                  const updatedThreshold = Number(event.target.value);
-                  setThreshold(updatedThreshold);
-                  widget.setProp('threshold', updatedThreshold.toString());
+                  setThreshold(event.target.value);
+                  if (Number(event.target.value) >= 1) {
+                    widget.setProp('threshold', event.target.value);
+                  }
                 }}
               />
             </FormField>
