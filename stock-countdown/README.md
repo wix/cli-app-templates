@@ -20,9 +20,8 @@ This Wix app template incorporates the following features:
 
 + **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with one command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
 + **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix React SDK:** Simplify API requests to the Wix ecosystem.
-+ **Wix Editor SDK**: Integrate panels with the Wix editor.
-+ **Wix Site Window SDK**: Contains functionality for working with the browser window.
++ **Wix Editor API**: Integrate panels with the Wix editor.
++ **Wix Site Window API**: Contains functionality for working with the browser window.
 + **Wix Stores API**: Access and manage Wix Stores data on a Wix site. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
 
 ## Prerequisites
@@ -109,11 +108,13 @@ Customize the panel to add more settings or change the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/panel.tsx`](template/src/site/widgets/custom-elements/stock-counter/panel.tsx)
 
-### Modify the site plugin's custom element
+### Site plugin logic customization
 
 The site plugin is defined in a `CustomElement` React component. The `plugin.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. 
 
-Customize the component to add more functionality or change the appearance.
+Currently the component uses the inventory API to retrieve inventory information.
+
+Customize the component to implement custom logic, change the functionality, and customize the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/plugin.tsx`](template/src/site/plugins/custom-elements/stock-counter/plugin.tsx)
 
