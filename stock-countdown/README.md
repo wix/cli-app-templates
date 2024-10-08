@@ -2,9 +2,11 @@
 
 The Stock Countdown Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock, which it retrieves using the Wix Stores [Invetory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction). 
+This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins/add-a-site-plugin-extension-in-the-cli) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock, which it retrieves using the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction). 
 
 The template also demonstrates the basic functionality of the Site Window SDK, the React SDK, the Editor SDK, and the Wix Design System.
+
+> **Note:** This app is intended for Wix sites with the Wix Stores app installed. For it to function correctly, the site owner must [install the Wix Stores app](https://www.wix.com/app-market/wix-stores) from the app market.
 
 ## About Wix app templates
 
@@ -18,9 +20,9 @@ This Wix app template incorporates the following features:
 
 + **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with one command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
 + **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix Editor SDK**: Integrate panels with the Wix editor.
-+ **Wix Site Window SDK**: Contains functionality for working with the browser window.
-+ **Wix Stores SDK**: Access and manage data stored on Wix sites. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
++ **Wix Editor API**: Integrate panels with the Wix editor.
++ **Wix Site Window API**: Contains functionality for working with the browser window.
++ **Wix Stores API**: Access and manage Wix Stores data on a Wix site. Learn more about the [Wix Stores SDK](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction).
 
 ## Prerequisites
 
@@ -45,13 +47,13 @@ When asked what you would like to create, choose **A new Wix App**.
 
 In the creation process, you will be asked for:
 
-+ A **Wix app name**. This is the name of your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
++ A **Wix app name**. This is the name of your app in the [App Dashboard](https://dev.wix.com/app-selector?title=Select+an+App&primaryButtonText=Select+Site&actionUrl=https%3A%2F%2Fdev.wix.com%2Fapps%2F%7BappId%7D%2Fhome).
 + A site to install and test your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/get-started/quick-start#development-site).
 + A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
 
-This process registers a new app in the Wix Dev Center and generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
+This process registers a new app in the App Dashboard with the required permissions pre-configured, and it generates a new app project in your local file system. The project contains all the files your app needs to run locally and in production.
 
 The project includes:
 
@@ -60,29 +62,39 @@ The project includes:
 
 ## Step 2 | Test the app
 
+### Install the Wix Stores App
+
+This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction) to retrieve the number of items in stock. Before you can test this app on your development site, you must first install the [Wix Stores app](https://www.wix.com/app-market/wix-stores).
+
+### Set up a local development environment
+
 The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
 
-1. Set up a local development environment using the following command:
+Set up a local development environment using the following command:
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
 
-    This will prompt you with a CLI menu. 
+The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
-1. Press **E** to open a browser window with your site editor in your local development environment. 
+### Testing Steps
+
+1. After setting up the local development environment, the CLI will prompt you with a menu. Press **E** to open a browser window with your site editor in your local development environment. 
 
 1. In the editor, navigate to your **Products** page, then find the widget containing the plugin slot as shown in the image below. Learn more about [plugin slots](https://dev.wix.com/docs/build-apps/develop-your-app/extensions/site-extensions/site-plugins/supported-wix-app-pages/about-slots). 
 
 1. Click on the widget and then click on the **plug icon** to open the plugin explorer.
 
-    ![Plugin explorer product page](./images/plugin-explorer-product-page.png)
+    ![Product page add plugin](./images/cli-stock-counter-add-plugin.png)
 
-1. Find your plugin in the plugin explorer and add it to the slot.
+1. Find your plugin in the plugin explorer and click **Add** to add it to the slot.
 
-The development environment is set up to automatically reflect your code changes in the browser.
+    ![Plugin explorer](./images/cli-stock-counter-plugin-explorer.png)
 
-> **Note**: Your plugin will not appear on your site in the local development environment until your publish your site in the editor.
+1. Publish your site.
+1. Return to the CLI menu and select the option to view your site plugin on your site. This will open your site in the local development environment.
+1. Navigate to a product page. Your plugin should be visible in the slot.
 
 ## Extend and customize the app
 
@@ -90,17 +102,19 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Site plugin panel customization
 
-The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be to displayed.
+The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be displayed.
 
 Customize the panel to add more settings or change the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/panel.tsx`](template/src/site/widgets/custom-elements/stock-counter/panel.tsx)
 
-### Modify the site plugin's custom element
+### Site plugin logic customization
 
 The site plugin is defined in a `CustomElement` React component. The `plugin.tsx` file serves as the entry point for the custom element component that will be rendered on the user's site. 
 
-Customize the component to add more functionality or change the appearance.
+Currently the component uses the inventory API to retrieve inventory information.
+
+Customize the component to implement custom logic, change the functionality, and customize the appearance.
 
 **Development entry point**: [`template/src/site/plugins/custom-elements/stock-counter/plugin.tsx`](template/src/site/plugins/custom-elements/stock-counter/plugin.tsx)
 
@@ -109,7 +123,7 @@ Customize the component to add more functionality or change the appearance.
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others
-+ Create new versions of your app on the Dev Center.
++ Create new versions of your app in the App Dashboard.
 
 ### Build the app
 

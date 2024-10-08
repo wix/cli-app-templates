@@ -8,6 +8,7 @@ import {
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 
+// Customize this panel to add more settings or change the appearance.
 const Panel: FC = () => {
   const [threshold, setThreshold] = useState<string>('3');
 
