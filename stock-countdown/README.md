@@ -103,7 +103,7 @@ The template is designed for easy customization and extension. Here are some sug
 
 ### Site plugin panel customization
 
-The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be to displayed.
+The site plugin's panel uses the [Wix Design System](https://www.wixdesignsystem.com/) and [Wix Editor SDK](https://dev.wix.com/docs/sdk/host-modules/editor/introduction) to create an interface that allows the user to select a stock threshold below which the counter will be displayed.
 
 Customize the panel to add more settings or change the appearance.
 
