@@ -28,9 +28,7 @@ const Panel: FC = () => {
                 value={threshold}
                 onChange={(event) => {
                   setThreshold(event.target.value);
-                  if (Number(event.target.value) >= 1) {
-                    widget.setProp('threshold', event.target.value);
-                  }
+                  widget.setProp('threshold', event.target.value);
                 }}
               />
             </FormField>
