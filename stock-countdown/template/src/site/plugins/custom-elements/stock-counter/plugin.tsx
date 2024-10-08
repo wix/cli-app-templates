@@ -13,7 +13,9 @@ type Props = {
   threshold: string;
 };
 
-type InventoryStock = 'In Stock' | number;
+const IN_STOCK = 'In Stock';
+
+type InventoryStock = typeof IN_STOCK | number;
 
 function getInventoryStock(productId: string): Promise<InventoryStock> {
   return (
@@ -32,7 +34,7 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
 
         productInventory.variants.forEach((variant) => {
           if (variant.inStock) {
-            return 'In Stock';
+            return IN_STOCK;
           }
           stockCount += variant.quantity || 0;
         });
@@ -54,12 +56,12 @@ const CustomElement: FC<Props> = (props) => {
       if (mode === 'Site') {
         getInventoryStock(productId).then(setInventoryStock);
       } else {
-        setInventoryStock(threshold >= 1 ? threshold - 1 : 'In Stock');
+        setInventoryStock(threshold >= 1 ? threshold - 1 : IN_STOCK);
       }
     });
   }, [props.productId, threshold]);
 
-  if (!inventoryStock || (inventoryStock !== 'In Stock' && threshold < inventoryStock)) {
+  if (!inventoryStock || (inventoryStock !== IN_STOCK && threshold < inventoryStock)) {
     return null;
   }
 
@@ -72,7 +74,7 @@ const CustomElement: FC<Props> = (props) => {
         paddingTop={2}
         className={styles.root}
       >
-        {inventoryStock === 'In Stock' ? (
+        {inventoryStock === IN_STOCK ? (
           <Box>
             <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
               {inventoryStock}
