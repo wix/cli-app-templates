@@ -25,9 +25,6 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
           filter: JSON.stringify({ productId: { ['$eq']: productId } }),
         },
       })
-<<<<<<< Updated upstream
-      .then((result) => result.inventoryItems[0].variants[0].quantity)
-=======
       .then((result) => {
         const productInventory = result.inventoryItems[0];
 
@@ -42,7 +39,6 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
 
         return stockCount;
       })
->>>>>>> Stashed changes
   );
 }
 
