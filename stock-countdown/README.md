@@ -2,7 +2,7 @@
 
 The Stock Countdown Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
 
-This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock, which it retrieves using the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction). 
+This Wix CLI template demonstrates how to build a [site plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/site-extensions/site-plugins/add-a-site-plugin-extension-in-the-cli) for the Wix Stores product page. The Stock Countdown plugin displays the number of remaining items in stock, which it retrieves using the Wix Stores [Inventory API](https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/introduction). 
 
 The template also demonstrates the basic functionality of the Site Window SDK, the React SDK, the Editor SDK, and the Wix Design System.
 
