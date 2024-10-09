@@ -30,9 +30,11 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
       .then((result) => {
         const productInventory = result.inventoryItems[0];
 
-        const shouldShowInStock = productInventory.variants.some((variant) => (variant.inStock && !variant.quantity));
-        
-        if(shouldShowInStock){
+        const shouldShowInStock = productInventory.variants.some(
+          (variant) => variant.inStock && variant.quantity === undefined
+        );
+
+        if (shouldShowInStock) {
           return IN_STOCK;
         }
 
@@ -62,7 +64,9 @@ const CustomElement: FC<Props> = (props) => {
     });
   }, [props.productId, threshold]);
 
-  const showInStock = !inventoryStock || (inventoryStock !== IN_STOCK && threshold < inventoryStock);
+  if (inventoryStock === undefined) {
+    return null;
+  }
 
   return (
     <WixDesignSystemProvider features={{ newColorsBranding: true }}>
@@ -73,7 +77,7 @@ const CustomElement: FC<Props> = (props) => {
         paddingTop={2}
         className={styles.root}
       >
-        { showInStock ? (
+        {inventoryStock === IN_STOCK || threshold < inventoryStock ? (
           <Box>
             <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
               {IN_STOCK}
