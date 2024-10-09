@@ -19,31 +19,32 @@ type InventoryStock = typeof IN_STOCK | number;
 
 function getInventoryStock(productId: string): Promise<InventoryStock> {
   return (
+    // For more information about the Inventory API, see https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory.
     inventory
-      // For more information about the Inventory API, see https://dev.wix.com/docs/sdk/backend-modules/stores/inventory/query-inventory
       .queryInventory({
         query: {
-          // For more information about query filters, see https://dev.wix.com/docs/rest/articles/getting-started/api-query-language#the-filter-section
+          // For more information about query filters, see https://dev.wix.com/docs/rest/articles/getting-started/api-query-language#the-filter-section.
           filter: JSON.stringify({ productId: { ['$eq']: productId } }),
         },
       })
       .then((result) => {
         const productInventory = result.inventoryItems[0];
 
-        let stockCount = 0;
+        const shouldShowInStock = productInventory.variants.some((variant) => (variant.inStock && !variant.quantity));
+        
+        if(shouldShowInStock){
+          return IN_STOCK;
+        }
 
-        productInventory.variants.forEach((variant) => {
-          if (variant.inStock) {
-            return IN_STOCK;
-          }
-          stockCount += variant.quantity || 0;
-        });
-
-        return stockCount;
+        return productInventory.variants.reduce((inStockCount, variant) => {
+          inStockCount += variant.quantity || 0;
+          return inStockCount;
+        }, 0);
       })
   );
 }
 
+// Customize this component to implement custom logic, change the functionality, and customize the appearance.
 const CustomElement: FC<Props> = (props) => {
   const threshold = Number(props.threshold || 3);
   const [inventoryStock, setInventoryStock] = useState<InventoryStock>();
@@ -61,9 +62,7 @@ const CustomElement: FC<Props> = (props) => {
     });
   }, [props.productId, threshold]);
 
-  if (!inventoryStock || (inventoryStock !== IN_STOCK && threshold < inventoryStock)) {
-    return null;
-  }
+  const showInStock = !inventoryStock || (inventoryStock !== IN_STOCK && threshold < inventoryStock);
 
   return (
     <WixDesignSystemProvider features={{ newColorsBranding: true }}>
@@ -74,10 +73,10 @@ const CustomElement: FC<Props> = (props) => {
         paddingTop={2}
         className={styles.root}
       >
-        {inventoryStock === IN_STOCK ? (
+        { showInStock ? (
           <Box>
             <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
-              {inventoryStock}
+              {IN_STOCK}
             </Badge>
           </Box>
         ) : (
