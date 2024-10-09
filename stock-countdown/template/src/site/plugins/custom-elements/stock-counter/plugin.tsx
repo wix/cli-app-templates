@@ -30,16 +30,18 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
       .then((result) => {
         const productInventory = result.inventoryItems[0];
 
-        let stockCount = 0;
+        const shouldShowInStock = productInventory.variants.some(
+          (variant) => variant.inStock && variant.quantity === undefined
+        );
 
-        productInventory.variants.forEach((variant) => {
-          if (variant.inStock) {
-            return IN_STOCK;
-          }
-          stockCount += variant.quantity || 0;
-        });
+        if (shouldShowInStock) {
+          return IN_STOCK;
+        }
 
-        return stockCount;
+        return productInventory.variants.reduce((inStockCount, variant) => {
+          inStockCount += variant.quantity || 0;
+          return inStockCount;
+        }, 0);
       })
   );
 }
@@ -62,7 +64,7 @@ const CustomElement: FC<Props> = (props) => {
     });
   }, [props.productId, threshold]);
 
-  if (!inventoryStock || (inventoryStock !== IN_STOCK && threshold < inventoryStock)) {
+  if (inventoryStock === undefined) {
     return null;
   }
 
@@ -75,10 +77,10 @@ const CustomElement: FC<Props> = (props) => {
         paddingTop={2}
         className={styles.root}
       >
-        {inventoryStock === IN_STOCK ? (
+        {inventoryStock === IN_STOCK || threshold < inventoryStock ? (
           <Box>
             <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
-              {inventoryStock}
+              {IN_STOCK}
             </Badge>
           </Box>
         ) : (
