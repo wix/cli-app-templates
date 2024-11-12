@@ -1,0 +1,1 @@
+# Wix CLI App Template: Shipping Rates
