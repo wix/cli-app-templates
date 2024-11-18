@@ -7,10 +7,13 @@ import { inventory } from '@wix/stores';
 import { window as siteWindow } from '@wix/site-window';
 import styles from './plugin.module.css';
 import '@wix/design-system/styles.global.css';
+import { CALL_TO_ACTION } from './consts.js';
 
 type Props = {
   productId: string;
-  threshold: string;
+  threshold: number;
+  callToAction: string;
+  showBadge: boolean;
 };
 
 const IN_STOCK = 'In Stock';
@@ -47,14 +50,10 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
 }
 
 // Customize this component to implement custom logic, change the functionality, and customize the appearance.
-const CustomElement: FC<Props> = (props) => {
-  const threshold = Number(props.threshold || 3);
+const CustomElement: FC<Props> = ({ threshold = 3, productId, showBadge, callToAction }) => {
   const [inventoryStock, setInventoryStock] = useState<InventoryStock>();
 
   useEffect(() => {
-    // Temporary fix for double quotes passed from custom element attributes
-    const productId = props.productId.replaceAll('"', '');
-
     siteWindow.viewMode().then((mode) => {
       if (mode === 'Site') {
         getInventoryStock(productId).then(setInventoryStock);
@@ -62,7 +61,7 @@ const CustomElement: FC<Props> = (props) => {
         setInventoryStock(threshold >= 1 ? threshold - 1 : IN_STOCK);
       }
     });
-  }, [props.productId, threshold]);
+  }, [productId, threshold]);
 
   if (inventoryStock === undefined) {
     return null;
@@ -79,21 +78,29 @@ const CustomElement: FC<Props> = (props) => {
       >
         {inventoryStock === IN_STOCK || threshold < inventoryStock ? (
           <Box>
-            <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
-              {IN_STOCK}
-            </Badge>
+            {showBadge && (
+              <Badge prefixIcon={<TagIcon />} skin="neutralSuccess">
+                {IN_STOCK}
+              </Badge>
+            )}
           </Box>
         ) : (
           <>
-            <Box>
-              <Badge prefixIcon={<TagIcon />} skin="standard" uppercase={false}>
-                Selling fast
-              </Badge>
-            </Box>
+            {showBadge && (
+              <Box>
+                <Badge
+                  prefixIcon={<TagIcon />}
+                  skin="standard"
+                  uppercase={false}
+                >
+                  Selling fast
+                </Badge>
+              </Box>
+            )}
             <Box direction="vertical">
               <Text>{`Only ${inventoryStock} items left in stock`}</Text>
               <Text size="tiny" light secondary>
-                Don't miss your chance
+                {callToAction || CALL_TO_ACTION}
               </Text>
             </Box>
           </>
@@ -111,7 +118,9 @@ const customElement = reactToWebComponent(
   {
     props: {
       productId: 'string',
-      threshold: 'string',
+      threshold: 'number',
+      callToAction: 'string',
+      showBadge: 'boolean',
     },
   }
 );
