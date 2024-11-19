@@ -1,0 +1,5 @@
+{
+  "$schema": "https://dev.wix.com/wix-cli/schemas/dashboard-page.json",
+  "id": "8e673469-637b-420f-a4c3-c287da00ab04",
+  "title": "Shipping Rates App"
+}
