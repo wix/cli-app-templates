@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { createContext, useContext, useCallback, useEffect, useState } from 'react';
 import { appInstances } from '@wix/app-management';
 
 /*
@@ -11,15 +11,27 @@ import { appInstances } from '@wix/app-management';
 */
 const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/<%= devCenter.appId %>?appInstanceId=${instanceId}`
 
-export function useAppInstance() {
+const AppInstanceContext = createContext<appInstances.AppInstance | undefined>(undefined);
+
+export function AppInstanceProvider({ children }: { children: React.ReactNode }) {
   const [appInstance, setAppInstance] = useState<appInstances.AppInstance>();
 
   useEffect(() => {
-    appInstances.getAppInstance()
-      .then((appInstance) => setAppInstance(appInstance.instance))
-  }, [setAppInstance]);
+    if (!appInstance) {
+      appInstances.getAppInstance()
+        .then((appInstance) => setAppInstance(appInstance.instance))
+    }
+  }, [appInstance, setAppInstance]);
+  
+  return (
+    <AppInstanceContext.Provider value={appInstance}>
+      {children}
+    </AppInstanceContext.Provider>
+  )
+}
 
-  return appInstance;
+export function useAppInstance(): appInstances.AppInstance | undefined {
+  return useContext(AppInstanceContext);
 }
 
 export function useIsFreeApp(): boolean {
@@ -37,7 +49,7 @@ export function useNavigateToPricingPage(): () => void {
 
   return useCallback(() => {
     if (appInstance?.instanceId) {
-      window.open(getPricingPage(appInstance?.instanceId), "_blank");
+      window.open(getPricingPage(appInstance?.instanceId), '_blank');
     }
   }, [appInstance?.instanceId]);
 }

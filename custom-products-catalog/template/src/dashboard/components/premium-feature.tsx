@@ -15,15 +15,15 @@ export function PremiumFeature({ children }: PremiumFeatureProps) {
       return (
         <FloatingHelper
           placement="bottom-end"
-          appearance='light'
+          appearance="light"
           initiallyOpened={false}
           target={children}
           content={
             <FloatingHelper.Content
               title="Start your free trial"
               body="You need a premium subscription to access this feature. Start your free trial now."
-              actionText='Start Free Trial'
-              actionTheme='premium'
+              actionText="Start Free Trial"
+              actionTheme="premium"
               onActionClick={navigateToPricingPage}
             />
           }
