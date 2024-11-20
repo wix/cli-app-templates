@@ -1,13 +1,13 @@
 import React from 'react';
 import { Modal, AnnouncementModalLayout, Text } from '@wix/design-system';
-import { useFreeTrialAvailable, useIsFreeApp, useNavigateToPricingPage } from '../hooks/instance';
+import { useFreeTrialAvailable, useIsFree, useNavigateToPricingPage } from '../hooks/instance';
 
 export default function Paywall() {
-  const isFreeApp = useIsFreeApp();
+  const isFree = useIsFree();
   const isFreeTrialAvailable = useFreeTrialAvailable();
   const navigateToPricingPage = useNavigateToPricingPage();
 
-  if (isFreeApp && isFreeTrialAvailable) {
+  if (isFree && isFreeTrialAvailable) {
     return (
       <Modal isOpen>
         <AnnouncementModalLayout
