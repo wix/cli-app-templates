@@ -9,7 +9,7 @@ import '@wix/design-system/styles.global.css';
 import { products } from '@wix/stores';
 import { withProviders } from '../withProviders';
 import { useCreateProduct, useDeleteProducts } from '../hooks/stores';
-import { useIsFreeApp } from '../hooks/instance';
+import { useIsFree } from '../hooks/instance';
 import { CreateProductModal } from '../components/create-product';
 import { PremiumFeature } from '../components/premium-feature';
 import { CollectionPage } from '@wix/patterns/page';
@@ -48,7 +48,7 @@ const productTypeToDisplayName: { [key in products.ProductType]: string | undefi
 
 function Products() {
   const [shown, setShown] = useState(false); 
-  const isFreeApp = useIsFreeApp();
+  const isFree = useIsFree();
 
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
@@ -165,7 +165,7 @@ function Products() {
         primaryAction={
           <PremiumFeature>
             <PrimaryPageButton
-              disabled={isFreeApp}
+              disabled={isFree}
               text="Add Product"
               onClick={() => setShown(!shown)}
             />

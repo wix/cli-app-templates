@@ -34,7 +34,7 @@ export function useAppInstance(): appInstances.AppInstance | undefined {
   return useContext(AppInstanceContext);
 }
 
-export function useIsFreeApp(): boolean {
+export function useIsFree(): boolean {
   const appInstance = useAppInstance();
   return appInstance?.isFree ?? true;
 }

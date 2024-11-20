@@ -1,17 +1,17 @@
 import React from 'react';
 import { FloatingHelper } from '@wix/design-system'
-import { useFreeTrialAvailable, useIsFreeApp, useNavigateToPricingPage } from '../hooks/instance';
+import { useFreeTrialAvailable, useIsFree, useNavigateToPricingPage } from '../hooks/instance';
 
 interface PremiumFeatureProps {
     children: React.ReactNode;
 }
 
 export function PremiumFeature({ children }: PremiumFeatureProps) {
-    const isFreeApp = useIsFreeApp();
+    const isFree = useIsFree();
     const isFreeTrialAvailable = useFreeTrialAvailable();
     const navigateToPricingPage = useNavigateToPricingPage();
 
-    if (isFreeApp && isFreeTrialAvailable) {
+    if (isFree && isFreeTrialAvailable) {
       return (
         <FloatingHelper
           placement="bottom-end"
