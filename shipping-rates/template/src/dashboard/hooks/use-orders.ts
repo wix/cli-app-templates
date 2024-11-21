@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { orders } from "@wix/ecom";
-import { OrderSummary } from "../../types/types";
+import type { OrderSummary } from "../../types";
 
 interface useOrdersProps {
   limit: number;
@@ -12,7 +12,7 @@ export const useOrders = ({ limit }: useOrdersProps) => {
     queryFn: async () => {
       try {
         // Read more about the orders SDK at https://dev.wix.com/docs/sdk/backend-modules/ecom/orders/search-orders
-        const searchRespons = await orders.searchOrders({
+        const searchResponse = await orders.searchOrders({
           search: {
             cursorPaging: {
               limit,
@@ -20,10 +20,11 @@ export const useOrders = ({ limit }: useOrdersProps) => {
           },
         });
 
-        if (!searchRespons.orders || searchRespons.orders.length === 0)
+        if (!searchResponse.orders?.length) {
           return [];
+        }
 
-        return searchRespons.orders.map(
+        return searchResponse.orders.map(
           (order) =>
             ({
               id: order.number ?? "",

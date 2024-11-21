@@ -1,6 +1,6 @@
 # Wix CLI App Template: Shipping Rates
 
-The Shipping Rates Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates).
+The Shipping Rates Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates?filter=cli).
 
 This Wix CLI template demonstrates how to build a [service plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/service-plugins/add-service-plugin-extensions-with-the-cli) for the Wix eCom [shipping rates](https://dev.wix.com/docs/sdk/backend-modules/ecom/service-plugins/shipping-rates/introduction), and create a [backend API](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/api/add-api-extensions-with-the-cli) to fetch data.
 
@@ -12,7 +12,7 @@ This template also demonstrates how to build dashboard pages, dashboard modals a
 
 [Wix apps](https://dev.wix.com/docs/build-apps) enhance the functionality of Wix sites by adding new features such as custom pages, dashboard components, third-party integrations, service plugin and your own backened API. Starting with an app template fast-tracks the development process, providing a working foundational app that developers can modify and build upon. This approach saves valuable time, allowing for a quick transition from concept to a fully functional app.
 
-Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates).
+Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our growing [template collection](https://dev.wix.com/apps-templates?filter=cli).
 
 ## Template features
 
@@ -36,7 +36,7 @@ Before getting started, make sure you have the following set up:
 
 We first need to create local files for our app project and set up a local development environment for preview and testing.
 
-## Step 1 | Create a new app project with the Chart Widget template
+## Step 1 | Create a new app project with the Shipping Rates template
 
 In the directory where you want to create your project, run the following command:
 
@@ -142,5 +142,5 @@ This guides you through creating a new app version in the Wix Developers Center.
 For more information:
 
 - Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
-- Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
+- Check out our [full collection of app templates](https://dev.wix.com/apps-templates?filter=cli).
 - See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).

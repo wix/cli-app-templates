@@ -8,23 +8,21 @@ interface FreeTrialMessageProps {
   freeTrialInfo: appInstances.FreeTrialInfo;
 }
 
-function FreeTrialMessage({ freeTrialInfo }: FreeTrialMessageProps) {
+export function FreeTrialMessage({ freeTrialInfo }: FreeTrialMessageProps) {
   return (
     <Box
       backgroundColor="P40"
       padding="SP2"
       verticalAlign="middle"
       gap={2}
-      borderTop="1px solid purple"
-      borderBottom="1px solid purple"
+      borderBlock="1px solid purple"
     >
       <PremiumFilled />
       <Text size="small">
-        Your free trial is available to{" "}
-        {formatDate(new Date(freeTrialInfo.endDate!))}
+        {`Your free trial is available to ${formatDate(
+          new Date(freeTrialInfo.endDate!)
+        )}`}
       </Text>
     </Box>
   );
 }
-
-export default FreeTrialMessage;

@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { httpClient } from "@wix/essentials";
-import { ShippingAppData } from "../../types/types";
+import type { ShippingAppData } from "../../types";
 import { DEFAULT_APP_DATA } from "../../consts";
 
 const queryKey = ["shipping-app-data"];

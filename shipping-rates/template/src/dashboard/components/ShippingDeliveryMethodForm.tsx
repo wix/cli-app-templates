@@ -6,16 +6,15 @@ import {
   FormField,
   Input,
   Layout,
+  NumberInput,
   Text,
 } from "@wix/design-system";
-import { ShippingCosts } from "../../types/types";
+import type { ShippingCosts } from "../../types";
 
 interface ShippingCostsFormProps {
   title: string;
-  disabled?: boolean;
   shippingCosts: ShippingCosts;
   onShippingCostsChanged: (shippingCosts: ShippingCosts) => void;
-  expandByDefault?: boolean;
 }
 
 export function ShippingCostsForm({
@@ -34,15 +33,16 @@ export function ShippingCostsForm({
             <Layout>
               <Cell span={4}>
                 <FormField label={`First item`}>
-                  <Input
+                  <NumberInput
                     prefix={<Input.Affix>$</Input.Affix>}
                     placeholder="Set price"
-                    type="number"
                     value={shippingCosts.first}
-                    onChange={(e) => {
+                    onChange={(price) => {
+                      if (!price) return;
+
                       onShippingCostsChanged({
                         ...shippingCosts,
-                        first: Number(e.currentTarget.value),
+                        first: price,
                       });
                     }}
                   />
@@ -50,15 +50,16 @@ export function ShippingCostsForm({
               </Cell>
               <Cell span={4}>
                 <FormField label={`Second item`}>
-                  <Input
+                  <NumberInput
                     prefix={<Input.Affix>$</Input.Affix>}
                     placeholder="Set price"
-                    type="number"
                     value={shippingCosts.second}
-                    onChange={(e) => {
+                    onChange={(price) => {
+                      if (!price) return;
+
                       onShippingCostsChanged({
                         ...shippingCosts,
-                        second: Number(e.currentTarget.value),
+                        second: price,
                       });
                     }}
                   />
@@ -66,18 +67,18 @@ export function ShippingCostsForm({
               </Cell>
               <Cell span={4}>
                 <FormField label={`Each additional item`}>
-                  <Input
+                  <NumberInput
                     prefix={<Input.Affix>$</Input.Affix>}
-                    suffix={<Input.Affix>per item</Input.Affix>}
+                    placeholder="Set price"
                     value={shippingCosts.thirdAndUp}
-                    onChange={(e) => {
+                    onChange={(price) => {
+                      if (!price) return;
+
                       onShippingCostsChanged({
                         ...shippingCosts,
-                        thirdAndUp: Number(e.currentTarget.value),
+                        thirdAndUp: price,
                       });
                     }}
-                    placeholder="Set price"
-                    type="number"
                   />
                 </FormField>
               </Cell>

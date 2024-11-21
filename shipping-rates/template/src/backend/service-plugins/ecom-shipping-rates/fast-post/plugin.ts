@@ -9,23 +9,20 @@ shippingRates.provideHandlers({
     const isPremium = appInstance && isPremiumInstance(appInstance);
     const appData = getAppData({ isPremium });
 
-    const currency = metadata.currency;
-
     return {
       shippingRates: appData.shippingMethods.map(
         ({ code, title, logistics, costs }) => {
-          console.log(
-            `calculatePrice(request, ${costs})}`,
-            calculatePrice(request, costs)
-          );
+          const calculatedPrice = calculatePrice(request, costs);
+
+          console.log(`calculatePrice(request, ${costs})}`, calculatedPrice);
 
           return {
             code,
             title,
             logistics,
             cost: {
-              price: `${calculatePrice(request, costs)}`,
-              currency: currency!,
+              price: `${calculatedPrice}`,
+              currency: metadata.currency!,
             },
           };
         }

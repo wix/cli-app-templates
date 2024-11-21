@@ -1,7 +1,7 @@
 {
   "$schema": "https://dev.wix.com/wix-cli/schemas/dashboard-modal.json",
   "id": "868a4dfd-269a-4e68-8099-f4ea03594507",
-  "title": "Activate Shipping Rates",
+  "title": "Activate Plugin",
   "width": 600,
   "height": 600
 }

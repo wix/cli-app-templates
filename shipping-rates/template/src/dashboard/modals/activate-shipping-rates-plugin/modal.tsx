@@ -1,10 +1,11 @@
 import React, { type FC } from "react";
 import { dashboard } from "@wix/dashboard";
 import { Text, Box, CustomModalLayout, TextButton } from "@wix/design-system";
-import "@wix/design-system/styles.global.css";
 import { width, height } from "./modal.json";
 import { WixPageId } from "../../../consts";
 import { withProviders } from "../../withProviders";
+import { title } from "./modal.json";
+import "@wix/design-system/styles.global.css";
 
 const ActivateShippingRatesModal: FC = () => {
   const { navigate } = dashboard;
@@ -18,7 +19,7 @@ const ActivateShippingRatesModal: FC = () => {
       onCloseButtonClick={() => dashboard.closeModal()}
       primaryButtonOnClick={() => navigate(WixPageId.SHIPPING_INFO)}
       secondaryButtonOnClick={() => dashboard.closeModal()}
-      title="Activate Plugin"
+      title={title}
       subtitle="To apply your custom shipping rate logic, activate it as follows"
       content={
         <Box>

@@ -1,4 +1,4 @@
-import { ShippingAppData } from "./types/types";
+import type { ShippingAppData } from "./types";
 
 export const DEFAULT_APP_DATA: ShippingAppData = {
   shippingMethods: [
@@ -40,6 +40,3 @@ export enum WixPageId {
   MANAGE_APPS = "ad471122-7305-4007-9210-2a764d2e5e57",
   MANAGE_ORDERS = "8107f05f-d646-4c81-be90-adf28d321398",
 }
-
-export const ACTIVATE_PLUGIN_MODAL_ID = "868a4dfd-269a-4e68-8099-f4ea03594507";
-export const APP_ID = "a033018e-233a-4ddc-8471-1151d8974866";

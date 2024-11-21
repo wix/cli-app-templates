@@ -1,5 +1,5 @@
 import { shippingRates } from "@wix/ecom/service-plugins";
-import { ShippingCosts } from "../types/types";
+import type { ShippingCosts } from "../types";
 
 export function calculatePrice(
   request: shippingRates.GetShippingRatesRequest,

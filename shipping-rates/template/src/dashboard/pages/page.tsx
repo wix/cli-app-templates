@@ -10,14 +10,15 @@ import {
 } from "@wix/design-system";
 import { dashboard } from "@wix/dashboard";
 import { ShippingCostsForm } from "../components/ShippingDeliveryMethodForm";
-import { ShippingAppData, ShippingCosts } from "../../types/types";
+import type { ShippingAppData, ShippingCosts } from "../../types";
 import { RecentOrdersCard } from "../components/RecentOrdersCard";
-import { ACTIVATE_PLUGIN_MODAL_ID, WixPageId } from "../../consts";
+import { WixPageId } from "../../consts";
 import { useShippingAppData } from "../hooks/use-shipping-app-data";
 import { withProviders } from "../withProviders";
 import { UpgradeCard } from "../components/UpgradeCard";
-import FreeTrialMessage from "../components/FreeTrialMessage";
 import { appInstances } from "@wix/app-management";
+import { id as activationModalId } from "../modals/activate-shipping-rates-plugin/modal.json";
+import { FreeTrialMessage } from "../components/FreeTrialMessage";
 import "@wix/design-system/styles.global.css";
 
 function ShippingRatesPage() {
@@ -73,7 +74,7 @@ function ShippingRatesPage() {
     [currentShippingAppData]
   );
 
-  const shouldShowUpgradeCard = appInstance && appInstance.isFree;
+  const shouldShowUpgradeCard = appInstance?.isFree;
 
   return (
     <Page height="100vh">
@@ -110,7 +111,7 @@ function ShippingRatesPage() {
         <Layout>
           {appInstance?.billing?.freeTrialInfo?.status ===
             appInstances.FreeTrialStatus.IN_PROGRESS && (
-            <Cell span={12}>
+            <Cell>
               <FreeTrialMessage
                 freeTrialInfo={appInstance?.billing.freeTrialInfo}
               />
@@ -158,7 +159,7 @@ function ShippingRatesPage() {
             <Box gap="SP2">
               <Button
                 priority="secondary"
-                onClick={() => dashboard.openModal(ACTIVATE_PLUGIN_MODAL_ID)}
+                onClick={() => dashboard.openModal(activationModalId)}
               >
                 Activate Plugin
               </Button>

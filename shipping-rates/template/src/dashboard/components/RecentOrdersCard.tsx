@@ -25,7 +25,7 @@ export function RecentOrdersCard() {
         <Box direction="vertical" paddingBottom="SP3">
           {isLoading ? (
             <Loader size="medium" />
-          ) : !orders || orders.length === 0 ? (
+          ) : !orders?.length ? (
             <Text size="small" weight="thin">
               No orders found.
             </Text>
@@ -33,7 +33,6 @@ export function RecentOrdersCard() {
             orders.map((order, index) => (
               <React.Fragment key={index}>
                 <Box
-                  key={index}
                   verticalAlign="middle"
                   align="space-between"
                   paddingTop="SP2"

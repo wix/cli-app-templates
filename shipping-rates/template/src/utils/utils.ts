@@ -1,9 +1,7 @@
-import { APP_ID } from "../consts";
-
-const LOCALE = "en-US";
+import { i18n } from "@wix/essentials";
 
 export const formatDate = (date: Date) => {
-  return date.toLocaleDateString(LOCALE, {
+  return date.toLocaleDateString(i18n.getLocale(), {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -13,12 +11,9 @@ export const formatDate = (date: Date) => {
 };
 
 export const formatCurrency = (currency: string, currencyString: number) => {
-  return new Intl.NumberFormat(LOCALE, {
+  return new Intl.NumberFormat(i18n.getLocale(), {
     style: "currency",
     currency: currency,
     minimumFractionDigits: 0,
   }).format(currencyString);
 };
-
-export const getPricingPageURL = (instanceId: string) =>
-  `https://www.wix.com/apps/upgrade/${APP_ID}?appInstanceId=${instanceId}`;

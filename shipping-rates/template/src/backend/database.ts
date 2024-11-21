@@ -1,5 +1,5 @@
 import { DEFAULT_APP_DATA, PREMIUM_APP_DATA } from "../consts";
-import { ShippingAppData } from "../types/types";
+import type { ShippingAppData } from "../types/types";
 
 export const getAppData = ({ isPremium = false }: { isPremium?: boolean }) => {
   return isPremium ? PREMIUM_APP_DATA : DEFAULT_APP_DATA;
