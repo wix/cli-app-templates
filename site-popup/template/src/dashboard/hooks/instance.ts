@@ -3,7 +3,7 @@ import { appInstances } from '@wix/app-management';
 
 // FIXME: Pass APPID when app is generated
 // const PRICING_PAGE_URL = 'https://www.wix.com/apps/upgrade/APPIDHERE?appInstanceId=INSTANCEIDHERE'
-const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/4dc7fcf2-0a37-4ade-83b2-ddde3a29491a?appInstanceId=${instanceId}`
+const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/<%= devCenter.appId %>?appInstanceId=${instanceId}`
 
 export function useAppInstance() {
   const [appInstance, setAppInstance] = useState<appInstances.AppInstance>();
