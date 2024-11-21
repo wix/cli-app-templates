@@ -3,6 +3,7 @@ import { Page, Card, Box, Text, TextButton } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import ProjectToken from '../components/ProjectToken.js';
+import Paywall from '../components/Paywall.js';
 
 function MixpanelAnalytics() {
   return (
@@ -31,6 +32,7 @@ function MixpanelAnalytics() {
             </Box>
           </Card.Content>
         </Card>
+        <Paywall />
       </Page.Content>
     </Page>
   );
