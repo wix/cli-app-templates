@@ -6,9 +6,11 @@ import './index.css';
 import { site } from '@wix/site-site';
 
 const PopupOverlay = () => {
-  const [shown, setShown] = useState<boolean>(false);
   const el = document.querySelector('#popup-data') as HTMLElement;
   const popupParams = el?.dataset as SitePopupOptions;
+  
+  const isFree = popupParams.isFree === 'true';
+  const [shown, setShown] = useState<boolean>(false);
 
   const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
 
@@ -39,6 +41,11 @@ const PopupOverlay = () => {
     }
     return false;
   };
+
+  if (isFree) {
+    // Don't render popup if user doesn't have a purchased plan
+    return null;
+  }
 
   return (
     <div

@@ -5,12 +5,14 @@ interface Props {
   startDate: number;
   endDate: number;
   onChange?: (startDate: number, endDate: number) => void;
+  disabled?: boolean;
 }
 
 export const DataRangePicker: FC<Props> = ({
-  onChange,
   startDate,
   endDate,
+  onChange,
+  disabled = false,
 }) => {
   return (
     <Layout>
@@ -21,6 +23,7 @@ export const DataRangePicker: FC<Props> = ({
               <DatePicker
                 width="100%"
                 placeholderText="Select"
+                disabled={disabled}
                 value={new Date(startDate)}
                 onChange={(value: Date) => onChange?.(value.getTime(), endDate)}
               />
@@ -35,6 +38,7 @@ export const DataRangePicker: FC<Props> = ({
               <DatePicker
                 width="100%"
                 placeholderText="Select"
+                disabled={disabled}
                 value={new Date(endDate)}
                 onChange={(value: Date) =>
                   onChange?.(startDate, value.getTime())

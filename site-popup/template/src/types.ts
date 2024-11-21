@@ -1,3 +1,4 @@
+export type IsFree = 'true' | 'false';
 export type ActivationMode = 'active' | 'timed' | 'disabled';
 
 export type ActivationOptions = {
@@ -11,4 +12,5 @@ export type SitePopupOptions = {
   text: string;
   imageUrl: string;
   imageTitle: string;
+  isFree: IsFree;
 } & ActivationOptions;
