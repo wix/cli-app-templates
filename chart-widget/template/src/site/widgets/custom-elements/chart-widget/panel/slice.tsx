@@ -52,9 +52,13 @@ const Slice: FC<Props> = ({ title, item, onChange }) => {
             <FillPreview
               fill={item.color}
               onClick={() =>
-                inputs.selectColor({ color: item.color }, (value) => {
-                  const newItem = { ...item, color: value.color };
-                  onChange(newItem);
+                inputs.selectColor(item.color, {
+                  onChange: (value) => {
+                    if (value) {
+                      const newItem = { ...item, color: value };
+                      onChange(newItem);
+                    }
+                  },
                 })
               }
             />
