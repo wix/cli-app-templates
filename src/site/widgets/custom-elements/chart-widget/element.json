@@ -1,0 +1,16 @@
+{
+  "$schema": "https://dev.wix.com/wix-cli/schemas/custom-element.json",
+  "id": "dffbb0c9-dd38-48c6-acf9-4aee35142c98",
+  "name": "Chart Widget",
+  "width": {
+    "defaultWidth": 400,
+    "allowStretch": true
+  },
+  "height": {
+    "defaultHeight": 400
+  },
+  "installation": {
+    "autoAddToSite": true,
+    "essential": false
+  }
+}

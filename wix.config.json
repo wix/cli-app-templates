@@ -1,0 +1,5 @@
+{
+  "$schema": "https://dev.wix.com/wix-cli/schemas/wix-config.json",
+  "appId": "fb8c7c94-1ea6-43a7-b72c-e7c6d760153b",
+  "projectId": "my-chart-widget"
+}
