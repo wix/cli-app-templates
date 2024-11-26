@@ -9,7 +9,9 @@ import '@wix/design-system/styles.global.css';
 import { products } from '@wix/stores';
 import { withProviders } from '../withProviders';
 import { useCreateProduct, useDeleteProducts } from '../hooks/stores';
+import { useIsFree } from '../hooks/instance';
 import { CreateProductModal } from '../components/create-product';
+import { PremiumFeature } from '../components/premium-feature';
 import { CollectionPage } from '@wix/patterns/page';
 import {
   useTableCollection,
@@ -46,6 +48,7 @@ const productTypeToDisplayName: { [key in products.ProductType]: string | undefi
 
 function Products() {
   const [shown, setShown] = useState(false); 
+  const isFree = useIsFree();
 
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
@@ -160,10 +163,13 @@ function Products() {
           />
         }
         primaryAction={
-          <PrimaryPageButton
-            text="Add Product"
-            onClick={() => setShown(!shown)}
-          />
+          <PremiumFeature>
+            <PrimaryPageButton
+              disabled={isFree}
+              text="Add Product"
+              onClick={() => setShown(!shown)}
+            />
+          </PremiumFeature>
         }
       />
       <CollectionPage.Content>
