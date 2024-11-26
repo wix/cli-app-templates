@@ -29,7 +29,7 @@ export const useOrders = ({ limit }: useOrdersProps) => {
             ({
               id: order.number ?? "",
               createdDate: order?._createdDate ?? "",
-              totalPrice: order?.priceSummary?.total?.amount ?? 0,
+              totalPrice: Number(order?.priceSummary?.total?.amount) ?? 0,
               currency: order?.currency ?? "USD",
             } as OrderSummary)
         );

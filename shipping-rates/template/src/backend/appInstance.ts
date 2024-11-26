@@ -5,8 +5,9 @@ export async function getAppInstance(): Promise<
   appInstances.AppInstance | undefined
 > {
   try {
-    const elevatedAppInstance = auth.elevate(appInstances.getAppInstance);
-    const appInstance = (await elevatedAppInstance()).instance;
+    const { instance: appInstance } = await auth.elevate(
+      appInstances.getAppInstance
+    )();
 
     return appInstance;
   } catch (error) {

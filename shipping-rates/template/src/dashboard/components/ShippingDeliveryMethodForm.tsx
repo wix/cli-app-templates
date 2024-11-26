@@ -27,63 +27,61 @@ export function ShippingCostsForm({
       <Card.Header title={title} />
       <Card.Divider />
       <Card.Content>
-        <Box direction="vertical" gap="SP5">
-          <Box direction="vertical" gap="SP2">
-            <Text>Set conditions:</Text>
-            <Layout>
-              <Cell span={4}>
-                <FormField label={`First item`}>
-                  <NumberInput
-                    prefix={<Input.Affix>$</Input.Affix>}
-                    placeholder="Set price"
-                    value={shippingCosts.first}
-                    onChange={(price) => {
-                      if (!price) return;
+        <Box direction="vertical" gap="SP2">
+          <Text>Set conditions:</Text>
+          <Layout>
+            <Cell span={4}>
+              <FormField label="First item">
+                <NumberInput
+                  prefix={<Input.Affix value="$" />}
+                  placeholder="Set price"
+                  value={shippingCosts.first}
+                  onChange={(price) => {
+                    if (!price) return;
 
-                      onShippingCostsChanged({
-                        ...shippingCosts,
-                        first: price,
-                      });
-                    }}
-                  />
-                </FormField>
-              </Cell>
-              <Cell span={4}>
-                <FormField label={`Second item`}>
-                  <NumberInput
-                    prefix={<Input.Affix>$</Input.Affix>}
-                    placeholder="Set price"
-                    value={shippingCosts.second}
-                    onChange={(price) => {
-                      if (!price) return;
+                    onShippingCostsChanged({
+                      ...shippingCosts,
+                      first: price,
+                    });
+                  }}
+                />
+              </FormField>
+            </Cell>
+            <Cell span={4}>
+              <FormField label="econd item">
+                <NumberInput
+                  prefix={<Input.Affix value="$" />}
+                  placeholder="Set price"
+                  value={shippingCosts.second}
+                  onChange={(price) => {
+                    if (!price) return;
 
-                      onShippingCostsChanged({
-                        ...shippingCosts,
-                        second: price,
-                      });
-                    }}
-                  />
-                </FormField>
-              </Cell>
-              <Cell span={4}>
-                <FormField label={`Each additional item`}>
-                  <NumberInput
-                    prefix={<Input.Affix>$</Input.Affix>}
-                    placeholder="Set price"
-                    value={shippingCosts.thirdAndUp}
-                    onChange={(price) => {
-                      if (!price) return;
+                    onShippingCostsChanged({
+                      ...shippingCosts,
+                      second: price,
+                    });
+                  }}
+                />
+              </FormField>
+            </Cell>
+            <Cell span={4}>
+              <FormField label="Each additional item">
+                <NumberInput
+                  prefix={<Input.Affix value="$" />}
+                  placeholder="Set price"
+                  value={shippingCosts.thirdAndUp}
+                  onChange={(price) => {
+                    if (!price) return;
 
-                      onShippingCostsChanged({
-                        ...shippingCosts,
-                        thirdAndUp: price,
-                      });
-                    }}
-                  />
-                </FormField>
-              </Cell>
-            </Layout>
-          </Box>
+                    onShippingCostsChanged({
+                      ...shippingCosts,
+                      thirdAndUp: price,
+                    });
+                  }}
+                />
+              </FormField>
+            </Cell>
+          </Layout>
         </Box>
       </Card.Content>
     </Card>

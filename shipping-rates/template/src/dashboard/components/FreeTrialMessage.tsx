@@ -1,28 +1,31 @@
 import React from "react";
-import { Box, Text } from "@wix/design-system";
-import { PremiumFilled } from "@wix/wix-ui-icons-common";
+import { SectionHeader, TextButton } from "@wix/design-system";
 import { appInstances } from "@wix/app-management";
+import { dashboard } from "@wix/dashboard";
 import { formatDate } from "../../utils/utils";
+import { WixPageId } from "../../consts";
 
 interface FreeTrialMessageProps {
   freeTrialInfo: appInstances.FreeTrialInfo;
 }
 
 export function FreeTrialMessage({ freeTrialInfo }: FreeTrialMessageProps) {
+  const { navigate } = dashboard;
+
   return (
-    <Box
-      backgroundColor="P40"
-      padding="SP2"
-      verticalAlign="middle"
-      gap={2}
-      borderBlock="1px solid purple"
-    >
-      <PremiumFilled />
-      <Text size="small">
-        {`Your free trial is available to ${formatDate(
-          new Date(freeTrialInfo.endDate!)
-        )}`}
-      </Text>
-    </Box>
+    <SectionHeader
+      title={`Your free trial is available to ${formatDate(
+        new Date(freeTrialInfo.endDate!)
+      )}`}
+      size="small"
+      suffix={
+        <TextButton
+          size="tiny"
+          onClick={() => navigate(WixPageId.SUBSCRIPTIONS)}
+        >
+          Manage Subscriptions
+        </TextButton>
+      }
+    />
   );
 }

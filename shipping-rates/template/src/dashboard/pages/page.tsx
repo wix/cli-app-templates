@@ -18,8 +18,8 @@ import { withProviders } from "../withProviders";
 import { UpgradeCard } from "../components/UpgradeCard";
 import { appInstances } from "@wix/app-management";
 import { id as activationModalId } from "../modals/activate-shipping-rates-plugin/modal.json";
+import { id as shippingRatesPageId } from "./page.json";
 import { FreeTrialMessage } from "../components/FreeTrialMessage";
-import "@wix/design-system/styles.global.css";
 
 function ShippingRatesPage() {
   const { showToast, navigate } = dashboard;
@@ -74,13 +74,17 @@ function ShippingRatesPage() {
     [currentShippingAppData]
   );
 
-  const shouldShowUpgradeCard = appInstance?.isFree;
-
   return (
     <Page height="100vh">
       <Page.Header
         actionsBar={
           <Box gap="SP2">
+            <Button
+              priority="secondary"
+              onClick={() => dashboard.openModal(activationModalId)}
+            >
+              Activate Plugin
+            </Button>
             <Button onClick={onSave}>
               {setShippingAppData.isLoading ? (
                 <Loader size="tiny" />
@@ -92,13 +96,12 @@ function ShippingRatesPage() {
         }
         breadcrumbs={
           <Breadcrumbs
-            activeId="2"
+            activeId={shippingRatesPageId}
             items={[
               { id: WixPageId.MANAGE_APPS, value: "Apps" },
               {
-                id: "shipping-app-page",
+                id: shippingRatesPageId,
                 value: "Shipping Rate App",
-                disabled: true,
               },
             ]}
             onClick={({ id }) => navigate(id as string)}
@@ -119,31 +122,25 @@ function ShippingRatesPage() {
           )}
           <Cell span={8}>
             {getShippingAppData.isLoading ? (
-              <Layout cols={1} justifyItems="center">
-                <Cell>
-                  <Loader size="large" />
-                </Cell>
-              </Layout>
+              <Box align="center">
+                <Loader />
+              </Box>
             ) : (
-              <Layout>
+              <Box direction="vertical" gap="SP4">
                 {currentShippingAppData?.shippingMethods.map(
                   (method, index) => (
-                    <Cell key={method.code}>
-                      <ShippingCostsForm
-                        expandByDefault={index === 0}
-                        title={method.title}
-                        shippingCosts={method.costs}
-                        onShippingCostsChanged={setCostsForMethod(method.code)}
-                      />
-                    </Cell>
+                    <ShippingCostsForm
+                      key={index}
+                      title={method.title}
+                      shippingCosts={method.costs}
+                      onShippingCostsChanged={setCostsForMethod(method.code)}
+                    />
                   )
                 )}
-                {shouldShowUpgradeCard && (
-                  <Cell>
-                    <UpgradeCard appInstance={appInstance} />
-                  </Cell>
+                {appInstance?.isFree && (
+                  <UpgradeCard appInstance={appInstance} />
                 )}
-              </Layout>
+              </Box>
             )}
           </Cell>
           <Cell span={4}>
@@ -155,16 +152,7 @@ function ShippingRatesPage() {
       </Page.Content>
       <Page.FixedFooter>
         <Page.Footer divider>
-          <Page.Footer.End>
-            <Box gap="SP2">
-              <Button
-                priority="secondary"
-                onClick={() => dashboard.openModal(activationModalId)}
-              >
-                Activate Plugin
-              </Button>
-            </Box>
-          </Page.Footer.End>
+          <Page.Footer.End></Page.Footer.End>
         </Page.Footer>
       </Page.FixedFooter>
     </Page>

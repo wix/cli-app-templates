@@ -2,10 +2,10 @@ import React from "react";
 import {
   Box,
   Card,
-  Divider,
   Text,
   TextButton,
   Loader,
+  TableListItem,
 } from "@wix/design-system";
 import { ArrowRight } from "@wix/wix-ui-icons-common";
 import { dashboard } from "@wix/dashboard";
@@ -22,40 +22,44 @@ export function RecentOrdersCard() {
       <Card.Header title="Recent orders" />
       <Card.Divider />
       <Card.Content>
-        <Box direction="vertical" paddingBottom="SP3">
-          {isLoading ? (
-            <Loader size="medium" />
-          ) : !orders?.length ? (
-            <Text size="small" weight="thin">
-              No orders found.
-            </Text>
-          ) : (
-            orders.map((order, index) => (
-              <React.Fragment key={index}>
-                <Box
-                  verticalAlign="middle"
-                  align="space-between"
-                  paddingTop="SP2"
-                  paddingBottom="SP1"
-                >
-                  <Box direction="vertical">
-                    <Text size="small" weight="normal">
-                      Order #{order.id}
+        {isLoading ? (
+          <Box align="center">
+            <Loader />
+          </Box>
+        ) : !orders?.length ? (
+          <Text size="small">No orders found.</Text>
+        ) : (
+          orders.map((order, index) => (
+            <TableListItem
+              verticalPadding="tiny"
+              horizontalPadding="xxTiny"
+              showDivider={index < orders.length - 1}
+              options={[
+                {
+                  value: (
+                    <>
+                      <Text size="small" weight="normal">
+                        Order #{order.id}
+                      </Text>
+                      <Text size="tiny" skin="disabled">
+                        {formatDate(new Date(order.createdDate))}
+                      </Text>
+                    </>
+                  ),
+                },
+                {
+                  value: (
+                    <Text size="tiny">
+                      {formatCurrency(order.currency, order.totalPrice)}
                     </Text>
-                    <Text size="tiny" weight="thin" skin="disabled">
-                      {formatDate(new Date(order.createdDate))}
-                    </Text>
-                  </Box>
-                  <Text size="tiny" weight="thin">
-                    {formatCurrency(order.currency, order.totalPrice)}
-                  </Text>
-                </Box>
-                {index < orders.length - 1 && <Divider />}
-              </React.Fragment>
-            ))
-          )}
-        </Box>
-        <Box align="right" paddingTop="SP1">
+                  ),
+                  width: "auto",
+                },
+              ]}
+            />
+          ))
+        )}
+        <Box align="right" paddingTop="SP4">
           <TextButton
             onClick={() => navigate(WixPageId.MANAGE_ORDERS)}
             size="small"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Heading } from "@wix/design-system";
-import { Premium } from "@wix/wix-ui-icons-common";
+import { AppMarket } from "@wix/wix-ui-icons-common";
 import { appInstances } from "@wix/app-management";
 import { appId } from "../../../wix.config.json";
 
@@ -25,11 +25,10 @@ export function UpgradeCard({ appInstance }: UpgradeCardProps) {
       borderRadius="5px"
       direction="vertical"
     >
-      <Heading size="medium">Need more delivery options?</Heading>
+      <Heading size="medium">Need an express delivery option?</Heading>
       <Button
         size="small"
-        skin="premium"
-        prefixIcon={<Premium />}
+        prefixIcon={<AppMarket />}
         onClick={() => window.open(pricingPageURL)}
       >
         {`Click here to ${
