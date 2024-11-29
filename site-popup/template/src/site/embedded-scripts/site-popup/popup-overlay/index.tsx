@@ -1,18 +1,20 @@
 import ReactDOM from 'react-dom';
 import React, { useEffect, useState } from 'react';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Popup } from '../../../../components/popup/index.js';
 import { SitePopupOptions } from '../../../../types.js';
 import './index.css';
 import { site } from '@wix/site-site';
+import { useAppInstance } from '../../../../hooks/instance.js';
 
 const PopupOverlay = () => {
   const el = document.querySelector('#popup-data') as HTMLElement;
   const popupParams = el?.dataset as SitePopupOptions;
   
-  const isFree = popupParams.isFree === 'true';
   const [shown, setShown] = useState<boolean>(false);
-
   const [regionalSettings, setRegionalSettings] = useState<string>('en-us');
+  
+  const { data: appInstance, isLoading } = useAppInstance();
 
   useEffect(() => {
     site.regionalSettings().then(setRegionalSettings);
@@ -42,8 +44,7 @@ const PopupOverlay = () => {
     return false;
   };
 
-  if (isFree) {
-    // Don't render popup if user doesn't have a purchased plan
+  if (isLoading || appInstance?.isFree) {
     return null;
   }
 
@@ -62,4 +63,9 @@ const PopupOverlay = () => {
   );
 };
 
-ReactDOM.render(<PopupOverlay />, document.getElementById('site-popup'));
+ReactDOM.render(
+  <QueryClientProvider client={new QueryClient()}>
+    <PopupOverlay />
+  </QueryClientProvider>,
+  document.getElementById('site-popup')
+);

@@ -5,9 +5,9 @@ import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
-import { useEmbeds } from '../hooks/wix-embeds.js';
+import { useEmbeds } from '../../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
-import { useIsFree } from '../hooks/instance';
+import { useAppInstance } from '../../hooks/instance';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -16,15 +16,14 @@ const sitePopupDefaultOptions: SitePopupOptions = {
     'https://static.wixstatic.com/media/11062b_db81bbf678b641ff9e00b768cb155a49~mv2.jpg',
   imageTitle: 'Clothes For Sale',
   activationMode: 'active',
-  isFree: 'true'
 };
 
 function SitePopup() {
   const locale = i18n.getLocale();
-  const isFree = useIsFree();
 
   const { embedScript, getEmbeddedScript } =
     useEmbeds<Partial<SitePopupOptions>>();
+  const { isLoading: isAppInstanceLoading } = useAppInstance();
 
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
@@ -37,7 +36,6 @@ function SitePopup() {
       imageUrl: (
         getEmbeddedScript.data?.imageUrl || prevOptions.imageUrl
       ).replace(/\\/g, ''),
-      isFree: isFree.toString()
     }));
   }, [getEmbeddedScript.data]);
 
@@ -57,7 +55,7 @@ function SitePopup() {
         }
       />
       <Page.Content>
-        {getEmbeddedScript.isLoading ? (
+        {getEmbeddedScript.isLoading || isAppInstanceLoading ? (
           <Box align="center" verticalAlign="middle" height="50vh">
             <Loader text="Loading..." />
           </Box>
