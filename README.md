@@ -39,4 +39,4 @@ Wix also offers templates for developers using other development frameworks:
 Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our full [template collection](https://dev.wix.com/apps-templates?filter=cli).
 
 ## Questions or issues?
-Reach us in [Discord](https://discord.com/channels/1114269395317968906/1288424031141498902) in case you have more questions.
+Reach us in Discord in case you have more questions https://discord.gg/wixstudio
