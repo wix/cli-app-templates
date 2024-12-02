@@ -1,11 +1,11 @@
 import { shippingRates } from "@wix/ecom/service-plugins/context";
 import { calculatePrice } from "../../../../utils/shipping-calculator";
 import { getAppData } from "../../../database";
-import { getAppInstance, isPremiumInstance } from "../../../appInstance";
+import { getAppInstanceElevated, isPremiumInstance } from "../../../appInstance";
 
 shippingRates.provideHandlers({
   getShippingRates: async ({ request, metadata }) => {
-    const appInstance = await getAppInstance();
+    const appInstance = await getAppInstanceElevated();
     const isPremium = appInstance && isPremiumInstance(appInstance);
     const appData = getAppData({ isPremium });
 

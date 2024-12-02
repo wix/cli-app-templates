@@ -1,7 +1,7 @@
 import { auth } from "@wix/essentials";
 import { appInstances } from "@wix/app-management";
 
-export async function getAppInstance(): Promise<
+export async function getAppInstanceElevated(): Promise<
   appInstances.AppInstance | undefined
 > {
   try {

@@ -1,8 +1,9 @@
+import { appInstances } from "@wix/app-management";
 import { getAppData, updateAppDate } from "../../database";
-import { getAppInstance, isPremiumInstance } from "../../appInstance";
+import { isPremiumInstance } from "../../appInstance";
 
 export async function GET(req: Request) {
-  const appInstance = await getAppInstance();
+  const appInstance = (await appInstances.getAppInstance()).instance;
   const isPremium = appInstance && isPremiumInstance(appInstance);
   const appData = getAppData({ isPremium });
 
