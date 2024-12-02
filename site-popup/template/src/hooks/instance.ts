@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { appInstances } from '@wix/app-management';
 import { useQuery } from '@tanstack/react-query';
 import { httpClient } from '@wix/essentials';
@@ -11,7 +11,7 @@ import { httpClient } from '@wix/essentials';
   You can find more information about this here:
     https://dev.wix.com/docs/build-apps/launch-your-app/pricing-and-billing/set-up-a-freemium-business-model#step-4--create-an-upgrade-entry-point-to-your-pricing-page
 */
-const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/9ac72a76-61fa-4239-9425-63ef0ff7ede0?appInstanceId=${instanceId}`
+const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/<%= devCenter.appId %>?appInstanceId=${instanceId}`
 
 export const QUERY_INSTANCE = 'queryInstance';
 
