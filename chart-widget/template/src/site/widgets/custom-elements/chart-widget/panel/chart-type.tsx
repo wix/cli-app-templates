@@ -3,16 +3,17 @@ import { Box, FieldSet, SidePanel, Thumbnail } from '@wix/design-system';
 import { PieChart, BarChartSplit } from '@wix/wix-ui-icons-common';
 
 interface Props {
+  isPremium: boolean;
   type: string;
   onChange: (type: string) => void;
 }
 
 const options = [
-  { value: 'pie', icon: PieChart },
-  { value: 'bar', icon: BarChartSplit },
+  { value: 'pie', icon: PieChart, free: true },
+  { value: 'bar', icon: BarChartSplit, free: false },
 ];
 
-export const ChartType: FC<Props> = ({ type, onChange }) => {
+export const ChartType: FC<Props> = ({ type, onChange, isPremium }) => {
   return (
     <SidePanel.Field>
       <FieldSet
@@ -21,10 +22,11 @@ export const ChartType: FC<Props> = ({ type, onChange }) => {
         gap="medium"
         columns="min-content"
       >
-        {options.map(({ value, icon: Icon }) => (
+        {options.map(({ value, icon: Icon, free }) => (
           <Thumbnail
             key={value}
             selected={type === value}
+            disabled={!free && !isPremium}
             onClick={() => onChange(value)}
             hideSelectedIcon
             noPadding
