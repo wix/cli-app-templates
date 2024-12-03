@@ -6,7 +6,6 @@ import { useNavigateToPricingPage } from '../../../../../hooks/instance';
 export const Subscription: React.FC<{instance: appInstances.AppInstance}> = ({instance}) => {
   const {billing, isFree, freeTrialAvailable } = instance;
   const navigateToPricingPage = useNavigateToPricingPage(instance);
-  console.log({instance})
 
   if (isFree && freeTrialAvailable) {
     return (
