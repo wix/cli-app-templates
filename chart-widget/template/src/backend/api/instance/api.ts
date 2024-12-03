@@ -8,7 +8,6 @@ export async function GET() {
     )();
 
     return Response.json(appInstance);
-    // return Response.json({ message: "Hello, World!" });
   } catch (error) {
     return new Response("Failed to fetch app instance", { status: 500 });
   }
