@@ -3,9 +3,15 @@ import { appInstances } from '@wix/app-management';
 import { useQuery } from '@tanstack/react-query';
 import { httpClient } from '@wix/essentials';
 
-// FIXME: Pass APPID when app is generated
-// const PRICING_PAGE_URL = 'https://www.wix.com/apps/upgrade/APPIDHERE?appInstanceId=INSTANCEIDHERE'
-const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/49c252d3-c771-41db-ba55-0f3eb39f8f09?appInstanceId=${instanceId}`
+/*
+  This is the URL to the pricing page of the app.
+  This url looks like this:
+    https://www.wix.com/apps/upgrade/APPIDHERE?appInstanceId=INSTANCEIDHERE
+ 
+  You can find more information about this here:
+    https://dev.wix.com/docs/build-apps/launch-your-app/pricing-and-billing/set-up-a-freemium-business-model#step-4--create-an-upgrade-entry-point-to-your-pricing-page
+*/
+const getPricingPage = (instanceId: string) => `https://www.wix.com/apps/upgrade/<%= devCenter.appId %>?appInstanceId=${instanceId}`
 
 export const QUERY_INSTANCE = 'queryInstance';
 
