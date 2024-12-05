@@ -40,8 +40,6 @@ Run the following command to create a new app project using this template:
 npm create @wix/app@latest -- --template c442b755-2276-4336-918a-915865a9fa2b
 ```
 
-When asked what you would like to create, choose **A new Wix App**.
-
 In the creation process, you will be asked for a Wix app name and a package name for your project.
 
 + The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).

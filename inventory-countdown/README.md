@@ -43,8 +43,6 @@ In the directory where you want to create your project, run the following comman
 npm create @wix/app@latest -- -t 2ff7a5ae-d116-4c06-9394-7d7493428d0e
 ```
 
-When asked what you would like to create, choose **A new Wix App**.
-
 In the creation process, you will be asked for:
 
 + A **Wix app name**. This is the name of your app in the [App Dashboard](https://dev.wix.com/app-selector?title=Select+an+App&primaryButtonText=Select+Site&actionUrl=https%3A%2F%2Fdev.wix.com%2Fapps%2F%7BappId%7D%2Fhome).
