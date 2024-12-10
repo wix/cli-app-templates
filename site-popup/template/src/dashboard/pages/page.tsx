@@ -5,8 +5,9 @@ import '@wix/design-system/styles.global.css';
 import { withProviders } from '../withProviders';
 import { SitePopupSettings } from '../../components/site-popup-settings.js';
 import { SitePopupOptions } from '../../types.js';
-import { useEmbeds } from '../hooks/wix-embeds.js';
+import { useEmbeds } from '../../hooks/wix-embeds.js';
 import { Popup } from '../../components/popup/index.js';
+import { useAppInstance } from '../../hooks/instance';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
@@ -22,6 +23,7 @@ function SitePopup() {
 
   const { embedScript, getEmbeddedScript } =
     useEmbeds<Partial<SitePopupOptions>>();
+  const { isLoading: isAppInstanceLoading } = useAppInstance();
 
   const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
     sitePopupDefaultOptions
@@ -53,7 +55,7 @@ function SitePopup() {
         }
       />
       <Page.Content>
-        {getEmbeddedScript.isLoading ? (
+        {getEmbeddedScript.isLoading || isAppInstanceLoading ? (
           <Box align="center" verticalAlign="middle" height="50vh">
             <Loader text="Loading..." />
           </Box>

@@ -8,9 +8,11 @@ import {
   FormField,
   FormFieldProps,
 } from '@wix/design-system';
-import { SitePopupOptions } from '../types.js';
-import { ActivationConfiguration } from './activation-configuration.js';
-import { ImagePicker } from './image-picker.js';
+import { SitePopupOptions } from '../types';
+import { ActivationConfiguration } from './activation-configuration';
+import { ImagePicker } from './image-picker';
+import { SubscriptionBanner } from './subscription-banner';
+import { useAppInstance } from '../hooks/instance';
 
 interface Props {
   options: SitePopupOptions;
@@ -18,6 +20,8 @@ interface Props {
 }
 
 export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
+  const { data: appInstance } = useAppInstance();
+  
   const getFieldStatus = (
     field: keyof SitePopupOptions
   ): Partial<FormFieldProps> => {
@@ -43,7 +47,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
           />
           <Card.Divider />
           <Card.Content>
-            <Box gap={3} direction="vertical">
+            <Box gap={3} direction="horizontal">
               <Box gap={3} direction="vertical" width={'50%'}>
                 <FormField
                   labelSize="small"
@@ -51,6 +55,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                   {...getFieldStatus('headline')}
                 >
                   <Input
+                    disabled={appInstance?.isFree}
                     placeholder="Sale 20% Off"
                     value={options?.headline}
                     onChange={(e) =>
@@ -72,6 +77,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                   {...getFieldStatus('text')}
                 >
                   <InputArea
+                    disabled={appInstance?.isFree}
                     placeholder="Sign up and get 20% off on our Winter Sale"
                     value={options?.text}
                     onChange={(e) =>
@@ -84,6 +90,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                 </FormField>
                 <FormField labelSize="small" label="Popup Activation">
                   <ActivationConfiguration
+                    disabled={appInstance?.isFree}
                     activationOptions={{
                       activationMode: options.activationMode,
                       startDate: options.startDate,
@@ -99,6 +106,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                 </FormField>
                 <FormField labelSize="small" label="Popup Image">
                   <ImagePicker
+                    disabled={appInstance?.isFree}
                     imageTitle={options.imageTitle}
                     imageUrl={options.imageUrl}
                     onChange={(imageUrl, imageTitle) =>
@@ -110,6 +118,9 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                     }
                   />
                 </FormField>
+              </Box>
+              <Box gap={3} direction="vertical" width="50%">
+                <SubscriptionBanner />
               </Box>
             </Box>
           </Card.Content>

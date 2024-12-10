@@ -6,15 +6,18 @@ import { DataRangePicker } from './date-range-picker.js';
 interface Props {
   activationOptions: ActivationOptions;
   onChange: (activationOptions: ActivationOptions) => void;
+  disabled?: boolean;
 }
 
 export const ActivationConfiguration: FC<Props> = ({
   onChange,
   activationOptions,
+  disabled = false,
 }) => {
   return (
     <Box gap={3} direction="vertical" marginTop={1}>
       <RadioGroup
+        disabled={disabled}
         name="Popup Activation"
         display="horizontal"
         value={activationOptions.activationMode}
@@ -31,6 +34,7 @@ export const ActivationConfiguration: FC<Props> = ({
       </RadioGroup>
       {activationOptions.activationMode == 'timed' && (
         <DataRangePicker
+          disabled={disabled}
           startDate={Number(
             activationOptions.startDate || new Date().getTime()
           )}
