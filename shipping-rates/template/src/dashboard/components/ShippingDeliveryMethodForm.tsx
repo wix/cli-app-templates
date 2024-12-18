@@ -31,7 +31,7 @@ export function ShippingCostsForm({
           <Text>Set conditions:</Text>
           <Layout>
             <Cell span={4}>
-              <FormField label="First item">
+              <FormField label="First product">
                 <NumberInput
                   prefix={<Input.Affix value="$" />}
                   placeholder="Set price"
@@ -48,7 +48,7 @@ export function ShippingCostsForm({
               </FormField>
             </Cell>
             <Cell span={4}>
-              <FormField label="Second item">
+              <FormField label="Second product">
                 <NumberInput
                   prefix={<Input.Affix value="$" />}
                   placeholder="Set price"
@@ -65,7 +65,7 @@ export function ShippingCostsForm({
               </FormField>
             </Cell>
             <Cell span={4}>
-              <FormField label="Each additional item">
+              <FormField label="Each additional product">
                 <NumberInput
                   prefix={<Input.Affix value="$" />}
                   placeholder="Set price"

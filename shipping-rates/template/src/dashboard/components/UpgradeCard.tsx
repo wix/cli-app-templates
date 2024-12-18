@@ -25,15 +25,13 @@ export function UpgradeCard({ appInstance }: UpgradeCardProps) {
       borderRadius="5px"
       direction="vertical"
     >
-      <Heading size="medium">Need an express delivery option?</Heading>
+      <Heading size="medium">Want to offer an express delivery option?</Heading>
       <Button
         size="small"
         prefixIcon={<AppMarket />}
         onClick={() => window.open(pricingPageURL)}
       >
-        {`Click here to ${
-          appInstance.freeTrialAvailable ? "start a free trial" : "upgrade"
-        }`}
+        {appInstance.freeTrialAvailable ? "Start Free Trial" : "Upgrade"}
       </Button>
     </Box>
   );

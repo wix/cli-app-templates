@@ -108,7 +108,7 @@ function ShippingRatesPage() {
           />
         }
         title={"Shipping Rates App"}
-        subtitle="Customize shipping fees based on item quantity, weight, ensuring a flexible and cost-effective solution for your business."
+        subtitle="Customize shipping fees by factor of quanity for a flexible and cost-effective solution for your business."
       />
       <Page.Content>
         <Layout>
