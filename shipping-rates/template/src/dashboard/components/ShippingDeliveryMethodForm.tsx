@@ -48,7 +48,7 @@ export function ShippingCostsForm({
               </FormField>
             </Cell>
             <Cell span={4}>
-              <FormField label="econd item">
+              <FormField label="Second item">
                 <NumberInput
                   prefix={<Input.Affix value="$" />}
                   placeholder="Set price"
