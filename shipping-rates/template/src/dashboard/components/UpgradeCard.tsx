@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Button, Heading } from "@wix/design-system";
-import { AppMarket } from "@wix/wix-ui-icons-common";
 import { appInstances } from "@wix/app-management";
 import { appId } from "../../../wix.config.json";
 
