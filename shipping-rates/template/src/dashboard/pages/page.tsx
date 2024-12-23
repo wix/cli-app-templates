@@ -19,7 +19,6 @@ import { UpgradeCard } from "../components/UpgradeCard";
 import { appInstances } from "@wix/app-management";
 import { id as activationModalId } from "../modals/activate-shipping-rates-plugin/modal.json";
 import { id as shippingRatesPageId } from "./page.json";
-import { FreeTrialMessage } from "../components/FreeTrialMessage";
 
 function ShippingRatesPage() {
   const { showToast, navigate } = dashboard;
@@ -112,14 +111,6 @@ function ShippingRatesPage() {
       />
       <Page.Content>
         <Layout>
-          {appInstance?.billing?.freeTrialInfo?.status ===
-            appInstances.FreeTrialStatus.IN_PROGRESS && (
-            <Cell>
-              <FreeTrialMessage
-                freeTrialInfo={appInstance?.billing.freeTrialInfo}
-              />
-            </Cell>
-          )}
           <Cell span={8}>
             {getShippingAppData.isLoading ? (
               <Box align="center">
