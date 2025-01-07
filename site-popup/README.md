@@ -16,16 +16,16 @@ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-sta
 
 This Wix app template incorporates the following features:
 
-+ **Wix CLI**: Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the Wix CLI for  apps.
-+ **Wix Design System**: Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Wix App Market SDK**: Use the Embedded Scripts API to inject HTML code into a user’s site.
+- **Wix CLI**: Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the Wix CLI for apps.
+- **Wix Design System**: Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
+- **Wix App Market SDK**: Use the Embedded Scripts API to inject HTML code into a user’s site.
 
 ## Prerequisites
 
 Before getting started, make sure you have the following set up:
 
-+ [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
-+ [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
+- [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
+- [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
 
 ## Local Development
 
@@ -41,9 +41,9 @@ npm create @wix/app@latest -- --template 46746ee0-e0b0-4971-be34-f3ea94dd979b
 
 In the creation process, you will be asked for:
 
-+ A **Wix app name**. This is the name of your app in the [Wix Developer Center](https://dev.wix.com/apps/my-apps).
-+ A test site to install your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/build-your-app/testing/how-to-test-your-app-on-a-free-premium-development-site#create-a-premium-development-site).
-+ A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
+- A **Wix app name**. This is the name of your app in the [Wix Developer Center](https://dev.wix.com/apps/my-apps).
+- A test site to install your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/build-your-app/testing/how-to-test-your-app-on-a-free-premium-development-site#create-a-premium-development-site).
+- A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
 
@@ -51,8 +51,8 @@ This process registers a new app in the Wix Dev Center with the required permiss
 
 The project includes:
 
-+ Initial boilerplate code for a simple app with a dashboard page.
-+ A `package.json` file with your app’s dependencies.
+- Initial boilerplate code for a simple app with a dashboard page.
+- A `package.json` file with your app’s dependencies.
 
 ## Step 2 | Test the app
 
@@ -88,8 +88,8 @@ The embedded HTML script is the entry point for the popup component that will be
 
 After the app is created you can build it, which allows you to:
 
-+ Create a preview to share with others
-+ Create new versions of your app on the Dev Center.
+- Create a preview to share with others
+- Create new versions of your app on the Dev Center.
 
 ### Build the app
 
@@ -118,7 +118,7 @@ An app version allows you to publish an app to the Wix App Market or install it 
 To create an app version, run the following command:
 
 ```bash
-npm run create-version
+npm run release
 ```
 
 This guides you through creating a new app version in the Wix Developers Center. Once the app version is created, you can optionally [submit it for review](https://devforum.wix.com/kb/en/article/submit-your-app-for-review) and publish it to the [Wix App Market](https://www.wix.com/app-market).
@@ -127,6 +127,6 @@ This guides you through creating a new app version in the Wix Developers Center.
 
 For more information:
 
-+ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
-+ Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
-+ See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
+- Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
+- Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
+- See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).

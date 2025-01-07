@@ -16,17 +16,17 @@ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-sta
 
 This Wix app template incorporates the following features:
 
-+ **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
-+ **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-+ **Embedded script extension:** Embed an HTML code fragment on users' sites. For more information, see [Embedded Scripts](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/embedded-scripts).
+- **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
+- **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
+- **Embedded script extension:** Embed an HTML code fragment on users' sites. For more information, see [Embedded Scripts](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/embedded-scripts).
 
 ## Prerequisites
 
 Before getting started, make sure you have the following set up:
 
-+ [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
-+ [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
-+ [A Mixpanel account](https://mixpanel.com/).
+- [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
+- [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
+- [A Mixpanel account](https://mixpanel.com/).
 
 ## Local Development
 
@@ -42,8 +42,8 @@ npm create @wix/app@latest -- --template c442b755-2276-4336-918a-915865a9fa2b
 
 In the creation process, you will be asked for a Wix app name and a package name for your project.
 
-+ The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
-+ The package name is  the name of the package created locally for your project, and the name of the directory containing your project’s local files.
+- The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
+- The package name is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
 
@@ -51,10 +51,10 @@ This process registers a new app in the Wix Dev Center with the required permiss
 
 The project includes:
 
-+ Initial boilerplate code for a simple app with:
-  + An embedded script extension containing a Mixpanel script.
-  + A [dashboard page](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages) where a site admin can enter a Mixpanel project token. When a token is provided, the Mixpanel script is embedded on the site.
-+ A `package.json` file with your app's dependencies.
+- Initial boilerplate code for a simple app with:
+  - An embedded script extension containing a Mixpanel script.
+  - A [dashboard page](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages) where a site admin can enter a Mixpanel project token. When a token is provided, the Mixpanel script is embedded on the site.
+- A `package.json` file with your app's dependencies.
 
 ## Step 2 | Test the app
 
@@ -87,7 +87,7 @@ To complete this app's setup, you must provide a Mixpanel project token.
 1. Go to your chosen [Mixpanel](https://mixpanel.com/) project, or create a new one.
 1. Navigate to **Project Settings > Overview** and find your **Project Token** under **Access Keys**. Save the token.
 
-    ![Mixpanel project token](./images/project-token.png)
+   ![Mixpanel project token](./images/project-token.png)
 
 1. Return to the app’s page in your development site dashboard. In the text field under **Setup**, enter the token you saved and click **Activate**. This will both add the token to your embedded script parameters, and inject the code for the embedded script into the DOM of your site.
 
@@ -123,8 +123,8 @@ This file contains the `ProjectToken` component. It uses the hook functions defi
 
 After the app is created you can build it, which allows you to:
 
-+ Create a preview to share with others.
-+ Create new versions of your app in the Dev Center.
+- Create a preview to share with others.
+- Create new versions of your app in the Dev Center.
 
 ### Build the app
 
@@ -153,7 +153,7 @@ An app version allows you to publish an app to the [Wix App Market](https://www.
 To create an app version, run the following command:
 
 ```bash
-npm run create-version
+npm run release
 ```
 
 This guides you through creating a new app version in the Wix Dev Center. Once the app version is created, you can optionally [submit it for review](https://devforum.wix.com/kb/en/article/submit-your-app-for-review) and publish it to the [Wix App Market](https://www.wix.com/app-market).
@@ -164,6 +164,6 @@ To learn more about app versions, see [App Versions and Deployment](../workflow/
 
 For more information:
 
-+ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
-+ Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
-+ See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
+- Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
+- Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
+- See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
