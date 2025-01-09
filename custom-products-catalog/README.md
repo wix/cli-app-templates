@@ -18,18 +18,18 @@ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-sta
 
 This Wix app template incorporates the following features:
 
-- **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
-- **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
-- **Wix React SDK:** Simplify API requests to the Wix ecosystem.
-- **Wix Dashboard React SDK:** Integrate custom dashboard components with the Wix site dashboard.
-- **Wix Stores Products API:** Integrate custom logic for managing a store's products.
++ **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with 1 command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
++ **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
++ **Wix React SDK:** Simplify API requests to the Wix ecosystem.
++ **Wix Dashboard React SDK:** Integrate custom dashboard components with the Wix site dashboard.
++ **Wix Stores Products API:** Integrate custom logic for managing a store's products.
 
 ## Prerequisites
 
 Before getting started, make sure you have the following set up:
 
-- [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
-- [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
++ [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
++ [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
 
 ## Local Development
 
@@ -45,8 +45,8 @@ npm create @wix/app@latest -- --template 24493a0d-18f2-4f68-b6d5-55992cef7daa
 
 In the creation process, you will be asked for a Wix app name and a package name for your project.
 
-- The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
-- The package name is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
++ The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
++ The package name is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
 ### What you get
 
@@ -54,9 +54,9 @@ This process registers a new app in the Wix Dev Center with the required permiss
 
 The project includes:
 
-- Initial boilerplate code for a simple app with a [dashboard page](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages) and a [dashboard modal](https://dev.wix.com/docs/build-apps/developer-tools/extensions/dashboard-modal-extensions).
-- [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) integration, with methods for querying, creating, and deleting products.
-- A `package.json` file with your app's dependencies.
++ Initial boilerplate code for a simple app with a [dashboard page](https://dev.wix.com/docs/build-apps/developer-tools/cli/wix-cli-for-apps/extensions/dashboard-pages) and a [dashboard modal](https://dev.wix.com/docs/build-apps/developer-tools/extensions/dashboard-modal-extensions).
++ [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) integration, with methods for querying, creating, and deleting products.
++ A `package.json` file with your app's dependencies.
 
 ## Step 2 | Test the app
 
@@ -95,8 +95,8 @@ The dashboard page is pre-integrated with the [Wix Design System](https://www.wi
 
 It utilizes the [Wix Stores Products API](https://dev.wix.com/docs/sdk/api-reference/stores/products/introduction) to:
 
-- Query and present a list of the products in the store.
-- Delete selected products from the store.
++ Query and present a list of the products in the store.
++ Delete selected products from the store.
 
 Customize the dashboard page to fit your specific needs, whether it's updating the UI or adding new features.
 
@@ -122,8 +122,8 @@ This file contains the parent component for the modal. It uses the hook function
 
 After the app is created you can build it, which allows you to:
 
-- Create a preview to share with others.
-- Create new versions of your app on the Developers Center.
++ Create a preview to share with others.
++ Create new versions of your app on the Developers Center.
 
 ### Build the app
 
@@ -163,6 +163,6 @@ To learn more about app versions, see [App Versions and Deployment](../workflow/
 
 For more information:
 
-- Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
-- Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
-- See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
++ Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template).
++ Check out our [full collection of app templates](https://dev.wix.com/apps-templates).
++ See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
