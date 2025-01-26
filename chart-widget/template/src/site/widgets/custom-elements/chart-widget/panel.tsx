@@ -1,22 +1,37 @@
 import React, { type FC, useState, useEffect } from 'react';
-import { widget } from '@wix/editor';
-import { SidePanel, WixDesignSystemProvider } from '@wix/design-system';
+import { inputs, widget } from '@wix/editor';
+import {
+  Box,
+  FormField,
+  SidePanel,
+  TextButton,
+  WixDesignSystemProvider
+} from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
-import { DEFAULT_TYPE, DEFAULT_ITEMS, type ChartItem } from './common.js';
+import {
+  DEFAULT_TYPE,
+  DEFAULT_ITEMS,
+  type ChartItem,
+  DEFAULT_LEGEND_STYLE,
+  type LegendStyle
+} from './common.js';
 import Slice from './panel/slice.js';
 import { ChartType } from './panel/chart-type.js';
 
 const Panel: FC = () => {
   const [loaded, setLoaded] = useState(false);
   const [type, setType] = useState<string>('');
+  const [legendStyle, setLegendStyle] = useState<LegendStyle | undefined>(undefined);
   const [items, setItems] = useState<ChartItem[]>([]);
 
   useEffect(() => {
-    Promise.all([widget.getProp('type'), widget.getProp('items')]).then(([type, items]) => {
-      setType(type ?? DEFAULT_TYPE);
-      setItems(JSON.parse(items) ?? DEFAULT_ITEMS);
-      setLoaded(true);
-    });
+    Promise.all([widget.getProp('type'), widget.getProp('items'), widget.getProp('legend-style')])
+      .then(([type, items, storedLegendStyle]) => {
+        setType(type ?? DEFAULT_TYPE);
+        setItems(JSON.parse(items) ?? DEFAULT_ITEMS);
+        setLoaded(true);
+        setLegendStyle(JSON.parse(storedLegendStyle) ?? DEFAULT_LEGEND_STYLE);
+      });
   }, []);
 
   return (
@@ -31,6 +46,22 @@ const Panel: FC = () => {
                 widget.setProp('type', type);
               }}
             />
+            <SidePanel.Field>
+              <FormField label="Legend Style" labelPlacement="left" labelWidth="1fr">
+                <Box>
+                  <TextButton size="small" onClick={() => {
+                    void inputs.selectFont(legendStyle, {
+                      onChange: (value) => {
+                        if (value) {
+                          setLegendStyle(value);
+                          void widget.setProp('legend-style', JSON.stringify(value));
+                        }
+                      }
+                    });
+                  }}>Select</TextButton>
+                </Box>
+              </FormField>
+            </SidePanel.Field>
             {items.map((item, index) => (
               <Slice
                 key={index}
