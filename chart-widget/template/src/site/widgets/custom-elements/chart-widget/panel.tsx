@@ -33,6 +33,11 @@ const Panel: FC = () => {
         setLegendStyle(JSON.parse(storedLegendStyle) ?? DEFAULT_LEGEND_STYLE);
       });
   }, []);
+  useEffect(() => {
+    if (legendStyle?.font) {
+      void widget.setPreloadFonts([legendStyle.font])
+    }
+  }, [legendStyle]);
 
   return (
     <WixDesignSystemProvider>
