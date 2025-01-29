@@ -29,8 +29,8 @@ const Panel: FC = () => {
       .then(([type, items, storedLegendStyle]) => {
         setType(type ?? DEFAULT_TYPE);
         setItems(JSON.parse(items) ?? DEFAULT_ITEMS);
-        setLoaded(true);
         setLegendStyle(JSON.parse(storedLegendStyle) ?? DEFAULT_LEGEND_STYLE);
+        setLoaded(true);
       });
   }, []);
   useEffect(() => {
