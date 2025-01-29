@@ -1,4 +1,4 @@
-import { shippingRates } from "@wix/ecom/service-plugins/context";
+import { shippingRates } from "@wix/ecom/service-plugins";
 import { calculatePrice } from "../../../../utils/shipping-calculator";
 import { getAppData } from "../../../database";
 import { getAppInstanceElevated, isPremiumInstance } from "../../../appInstance";
