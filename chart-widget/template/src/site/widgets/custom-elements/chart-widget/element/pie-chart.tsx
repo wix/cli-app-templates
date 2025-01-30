@@ -6,17 +6,18 @@ import {
   PieChart as RechartsPieChart,
   ResponsiveContainer,
 } from 'recharts';
-import type { ChartItem } from '../common.js';
+import type { ChartItem, LegendStyle } from '../common.js';
 
 type Props = {
   items: ChartItem[];
+  legendStyle?: LegendStyle;
 };
 
-export const PieChart: FC<Props> = ({ items }) => {
+export const PieChart: FC<Props> = ({ items, legendStyle }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RechartsPieChart>
-        <Legend layout="horizontal" verticalAlign="middle" />
+        <Legend layout="horizontal" verticalAlign="middle" wrapperStyle={legendStyle}/>
         <Pie
           data={items}
           cx="50%"

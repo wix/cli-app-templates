@@ -8,13 +8,14 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import type { ChartItem } from '../common.js';
+import type { ChartItem, LegendStyle } from '../common.js';
 
 type Props = {
   items: ChartItem[];
+  legendStyle?: LegendStyle;
 };
 
-export const BarChart: FC<Props> = ({ items }) => {
+export const BarChart: FC<Props> = ({ items, legendStyle }) => {
   const data = [
     {
       name: 'Slices',
@@ -37,7 +38,7 @@ export const BarChart: FC<Props> = ({ items }) => {
         <CartesianGrid strokeDasharray="3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Legend layout="horizontal" verticalAlign="bottom" />
+        <Legend layout="horizontal" verticalAlign="bottom" wrapperStyle={legendStyle} />
         {items.map((item, index) => (
           <Bar
             key={index}
