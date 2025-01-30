@@ -18,10 +18,10 @@ type Props = {
 };
 
 const CustomElement: FC<Props> = ({
-                                    type = DEFAULT_TYPE,
-                                    items = DEFAULT_ITEMS,
-                                    legendStyle = DEFAULT_LEGEND_STYLE,
-                                  }) => {
+  type = DEFAULT_TYPE,
+  items = DEFAULT_ITEMS,
+  legendStyle = DEFAULT_LEGEND_STYLE,
+}) => {
   const Chart = useMemo(() => {
     const charts = {
       pie: PieChart,
