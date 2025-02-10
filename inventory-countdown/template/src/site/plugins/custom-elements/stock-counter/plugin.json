@@ -4,7 +4,7 @@
   "referenceComponentId": "<%= generatePageID() %>",
   "marketData": {
     "name": "Stock Countdown",
-    "logoUrl": "{{PUBLIC_URL}}/stock-counter/site-plugin-logo.svg"
+    "logoUrl": "../../../../assets/stock-counter/site-plugin-logo.svg"
   },
   "placements": [
     {
