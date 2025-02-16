@@ -124,7 +124,7 @@ This file contains the `ProjectToken` component. It uses the hook functions defi
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others.
-+ Create new versions of your app in the Dev Center.
++ Release new versions of your app in the Dev Center.
 
 ### Build the app
 
@@ -146,17 +146,17 @@ This command provides an inline link to an app preview URL.
 
 You can share this URL with collaborators on your development site. It directs to a dashboard page where they can preview and test your app.
 
-### Create an app version
+### Release an app version
 
 An app version allows you to publish an app to the [Wix App Market](https://www.wix.com/app-market) or install it on a site with a direct install URL.
 
-To create an app version, run the following command:
+To release an app version, run the following command:
 
 ```bash
 npm run release
 ```
 
-This guides you through creating a new app version in the Wix Dev Center. Once the app version is created, you can optionally [submit it for review](https://devforum.wix.com/kb/en/article/submit-your-app-for-review) and publish it to the [Wix App Market](https://www.wix.com/app-market).
+This guides you through releasing a new app version in the Wix Developers Center. Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
 
 To learn more about app versions, see [App Versions and Deployment](../workflow/app_versions_and_deployment.md).
 
