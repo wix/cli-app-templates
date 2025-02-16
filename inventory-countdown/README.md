@@ -66,7 +66,7 @@ This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/
 
 ### Set up a local development environment
 
-The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development:
+The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and release a version. To test the app during development:
 
 Set up a local development environment using the following command:
 

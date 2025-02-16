@@ -62,7 +62,7 @@ The app creation process installs the app on your chosen development site. Howev
 
 ### Set up a local development environment
 
-You won’t see the app extensions on your development site until you build the app and create a version. To test the app during development, set up a local development environment using the following command.
+You won’t see the app extensions on your development site until you build the app and release a version. To test the app during development, set up a local development environment using the following command.
 
 ```bash
 npm run dev
