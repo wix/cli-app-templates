@@ -8,9 +8,24 @@ dist
 # Logs
 logs
 *.log
+<% if(packageManager.name === 'yarn' || packageManager.name === 'yarn-berry') { -%>
 yarn-debug.log*
 yarn-error.log*
+<% } else if (packageManager.name === 'npm') { -%>
+npm-debug.log*
+<% } -%>
 
+<% if(packageManager.name === 'yarn-berry') { -%>
+# Yarn Berry
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+<% } -%>
 # Misc
 .DS_Store
 out
