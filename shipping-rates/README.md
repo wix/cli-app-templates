@@ -98,7 +98,7 @@ Follow the instructions to [Set up a Wix-managed free trial](https://dev.wix.com
 
 ### Set up a local development environment
 
-The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and create a version. To test the app during development, set up a local development environment using the following command:
+The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and release a version. To test the app during development, set up a local development environment using the following command:
 
 ```bash
 npm run dev
@@ -108,13 +108,13 @@ This will prompt you with a CLI menu. Follow the instructions to open a browser 
 
 The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
->**Note:** You won't be able to test service plugin extensions in your local development environment before building your app and creating a version. (See the testing steps below.)
+>**Note:** You won't be able to test service plugin extensions in your local development environment before building your app and releasing a version. (See the testing steps below.)
 
 ### Testing steps
 
-Before testing your app, you must [build and create a version](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/app-development/build-and-deploy-an-app-with-the-cli).
+Before testing your app, you must [build and release a version](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/app-development/build-and-deploy-an-app-with-the-cli).
 
-> **Note:** After creating a version, you can use the [`logs`](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/app-development/cli-command-reference#logs) command to view logs from the backend API and the service plugins.
+> **Note:** After releasing a version, you can use the [`logs`](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/app-development/cli-command-reference#logs) command to view logs from the backend API and the service plugins.
 >
 >```bash
 > npm run logs –version <version number> 
