@@ -123,7 +123,7 @@ This file contains the parent component for the modal. It uses the hook function
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others.
-+ Release new versions of your app in your app dashboard.
++ Release new versions of your app in your[app dashboard](https://dev.wix.com/apps/my-apps).
 
 ### Build the app
 

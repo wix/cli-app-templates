@@ -117,7 +117,7 @@ To release an app version, run the following command:
 npm run release
 ```
 
-This guides you through releasing a new app version in your app dashboard. Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
+This guides you through releasing a new app version in your [app dashboard](https://dev.wix.com/apps/my-apps). Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
 
 ## Learn more
 
