@@ -123,7 +123,7 @@ This file contains the parent component for the modal. It uses the hook function
 After the app is created you can build it, which allows you to:
 
 + Create a preview to share with others.
-+ Release new versions of your app on the Developers Center.
++ Release new versions of your app in your [app dashboard](https://dev.wix.com/apps/my-apps).
 
 ### Build the app
 
@@ -155,7 +155,7 @@ To release an app version, run the following command:
 npm run release
 ```
 
-This guides you through releasing a new app version in the Wix Developers Center. Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
+This guides you through releasing a new app version in your [app dashboard](https://dev.wix.com/apps/my-apps). Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
 
 To learn more about app versions, see [App Versions and Deployment](../workflow/app_versions_and_deployment.md).
 
