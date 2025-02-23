@@ -41,7 +41,7 @@ npm create @wix/app@latest -- --template 46746ee0-e0b0-4971-be34-f3ea94dd979b
 
 In the creation process, you will be asked for:
 
-+ A **Wix app name**. This is the name of your app in the [Wix Developer Center](https://dev.wix.com/apps/my-apps).
++ A **Wix app name**. This is the name of your app in the [App Dashboard](https://dev.wix.com/apps/my-apps).
 + A test site to install your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/build-your-app/testing/how-to-test-your-app-on-a-free-premium-development-site#create-a-premium-development-site).
 + A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
 
@@ -121,7 +121,7 @@ To release an app version, run the following command:
 npm run release
 ```
 
-This guides you through releasing a new app version in the Wix Developers Center. Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
+This guides you through releasing a new app version in your app dashboard. Once the app version is released, you may consider different [distribution options](https://dev.wix.com/docs/build-apps/launch-your-app/app-distribution/about-app-distribution).
 
 ## Learn more
 
