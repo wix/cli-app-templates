@@ -15,6 +15,6 @@
   },
   "presets": [{
     "id": "<%= generatePageID() %>",
-    "thumbnailUrl": "{{PUBLIC_URL}}/chart-widget/thumbnail.png"
+    "thumbnailUrl": "../../../../../assets/chart-widget/thumbnail.png"
   }]
 }
