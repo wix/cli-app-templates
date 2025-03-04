@@ -12,5 +12,9 @@
   "installation": {
     "autoAddToSite": true,
     "essential": false
-  }
+  },
+  "presets": [{
+    "id": "<%= generatePageID() %>",
+    "thumbnailUrl": "../../../../../assets/chart-widget/thumbnail.png"
+  }]
 }
