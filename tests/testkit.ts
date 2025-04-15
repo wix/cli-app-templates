@@ -27,6 +27,7 @@ const silentSpawn = (command: string, args: string[], options?: SpawnOptions) =>
 
 export const createApp = async (template: string) => {
     await mkdirAsync(CACHE_DIR, { recursive: true });
+    console.log(process.cwd());
     await silentSpawn('yarn',
         [
             'create',
