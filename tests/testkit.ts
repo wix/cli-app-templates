@@ -1,14 +1,6 @@
 import { spawn, SpawnOptions } from "node:child_process";
-import { mkdir, rm } from "node:fs";
-import { promisify } from "node:util";
-import path from 'node:path';
-
-const mkdirAsync = promisify(mkdir);
-const rmAsync = promisify(rm);
-
-const CACHE_DIR = '.cache';
-
-const templateDir = (template: string) => path.join(CACHE_DIR, template);
+import path from "node:path";
+import { temporaryDirectory } from 'tempy';
 
 const kebabToCamelCase = (str: string) =>
     str.replace(/-./g, match => match[1].toUpperCase());
@@ -42,29 +34,28 @@ const runCommand = (command: string, args: string[], options?: SpawnOptions) =>
     });
 
 export const createApp = async (template: string) => {
-    await mkdirAsync(CACHE_DIR, { recursive: true });
     try {
+        const cwd = temporaryDirectory();
+        const templatePath = path.join(__dirname, `../${template}/template`);
         await runCommand('yarn',
             [
                 'create',
                 '@wix/app',
                 `--app-name ${kebabToCamelCase(template)}`,
-                `--template-path ./../../${template}/template`,
+                `--template-path ${templatePath}`,
                 '--skip-install',
                 '--skip-git'
-            ], { 'cwd': CACHE_DIR, }
+            ], { cwd, }
         )
+        return path.join(cwd, template);
     } catch (e) {
         console.error(e);
         throw new Error(`Failed to create app from template "${template}".\n${e}`);
     }
 }
 
-export const installDependencies = async (template: string) =>
-    await runCommand('yarn', ['install', '--silent', '--prefer-offline'], { 'cwd': templateDir(template) })
+export const installDependencies = async (cwd: string) =>
+    await runCommand('yarn', ['install', '--silent', '--prefer-offline'], { cwd })
 
-export const buildApp = async (template: string) =>
-    await runCommand('yarn', ['build'], { 'cwd': templateDir(template) })
-
-export const clearCache = () => rmAsync(CACHE_DIR, { recursive: true, force: true });
-
+export const buildApp = async (cwd: string) =>
+    await runCommand('yarn', ['build'], { cwd })
