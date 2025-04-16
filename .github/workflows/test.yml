@@ -18,17 +18,6 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Cache Yarn dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            tests/node_modules
-            tests/.cache/**/node_modules
-            ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('tests/yarn.lock', 'tests/.cache/**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile --silent
         working-directory: tests
