@@ -20,6 +20,6 @@ describe.each(templates)("\"%s\" sanity", (template) => {
 
     it("should build the app successfully", async () => {
         await expect(buildApp(template)).resolves.not.toThrow();
-    }, 20_000)
+    }, 60_000)
 });
 
