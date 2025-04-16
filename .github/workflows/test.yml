@@ -16,17 +16,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'yarn' 
+          node-version: "18"
+          cache: "yarn"
 
       - name: Cache Yarn dependencies
         uses: actions/cache@v3
         with:
           path: |
-            **/node_modules
+            tests/node_modules
+            tests/.cache/**/node_modules
             ~/.cache/yarn
-            **/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tests/yarn.lock', 'tests/.cache/**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
