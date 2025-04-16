@@ -1,37 +1,21 @@
-import { spawn, SpawnOptions } from "node:child_process";
+import { execa, Options } from 'execa';
 import path from "node:path";
 import { temporaryDirectory } from 'tempy';
 
 const kebabToCamelCase = (str: string) =>
     str.replace(/-./g, match => match[1].toUpperCase());
 
-const runCommand = (command: string, args: string[], options?: SpawnOptions) =>
-    new Promise<string>((resolve, reject) => {
-        const process = spawn(command, args, { stdio: ['pipe', 'pipe', 'pipe'], ...options });
-        let outputHistory: string[] = [];
-
-        const captureOutput = (stream: NodeJS.ReadableStream) => {
-            stream.setEncoding('utf8');
-            stream.on('data', (chunk) => {
-                const lines = chunk.toString().split('\n').filter(Boolean);
-                outputHistory = [...outputHistory, ...lines];
-            });
+const runCommand = async (command: string, args: string[], options?: Options) => {
+    try {
+        const { stdout } = await execa(command, args, { stdio: 'pipe', ...options });
+        return stdout;
+    } catch (error) {
+        if (error instanceof Error) {
+            throw new Error((error as any).stderr || error.message);
         }
-
-        if (process.stdout) {
-            captureOutput(process.stdout);
-        }
-
-        if (process.stderr) {
-            captureOutput(process.stderr);
-        }
-
-        process.on('error', reject);
-        process.on('close', (code) => {
-            const output = outputHistory.join('\n');
-            code === 0 ? resolve(output) : reject(new Error(output));
-        });
-    });
+        throw error;
+    }
+};
 
 export const createApp = async (template: string) => {
     try {
