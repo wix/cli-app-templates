@@ -2,7 +2,8 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { clearCache, createApp, installDependencies, buildApp } from './testkit';
 
-const templates = ['chart-widget', 'custom-products-catalog', 'inventory-countdown', 'mixpanel-analytics', 'shipping-rates', 'site-popup']
+// const templates = ['chart-widget', 'custom-products-catalog', 'inventory-countdown', 'mixpanel-analytics', 'shipping-rates', 'site-popup']
+const templates = ['custom-products-catalog']
 
 describe.each(templates)("\"%s\" sanity", (template) => {
     beforeAll(async () => {

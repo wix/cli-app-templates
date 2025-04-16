@@ -22,6 +22,7 @@ const runCommand = (command: string, args: string[], options?: SpawnOptions) =>
             stream.setEncoding('utf8');
             stream.on('data', (chunk) => {
                 const lines = chunk.toString().split('\n').filter(Boolean);
+                console.log(lines);
                 outputHistory = [...outputHistory, ...lines];
             });
         }
