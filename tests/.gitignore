@@ -22,3 +22,4 @@ version.cache.json
 .DS_Store
 
 .cache
+tests/wix-error.log
