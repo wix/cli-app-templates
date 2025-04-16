@@ -19,10 +19,12 @@ jobs:
           node-version: "18"
 
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.1 --activate
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --silent
+        run: yarn install --immutable
         working-directory: tests
 
       - name: Login to Wix CLI
