@@ -41,7 +41,7 @@ export const createApp = async (template: string) => {
 }
 
 export const installDependencies = async (cwd: string) =>
-    await runCommand('yarn', ['install', '--silent', '--immutable'], { cwd, env: { ...process.env, YARN_IGNORE_PATH: '1', COREPACK_ENABLE_STRICT: '0' } })
+    await runCommand('yarn', ['install', '--silent', '--immutable'], { cwd })
 
 export const buildApp = async (cwd: string) =>
     await runCommand('yarn', ['build'], { cwd })

@@ -1,3 +1,3 @@
 import { templateSanity } from '../templateSanity';
 
-templateSanity('site-popup');
+// templateSanity('site-popup');

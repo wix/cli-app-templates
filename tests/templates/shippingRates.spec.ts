@@ -1,3 +1,3 @@
 import { templateSanity } from '../templateSanity';
 
-templateSanity('shipping-rates');
+// templateSanity('shipping-rates');
