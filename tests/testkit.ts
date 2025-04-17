@@ -19,6 +19,10 @@ const runCommand = async (command: string, args: string[], options?: Options) =>
 
 export const createApp = async (template: string) => {
     try {
+        console.log('********************');
+        console.log(await runCommand('yarn', ['--version']));
+        console.log('********************');
+
         const cwd = temporaryDirectory();
         const templatePath = path.join(__dirname, `../${template}/template`);
         await runCommand('yarn',
