@@ -31,8 +31,7 @@ export const createApp = async (template: string) => {
         kebabToCamelCase(template),
         '--template-path',
         templatePath,
-        '--skip-install',
-        '--skip-git'
+        '--skip-install'
       ], { cwd, }
     )
     return path.join(cwd, template);

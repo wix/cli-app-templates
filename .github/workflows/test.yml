@@ -27,6 +27,12 @@ jobs:
         run: yarn install --immutable
         working-directory: tests
 
+      - name: Initialize Git and configure user
+        run: |
+          git init
+          git config user.email "wix@wix.com"
+          git config user.name "wix cli"
+
       - name: Login to Wix CLI
         run: npx @wix/cli login --api-key ${{ secrets.WIX_API_KEY }}
 
