@@ -40,8 +40,12 @@ export const createApp = async (template: string) => {
     }
 }
 
-export const installDependencies = async (cwd: string) =>
+export const installDependencies = async (cwd: string) => {
+    console.log('**********************');
+    console.log(await runCommand('yarn', ['--version'], { cwd }));
+    console.log('**********************');
     await runCommand('yarn', ['install', '--silent', '--immutable'], { cwd })
+}
 
 export const buildApp = async (cwd: string) =>
     await runCommand('yarn', ['build'], { cwd })
