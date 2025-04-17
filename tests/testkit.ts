@@ -1,5 +1,6 @@
 import { execa, Options } from 'execa';
 import path from "node:path";
+import { fileURLToPath } from 'node:url';
 import { temporaryDirectory } from 'tempy';
 
 const kebabToCamelCase = (str: string) =>
@@ -20,7 +21,8 @@ const runCommand = async (command: string, args: string[], options?: Options) =>
 export const createApp = async (template: string) => {
     try {
         const cwd = temporaryDirectory();
-        const templatePath = path.join(__dirname, `../${template}/template`);
+        const dirname = path.dirname(fileURLToPath(import.meta.url));
+        const templatePath = path.join(dirname, `../${template}/template`);
         await runCommand('yarn',
             [
                 'create',
@@ -43,7 +45,7 @@ export const createApp = async (template: string) => {
 export const installDependencies = async (cwd: string) =>
     await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
 
-export const checkTypes = async (cwd: string) => 
+export const checkTypes = async (cwd: string) =>
     await runCommand('yarn', ['typecheck'], { cwd })
 
 export const buildApp = async (cwd: string) =>
