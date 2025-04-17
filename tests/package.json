@@ -10,7 +10,6 @@
     "@types/node": "^22.14.1",
     "execa": "^9.5.2",
     "tempy": "^3.1.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "vitest": "^3.1.1"
   },
