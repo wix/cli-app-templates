@@ -27,14 +27,18 @@ jobs:
         run: yarn install --immutable
         working-directory: tests
 
-      - name: Initialize Git and configure user
+      - name: Initialize git
         run: |
           git config --global user.email "wix@wix.com"
           git config --global user.name "wix cli"
 
+      - name: Run TypeScript type check
+        run: yarn typecheck
+        working-directory: tests
+
       - name: Login to Wix CLI
         run: npx @wix/cli login --api-key ${{ secrets.WIX_API_KEY }}
 
-      - name: test
+      - name: Test
         run: yarn test
         working-directory: tests

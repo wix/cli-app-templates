@@ -49,5 +49,3 @@ export const checkTypes = async (cwd: string) =>
 
 export const buildApp = async (cwd: string) =>
   await runCommand('yarn', ['build'], { cwd })
-
-
