@@ -43,5 +43,10 @@ export const createApp = async (template: string) => {
 export const installDependencies = async (cwd: string) =>
     await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
 
+export const checkTypes = async (cwd: string) => 
+    await runCommand('yarn', ['typecheck'], { cwd })
+
 export const buildApp = async (cwd: string) =>
     await runCommand('yarn', ['build'], { cwd })
+
+

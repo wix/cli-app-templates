@@ -1,6 +1,6 @@
 
 import { describe, expect, it } from 'vitest';
-import { buildApp, createApp, installDependencies } from './testkit';
+import { buildApp, checkTypes, createApp, installDependencies } from './testkit';
 
 export const templateSanity = (template: string) => {
     describe(`${template} sanity`, () => {
@@ -13,6 +13,10 @@ export const templateSanity = (template: string) => {
 
         it("should successfully install all dependencies", async () => {
             await expect(installDependencies(cwd)).resolves.not.toThrow();
+        }, 60_000);
+
+        it("should successfully run typescheck", async () => {
+            await expect(checkTypes(cwd)).resolves.not.toThrow();
         }, 60_000);
 
         it("should build the app successfully", async () => {
