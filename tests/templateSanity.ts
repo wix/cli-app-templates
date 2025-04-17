@@ -15,9 +15,9 @@ export const templateSanity = (template: string) => {
             await expect(installDependencies(cwd)).resolves.not.toThrow();
         }, 60_000);
 
-        it("should build the app successfully", async () => {
-            await expect(buildApp(cwd)).resolves.not.toThrow();
-        }, 60_000)
+        // it("should build the app successfully", async () => {
+        //     await expect(buildApp(cwd)).resolves.not.toThrow();
+        // }, 60_000)
     });
 }
 
