@@ -1,16 +1,4 @@
 node_modules
-build
-dist
-target
-schemas
-build-scripts
-
-yarn-error.log
-lerna-debug.log
-*.tsbuildinfo
-version.cache.json
-
-.pnp.*
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -18,8 +6,4 @@ version.cache.json
 !.yarn/sdks
 !.yarn/versions
 !.yarn/cache
-
 .DS_Store
-
-.cache
-tests/wix-error.log
