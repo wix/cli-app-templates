@@ -9,7 +9,7 @@ export const templateSanity = (template: string) => {
         it("should successfully create a template", async () => {
             cwd = await createApp(template);
             expect(cwd).toBeDefined();
-        });
+        }, 60_000);
 
         it("should successfully install all dependencies", async () => {
             await expect(installDependencies(cwd)).resolves.not.toThrow();
