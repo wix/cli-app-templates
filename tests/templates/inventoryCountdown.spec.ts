@@ -1,3 +1,3 @@
 import { templateSanity } from '../templateSanity';
 
-// templateSanity('inventory-countdown');
+templateSanity('inventory-countdown');
