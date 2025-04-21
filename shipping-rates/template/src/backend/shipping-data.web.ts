@@ -11,7 +11,7 @@ To learn more, check out our documentation: https://wix.to/6LV6Oka.
 */
 import { appInstances } from "@wix/app-management";
 import { webMethod, Permissions } from "@wix/web-methods";
-import { getAppData, updateAppDate } from "./database";
+import { getAppData, updateAppData } from "./database";
 import { isPremiumInstance } from "./appInstance";
 import type { ShippingAppData } from "../types";
 
@@ -26,7 +26,7 @@ export const getShippingData = webMethod(Permissions.Admin, async () => {
 export const setShippingData = webMethod(
   Permissions.Admin,
   (shippingData: ShippingAppData) => {
-    updateAppDate(shippingData);
+    updateAppData(shippingData);
     return shippingData;
   }
 );
