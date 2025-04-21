@@ -2,7 +2,7 @@
 
 The Shipping Rates Wix app template is part of the [Wix app template collection](https://dev.wix.com/apps-templates?filter=cli).
 
-This Wix CLI template demonstrates the use of the Wix Ecom Orders API, App Management API, and [Wix eCommerce Shipping Rates service plugin](https://dev.wix.com/docs/sdk/backend-modules/ecom/service-plugins/shipping-rates/introduction). The app template includes functionality for creating and managing custom shipping methods and costs, and offering a free trial of premium features to users. It is an excellent starting point if you plan on creating an app with a [backend API](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/api/add-api-extensions-with-the-cli) to fetch data, [service plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/service-plugins/add-service-plugin-extensions-with-the-cli) integration (particularly shipping rates,) or a free trial offer for users.
+This Wix CLI template demonstrates the use of the Wix Ecom Orders API, App Management API, and [Wix eCommerce Shipping Rates service plugin](https://dev.wix.com/docs/sdk/backend-modules/ecom/service-plugins/shipping-rates/introduction). The app template includes functionality for creating and managing custom shipping methods and costs, and offering a free trial of premium features to users. It is an excellent starting point if you plan on creating an app with a [Web Methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) to fetch data, [service plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/service-plugins/add-service-plugin-extensions-with-the-cli) integration (particularly shipping rates,) or a free trial offer for users.
 
 The template also demonstrates the basic functionality of the Dashboard SDK, and Wix Design System. 
 
@@ -21,7 +21,7 @@ This Wix app template incorporates the following features:
 - **Wix CLI:** Get a comprehensive developer experience with minimal setup and host your app on Wix with one command. Learn more about the [Wix CLI for apps](https://dev.wix.com/docs/build-apps/developer-tools/cli/get-started/about-the-wix-cli-for-apps).
 - **Wix Design System:** Utilize Wix's reusable React components for a cohesive user experience consistent with Wix's design standards.
 - **Wix eCommerce Orders API**: Access and manage Wix eCommerce Orders data on a Wix site (this data is for orders made through the Wix Stores app). Learn more about the [Wix eCommerce API](https://dev.wix.com/docs/sdk/backend-modules/ecom/introduction).
-- **Backend API**: Define your own HTTP functions that can be called from your frontend code. Read more about [Backend APIs](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/api/add-api-extensions-with-the-cli).
+- **Backend Api - Web Methods**: Define your own backend methods that can be called from your frontend code. Read more about [Web Methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli).
 - **Shipping Rates service plugin:** Integrate custom logic for calculating shipping rates. Learn more about the [Shipping Rates service plugin](https://dev.wix.com/docs/sdk/backend-modules/ecom/service-plugins/shipping-rates/introduction).
 - **Free trial functionality**: Integrate with a free trial in the Wix App Market to offer users a free trial with additional features. Read more about [free trials](https://dev.wix.com/docs/build-apps/launch-your-app/pricing-and-billing/set-up-and-manage-free-trials).
 
@@ -61,18 +61,30 @@ The project includes:
 
 - Initial boilerplate code for a simple app with:
     - A shipping rates service plugin extension that defines custom shipping rates that are displayed on cart and checkout pages of sites the app is installed on.
-    - A custom [backend API](#backend-api) to get and update app data stored in a collection or database.
+    - Custom [Web Methods](#backend-api) to get and update app data stored in a collection or database.
     - [Free trial functionality](#free-trial) with additional features for users that sign up.
     - A modal instructing users how to activate the shipping rates service plugin.
 - A `package.json` file with your app’s dependencies.
+- a `tsconfig.json` file configured with path aliases for simple importing.
 
-#### Backend API
+#### Backend API - Web Methods
 
-A [backend API extension](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/api/add-api-extensions-with-the-cli) is defined in [`template/src/backend/api/shipping-data/api.ts`](./template/src/backend/api/shipping-data/api.ts). The purpose of this API is to abstract underlying functionalities, streamlining data management while simplifying future modifications. 
+The [Web Methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) are defined in [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts). The purpose of these methods is to abstract underlying functionalities, streamlining data management while simplifying future modifications. 
 
-The API allows app instances to call the backend to get and update app data stored in a collection or database.`GET` and `POST` requests to this API call `getAppData()` and `updateAppData()` respectively, which are defined in in [`template/src/backend/database.ts`](./template/src/backend/database.ts). In this template we’re using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. The actual implementation of storing and updating data in a database or collection is left to you.
+The methods allows app instances to call the backend to get and update app data stored in a collection or database. The `getShippingData` and `setShippingData` web methods call `getAppData()` and `updateAppData()` respectively, which are defined in in [`template/src/backend/database.ts`](./template/src/backend/database.ts). In this template we’re using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. The actual implementation of storing and updating data in a database or collection is left to you.
 
-We call the API using `getShippingAppData()` and `setShippingAppData()` in the [dashboard page code](./template/src/dashboard/pages/page.tsx). These functions are defined in [`template/src/dashboard/hooks/use-shipping-app-data.ts`](./template/src/dashboard/hooks/use-shipping-app-data.ts).
+We call the `getShippingAppData()` and `setShippingAppData()` hooks in the [dashboard page code](./template/src/dashboard/pages/page.tsx). These functions are defined in [`template/src/dashboard/hooks/use-shipping-app-data.ts`](./template/src/dashboard/hooks/use-shipping-app-data.ts).
+
+##### Using web methods 
+Wix CLI supports defining custom [paths](https://www.typescriptlang.org/tsconfig/#paths) using the [`tsconfig.json`](./template/src/tsconfig.json) file,
+In this project we've defined the following path:
+```json
+"backend/*": ["./src/backend/*"]
+``` 
+This path allows you to import web methods easily from the backend folder, example from the [`use-shipping-app-data.ts`](./template/src/dashboard/hooks/use-shipping-app-data.ts) file:
+```js
+import { getShippingData, setShippingData } from "backend/shipping-data.web";
+```
 
 #### Free trial
 
@@ -160,13 +172,11 @@ The Backend API abstracts underlying functionalities, streamlining data manageme
 
 In this template we’re using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. Add your own logic to connect to a database or collection, and store and retrieve the user's data.  You can associate data in your database with the specific instance of the app that created it using [app instance IDs](https://dev.wix.com/docs/build-apps/develop-your-app/access/app-instances/about-app-instances#app-instance-id). You can get the app instance ID by calling `getAppInstance()` in [`appInstance.ts`](./template/src/backend/appInstance.ts). 
 
-
-
 Development entry point: [`template/src/backend/database.ts`](./template/src/backend/database.ts)
 
-You can also add additional support for additional API calls with new functionality.
+You can also add additional support with additional Web Methods to add new functionality.
 
-Development entry point: [`template/src/backend/api/shipping-data/api.ts`](./template/src/backend/api/shipping-data/api.ts)
+Development entry point: [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts)
 
 ### Service Plugin
 
