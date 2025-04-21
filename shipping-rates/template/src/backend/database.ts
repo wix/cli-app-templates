@@ -5,6 +5,6 @@ export const getAppData = ({ isPremium = false }: { isPremium?: boolean }) => {
   return isPremium ? PREMIUM_APP_DATA : DEFAULT_APP_DATA;
 };
 
-export const updateAppDate = (updatedData: ShippingAppData) => {
+export const updateAppData = (updatedData: ShippingAppData) => {
   console.log("Data updated", updatedData);
 };
