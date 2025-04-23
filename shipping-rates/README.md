@@ -174,7 +174,7 @@ In this template we’re using a mock database where `getAppData()` returns hard
 
 Development entry point: [`template/src/backend/database.ts`](./template/src/backend/database.ts)
 
-You can also add additional support with additional Web Methods to add new functionality.
+You can also add additional support with additional web methods to add new functionality.
 
 Development entry point: [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts)
 
