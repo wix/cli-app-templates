@@ -61,7 +61,7 @@ The project includes:
 
 - Initial boilerplate code for a simple app with:
     - A shipping rates service plugin extension that defines custom shipping rates that are displayed on cart and checkout pages of sites the app is installed on.
-    - Custom [Web Methods](#backend-api) to get and update app data stored in a collection or database.
+    - Custom [web methods](#backend-api) to get and update app data stored in a collection or database.
     - [Free trial functionality](#free-trial) with additional features for users that sign up.
     - A modal instructing users how to activate the shipping rates service plugin.
 - A `package.json` file with your app’s dependencies.
