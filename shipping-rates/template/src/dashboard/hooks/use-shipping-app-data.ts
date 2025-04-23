@@ -1,5 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { httpClient } from "@wix/essentials";
+import {
+  getShippingData,
+  setShippingData,
+} from "../../backend/shipping-data.web";
 import type { ShippingAppData } from "../../types";
 import { DEFAULT_APP_DATA } from "../../consts";
 
@@ -12,11 +15,7 @@ export const useShippingAppData = () => {
     queryKey,
     queryFn: async () => {
       try {
-        const response = await httpClient.fetchWithAuth(
-          `${import.meta.env.BASE_API_URL}/shipping-data`
-        );
-
-        return response.json();
+        return await getShippingData();
       } catch (error) {
         console.log("error fetching data:", error);
 
@@ -27,13 +26,7 @@ export const useShippingAppData = () => {
 
   const setShippingAppData = useMutation({
     mutationFn: async (newData: ShippingAppData) => {
-      return httpClient.fetchWithAuth(
-        `${import.meta.env.BASE_API_URL}/shipping-data`,
-        {
-          method: "POST",
-          body: JSON.stringify(newData),
-        }
-      );
+      return setShippingData(newData);
     },
     onSuccess: (data) => {
       void queryClient.invalidateQueries({ queryKey });

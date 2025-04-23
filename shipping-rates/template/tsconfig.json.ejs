@@ -5,7 +5,10 @@ to: tsconfig.json
   "extends": "@wix/cli-app/tsconfig.app.json",
   "compilerOptions": {
     "rootDir": "src",
-    "types": ["react"]
+    "types": ["react"],
+    "paths": {
+      "backend/*": ["./src/backend/*"]
+    }
   },
   "include": ["src"]
 }
