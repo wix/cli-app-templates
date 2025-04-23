@@ -69,7 +69,7 @@ The project includes:
 
 #### Backend API - Web Methods
 
-The [Web Methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) are defined in [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts). The purpose of these methods is to abstract underlying functionalities, streamlining data management while simplifying future modifications. 
+[Web methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) are defined in [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts). The purpose of these methods is to abstract underlying functionalities, streamlining data management while simplifying future modifications. 
 
 The methods allow app instances to call the backend to get and update app data stored in a collection or database. The `getShippingData` and `setShippingData` web methods call `getAppData()` and `updateAppData()` respectively, which are defined in in [`template/src/backend/database.ts`](./template/src/backend/database.ts). In this template we’re using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. The actual implementation of storing and updating data in a database or collection is left to you.
 
