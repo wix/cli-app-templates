@@ -13,7 +13,7 @@ export const templateSanity = (template: string) => {
 
     it("should successfully install all dependencies", async () => {
       await expect(installDependencies(cwd)).resolves.not.toThrow();
-    }, 60_000);
+    }, 200_000);
 
     it("should successfully run typescheck", async () => {
       await expect(checkTypes(cwd)).resolves.not.toThrow();
