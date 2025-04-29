@@ -28,7 +28,7 @@ This Wix app template incorporates the following features:
 
 Before getting started, make sure you have the following set up:
 
-+ [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
++ [Node.js](https://nodejs.org/en/) (v20.11.0 or higher)
 + [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
 
 ## Local Development
@@ -47,7 +47,7 @@ In the creation process, you will be asked for:
 
 + A **Wix app name**. This is the name of your app in the [App Dashboard](https://dev.wix.com/app-selector?title=Select+an+App&primaryButtonText=Select+Site&actionUrl=https%3A%2F%2Fdev.wix.com%2Fapps%2F%7BappId%7D%2Fhome).
 + A site to install and test your app on. You can select an existing site or create a new [development site](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/get-started/quick-start#development-site).
-+ A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project’s local files.
++ A **package name**. This is the name of the package created locally for your project, and the name of the directory containing your project's local files.
 
 ### What you get
 
@@ -56,7 +56,7 @@ This process registers a new app in the App Dashboard with the required permissi
 The project includes:
 
 + Initial boilerplate code for a simple app with a site plugin extension.
-+ A `package.json` file with your app’s dependencies.
++ A `package.json` file with your app's dependencies.
 
 ## Step 2 | Test the app
 
@@ -66,7 +66,7 @@ This app makes calls to the Wix Stores [Inventory API](https://dev.wix.com/docs/
 
 ### Set up a local development environment
 
-The app creation process installs the app on your chosen development site. However, you won’t see the app extensions on your site until you build the app and release a version. To test the app during development:
+The app creation process installs the app on your chosen development site. However, you won't see the app extensions on your site until you build the app and release a version. To test the app during development:
 
 Set up a local development environment using the following command:
 

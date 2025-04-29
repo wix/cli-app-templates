@@ -24,7 +24,7 @@ This Wix app template incorporates the following features:
 
 Before getting started, make sure you have the following set up:
 
-+ [Node.js](https://nodejs.org/en/) (v18.16.0 or higher)
++ [Node.js](https://nodejs.org/en/) (v20.11.0 or higher)
 + [A Wix developer account](https://users.wix.com/signin?loginDialogContext=signup&referralInfo=HEADER&postLogin=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&postSignUp=https:%2F%2Fdev.wix.com%2Fdc3%2Fmy-apps&forceRender=true)
 + [A Mixpanel account](https://mixpanel.com/).
 
@@ -43,7 +43,7 @@ npm create @wix/app@latest -- --template c442b755-2276-4336-918a-915865a9fa2b
 In the creation process, you will be asked for a Wix app name and a package name for your project.
 
 + The Wix app name is the name that appears for your app in the [Wix Dev Center](https://dev.wix.com/apps/my-apps).
-+ The package name is  the name of the package created locally for your project, and the name of the directory containing your project’s local files.
++ The package name is  the name of the package created locally for your project, and the name of the directory containing your project's local files.
 
 ### What you get
 
@@ -62,7 +62,7 @@ The app creation process installs the app on your chosen development site. Howev
 
 ### Set up a local development environment
 
-You won’t see the app extensions on your development site until you build the app and release a version. To test the app during development, set up a local development environment using the following command.
+You won't see the app extensions on your development site until you build the app and release a version. To test the app during development, set up a local development environment using the following command.
 
 ```bash
 npm run dev
@@ -89,7 +89,7 @@ To complete this app's setup, you must provide a Mixpanel project token.
 
     ![Mixpanel project token](./images/project-token.png)
 
-1. Return to the app’s page in your development site dashboard. In the text field under **Setup**, enter the token you saved and click **Activate**. This will both add the token to your embedded script parameters, and inject the code for the embedded script into the DOM of your site.
+1. Return to the app's page in your development site dashboard. In the text field under **Setup**, enter the token you saved and click **Activate**. This will both add the token to your embedded script parameters, and inject the code for the embedded script into the DOM of your site.
 
 ## Extend and customize the app
 
