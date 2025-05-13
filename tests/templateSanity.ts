@@ -9,11 +9,12 @@ export const templateSanity = (template: string) => {
     it("should successfully create a template", async () => {
       cwd = await createApp(template);
       expect(cwd).toBeDefined();
-    }, 60_000);
+    }, 80_000);
 
     it("should successfully install all dependencies", async () => {
+      console.log(cwd);
       await expect(installDependencies(cwd)).resolves.not.toThrow();
-    }, 60_000);
+    }, 100_000);
 
     it("should successfully run typescheck", async () => {
       await expect(checkTypes(cwd)).resolves.not.toThrow();
