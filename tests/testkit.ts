@@ -43,7 +43,7 @@ export const createApp = async (template: string) => {
 }
 
 export const installDependencies = async (cwd: string) =>
-  await runCommand('npm', ['install', '--silent'], { cwd })
+  await runCommand('npm', ['install'], { cwd })
 
 export const checkTypes = async (cwd: string) =>
   await runCommand('npm', ['run', 'typecheck'], { cwd })
