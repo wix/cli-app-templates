@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "20.11"
 
-      - name: Install dependencies
+      - name: Install dependencies.
         run: |
           rm -f package-lock.json
           npm install
