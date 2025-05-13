@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           rm -f package-lock.json
-          npm ci
+          npm install
         working-directory: tests
 
       - name: Initialize git
