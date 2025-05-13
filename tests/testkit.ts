@@ -26,7 +26,7 @@ export const createApp = async (template: string) => {
     await runCommand('npm',
       [
         'create',
-        '@wix/app',
+        '@wix/app@latest',
         '--',
         '--app-name',
         kebabToCamelCase(template),
