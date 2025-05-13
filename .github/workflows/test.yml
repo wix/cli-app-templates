@@ -16,15 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.11"
-
-      - name: Enable Corepack
-        run: |
-          corepack enable
-          corepack prepare yarn@4.9.1 --activate
+          node-version: "18.18"
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm install
         working-directory: tests
 
       - name: Initialize git
@@ -33,7 +28,7 @@ jobs:
           git config --global user.name "wix cli"
 
       - name: Run TypeScript type check
-        run: yarn typecheck
+        run: npm run typecheck
         working-directory: tests
 
       - name: Login to Wix CLI

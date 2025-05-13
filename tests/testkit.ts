@@ -23,10 +23,11 @@ export const createApp = async (template: string) => {
     const cwd = temporaryDirectory();
     const dirname = path.dirname(fileURLToPath(import.meta.url));
     const templatePath = path.join(dirname, `../${template}/template`);
-    await runCommand('yarn',
+    await runCommand('npm',
       [
         'create',
         '@wix/app',
+        '--',
         '--app-name',
         kebabToCamelCase(template),
         '--template-path',
@@ -42,10 +43,10 @@ export const createApp = async (template: string) => {
 }
 
 export const installDependencies = async (cwd: string) =>
-  await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
+  await runCommand('npm', ['install', '--silent'], { cwd })
 
 export const checkTypes = async (cwd: string) =>
-  await runCommand('yarn', ['typecheck'], { cwd })
+  await runCommand('npm', ['run', 'typecheck'], { cwd })
 
 export const buildApp = async (cwd: string) =>
-  await runCommand('yarn', ['build'], { cwd })
+  await runCommand('npm', ['run', 'build'], { cwd })
