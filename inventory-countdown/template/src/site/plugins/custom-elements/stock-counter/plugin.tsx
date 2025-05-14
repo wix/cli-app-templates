@@ -31,9 +31,13 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
         },
       })
       .then((result) => {
-        const productInventory = result.inventoryItems[0];
+        const productInventory = result?.inventoryItems && result.inventoryItems[0];
 
-        const shouldShowInStock = productInventory.variants.some(
+        if (!productInventory) {
+          return 0;
+        }
+
+        const shouldShowInStock = productInventory.variants?.some(
           (variant) => variant.inStock && variant.quantity === undefined
         );
 
@@ -41,10 +45,10 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
           return IN_STOCK;
         }
 
-        return productInventory.variants.reduce((inStockCount, variant) => {
+        return productInventory.variants?.reduce((inStockCount, variant) => {
           inStockCount += variant.quantity || 0;
           return inStockCount;
-        }, 0);
+        }, 0) || 0;
       })
   );
 }
