@@ -14,7 +14,7 @@ import { CollectionPage } from '@wix/patterns/page';
 import {
   useTableCollection,
   Table,
-  PrimaryPageButton,
+  PrimaryActions,
   useOptimisticActions,
   deleteSecondaryAction,
   MultiBulkActionToolbar,
@@ -160,8 +160,8 @@ function Products() {
           />
         }
         primaryAction={
-          <PrimaryPageButton
-            text="Add Product"
+          <PrimaryActions
+            label="Add Product"
             onClick={() => setShown(!shown)}
           />
         }
