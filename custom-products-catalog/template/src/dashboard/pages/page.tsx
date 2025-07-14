@@ -120,7 +120,7 @@ function Products() {
           return false;
         }
 
-        if (filters.productType && product.productType && filters.productType.indexOf(product.productType) === -1) {
+        if (filters.productType && product.productType && filters.productType.indexOf(product.productType as products.ProductType) === -1) {
           return false;
         }
 
