@@ -8,6 +8,7 @@ export const templateSanity = (template: string) => {
 
     it("should successfully create a template", async () => {
       cwd = await createApp(template);
+      console.log('>>>>', cwd);
       expect(cwd).toBeDefined();
     }, 60_000);
 
