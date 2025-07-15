@@ -13,10 +13,8 @@ export const useOrders = ({ limit }: useOrdersProps) => {
       try {
         // Read more about the orders SDK at https://dev.wix.com/docs/sdk/backend-modules/ecom/orders/search-orders
         const searchResponse = await orders.searchOrders({
-          search: {
-            cursorPaging: {
-              limit,
-            },
+          cursorPaging: {
+            limit,
           },
         });
 
@@ -31,7 +29,7 @@ export const useOrders = ({ limit }: useOrdersProps) => {
               createdDate: order?._createdDate ?? "",
               totalPrice: Number(order?.priceSummary?.total?.amount) ?? 0,
               currency: order?.currency ?? "USD",
-            } as OrderSummary)
+            }) as OrderSummary,
         );
       } catch (error) {
         console.error("Failed to fetch orders: ", error);
