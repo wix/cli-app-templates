@@ -1,0 +1,16 @@
+---
+to: .vscode/mcp.json
+skip_if: <%= ideForMcpType !== 'VsCode' %>
+---
+{
+  "servers": {
+    "wix-mcp-remote": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wix/mcp-remote",
+        "https://mcp.wix.com/sse"
+      ]
+    }
+  }
+}
