@@ -3,32 +3,37 @@ to: package.json
 ---
 {
   "name": "<%= packageName %>",
+  "type": "module",
   "version": "1.0.0",
+  "scripts": {
+    "astro": "astro",
+    "wix": "wix",
+    "env": "wix env",
+    "dev": "wix dev",
+    "build": "wix build",
+    "preview": "wix preview",
+    "release": "wix release",
+    "generate": "wix generate"
+  },
   "dependencies": {
     "@tanstack/react-query": "^4.36.1",
     "@wix/app-management": "^1.0.0",
     "@wix/design-system": "^1.111.0",
     "@wix/essentials": "^0.1.4",
     "@wix/wix-ui-icons-common": "^3.0.34",
-    "mixpanel-browser": "^2.49.0"
+    "astro": "^5.8.0",
+    "mixpanel-browser": "^2.49.0",
+    "react-to-webcomponent": "^2.0.0",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
-    "@wix/cli": "^1.0.0",
-    "@wix/cli-app": "^1.0.0",
+    "@astrojs/cloudflare": "^12.5.3",
+    "@astrojs/react": "^4.3.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@wix/cli": "^1.1.135",
     "@wix/sdk-types": "^1.0.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "typescript": "^5.3.3"
-  },
-  "scripts": {
-    "build": "wix app build",
-    "release": "wix app release",
-    "dev": "wix app dev",
-    "preview": "wix app preview",
-    "logs": "wix app logs",
-    "generate": "wix app generate",
-    "typecheck": "tsc --noEmit"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

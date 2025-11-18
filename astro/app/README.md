@@ -1,1 +1,0 @@
-## Astro App Templates

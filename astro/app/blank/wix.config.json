@@ -1,5 +1,0 @@
-{
-  "appId": "<%= devCenter.appId %>",
-  "projectId": "<%= packageName %>",
-  "projectType": "App"
-}

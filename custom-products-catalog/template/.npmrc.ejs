@@ -1,0 +1,5 @@
+---
+to: .npmrc
+skip_if: <%= packageManager.name !== 'npm' || isMonorepo %>
+---
+legacy-peer-deps=true
