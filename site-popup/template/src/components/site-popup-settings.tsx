@@ -6,9 +6,9 @@ import {
   InputArea,
   Card,
   FormField,
-  FormFieldProps,
+  type FormFieldProps,
 } from '@wix/design-system';
-import { SitePopupOptions } from '../types.js';
+import type { SitePopupOptions } from '../types.js';
 import { ActivationConfiguration } from './activation-configuration.js';
 import { ImagePicker } from './image-picker.js';
 

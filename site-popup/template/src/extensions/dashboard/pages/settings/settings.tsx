@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { i18n } from '@wix/essentials';
 import { Box, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
-import { withProviders } from '../withProviders';
-import { SitePopupSettings } from '../../components/site-popup-settings.js';
-import { SitePopupOptions } from '../../types.js';
-import { useEmbeds } from '../hooks/wix-embeds.js';
-import { Popup } from '../../components/popup/index.js';
+import { withProviders } from '../../withProviders';
+import { SitePopupSettings } from '../../../../components/site-popup-settings.js';
+import type { SitePopupOptions } from '../../../../types.js';
+import { useEmbeds } from '../../hooks/wix-embeds.js';
+import { Popup } from '../../../../components/popup/index.js';
 
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',

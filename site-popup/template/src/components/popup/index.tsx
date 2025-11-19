@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { CloseButton } from '../close-button.js';
-import { SitePopupOptions } from '../../types.js';
+import type { SitePopupOptions } from '../../types.js';
 import './index.css';
 
 function formatDateWithLocale(dateInMillis: string, locale: string) {
