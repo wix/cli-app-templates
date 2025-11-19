@@ -1,5 +1,5 @@
-import { products } from '@wix/stores';
 import { useCallback } from 'react';
+import { products } from '@wix/stores';
 import { CollectionOptimisticActions } from '@wix/patterns';
 
 export function useCreateProduct(optimisticActions: CollectionOptimisticActions<products.Product, {}>) {

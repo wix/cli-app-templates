@@ -7,9 +7,6 @@ import {
 } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import { products } from '@wix/stores';
-import { withProviders } from '../withProviders';
-import { useCreateProduct, useDeleteProducts } from '../hooks/stores';
-import { CreateProductModal } from '../components/create-product';
 import { CollectionPage } from '@wix/patterns/page';
 import {
   useTableCollection,
@@ -19,14 +16,17 @@ import {
   deleteSecondaryAction,
   MultiBulkActionToolbar,
   CustomColumns,
-  Filter,
   CollectionToolbarFilters,
   dateRangeFilter,
-  RangeItem,
   DateRangeFilter,
   RadioGroupFilter,
   stringsArrayFilter,
+  type Filter,
+  type RangeItem,
 } from '@wix/patterns';
+import { withProviders } from '../../withProviders';
+import { useCreateProduct, useDeleteProducts } from '../../hooks/stores';
+import { CreateProductModal } from '../../../../components/create-product';
 
 // Define filter types for the table.
 type TableFilters = {
