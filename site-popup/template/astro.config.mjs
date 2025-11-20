@@ -10,4 +10,5 @@ export default defineConfig({
   integrations: [wix(), react()],
   image: { domains: ["static.wixstatic.com"] },
   devToolbar: { enabled: false },
+  server: { allowedHosts: true, host: true },
 });
