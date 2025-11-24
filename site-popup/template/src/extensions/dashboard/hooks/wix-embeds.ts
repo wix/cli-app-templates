@@ -1,6 +1,17 @@
 import { embeddedScripts } from '@wix/app-management';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
+type WixError = {
+  message: string;
+  details: {
+    applicationError: {
+      description: string;
+      code: string;
+      data: Record<string, unknown>;
+    }
+  }
+};
+
 export const QUERY_EMBEDS = 'queryEmbeds';
 export const MUTATE_EMBEDS = 'mutateEmbeds';
 
@@ -14,6 +25,9 @@ export const useEmbeds = <T extends Record<string, string>>() => {
       // https://dev.wix.com/docs/sdk/backend-modules/app-management/embedded-scripts/get-embedded-script
       const embeddedScript = await embeddedScripts.getEmbeddedScript();
       return embeddedScript.parameters || {};
+    },
+    retry(_, error) {
+      return !((error as WixError)?.details?.applicationError?.code === 'NO_HTML_EMBEDS_ON_SITE');
     },
   });
 
