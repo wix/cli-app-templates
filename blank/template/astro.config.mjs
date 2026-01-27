@@ -10,4 +10,7 @@ export default defineConfig({
   integrations: [wix(), react()],
   image: { domains: ["static.wixstatic.com"] },
   devToolbar: { enabled: false },
+  security: {
+    checkOrigin: false,
+  }
 });

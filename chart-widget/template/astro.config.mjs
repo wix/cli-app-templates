@@ -11,4 +11,7 @@ export default defineConfig({
   image: { domains: ["static.wixstatic.com"] },
   devToolbar: { enabled: false },
   server: { allowedHosts: true, host: true },
+  security: {
+    checkOrigin: false,
+  }
 });
