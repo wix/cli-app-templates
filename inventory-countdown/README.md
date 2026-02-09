@@ -40,7 +40,7 @@ We first need to create local files for our app project and set up a local devel
 In the directory where you want to create your project, run the following command:
 
 ```bash
-npm create @wix/app@latest -- -t 2ff7a5ae-d116-4c06-9394-7d7493428d0e
+npm create @wix/new@latest app -- -t 2ff7a5ae-d116-4c06-9394-7d7493428d0e
 ```
 
 In the creation process, you will be asked for:

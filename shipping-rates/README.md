@@ -42,7 +42,7 @@ In the directory where you want to create your project, run the following comman
 
 ```bash
 # npm
-npm create @wix/app@latest -- --template a033018e-233a-4ddc-8471-1151d8974866
+npm create @wix/new@latest app -- --template a033018e-233a-4ddc-8471-1151d8974866
 
 # yarn
 yarn create @wix/app --template a033018e-233a-4ddc-8471-1151d8974866

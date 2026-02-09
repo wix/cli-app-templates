@@ -37,7 +37,7 @@ We first need to create local files for our app project and set up a local devel
 Run the following command to create a new app project using this template:
 
 ```bash
-npm create @wix/app@latest -- --template c442b755-2276-4336-918a-915865a9fa2b
+npm create @wix/new@latest app -- --template c442b755-2276-4336-918a-915865a9fa2b
 ```
 
 In the creation process, you will be asked for a Wix app name and a package name for your project.
