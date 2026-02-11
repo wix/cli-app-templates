@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { Box, RadioGroup } from '@wix/design-system';
-import { ActivationMode, ActivationOptions } from '../types.js';
+import type { ActivationMode, ActivationOptions } from '../types.js';
 import { DataRangePicker } from './date-range-picker.js';
 
 interface Props {

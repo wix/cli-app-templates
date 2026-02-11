@@ -1,0 +1,11 @@
+---
+to: src/extensions/dashboard/pages/my-page/my-page.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.dashboardPage({
+  id: '<%= generatePageID() %>',
+  title: 'My Page',
+  routePath: '/',
+  component: './extensions/dashboard/pages/my-page/my-page.tsx',
+});

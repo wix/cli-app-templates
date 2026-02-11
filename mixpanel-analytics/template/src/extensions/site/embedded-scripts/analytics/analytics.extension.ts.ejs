@@ -1,0 +1,12 @@
+---
+to: src/extensions/site/embedded-scripts/analytics/analytics.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.embeddedScript({
+  id: '<%= generatePageID() %>',
+  name: 'Mixpanel Analytics',
+  placement: 'HEAD',
+  scriptType: 'ANALYTICS',
+  source: './extensions/site/embedded-scripts/analytics/analytics.html',
+});

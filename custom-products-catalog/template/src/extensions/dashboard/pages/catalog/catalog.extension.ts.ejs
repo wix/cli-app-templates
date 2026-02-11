@@ -1,0 +1,11 @@
+---
+to: src/extensions/dashboard/pages/catalog/catalog.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.dashboardPage({
+  id: '<%= generatePageID() %>',
+  title: 'Custom Products Catalog',
+  routePath: '',
+  component: './extensions/dashboard/pages/catalog/catalog.tsx',
+});

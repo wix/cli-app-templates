@@ -1,0 +1,11 @@
+---
+to: src/extensions/dashboard/pages/setup/setup.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.dashboardPage({
+  id: '<%= generatePageID() %>',
+  title: 'Mixpanel Setup',
+  routePath: '',
+  component: './extensions/dashboard/pages/setup/setup.tsx',
+});

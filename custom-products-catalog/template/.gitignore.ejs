@@ -1,12 +1,19 @@
 ---
 to: .gitignore
 ---
-.wix
-node_modules
-dist
+# wix integration
+.wix/
 
-# Logs
-logs
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
 *.log
 <% if(packageManager.name === 'yarn' || packageManager.name === 'yarn-berry') { -%>
 yarn-debug.log*
@@ -26,6 +33,13 @@ npm-debug.log*
 !.yarn/versions
 
 <% } -%>
-# Misc
+
+# environment variables
+.env
+.env.local
+.env.production
+
+# misc
 .DS_Store
+.idea/
 out

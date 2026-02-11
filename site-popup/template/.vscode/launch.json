@@ -1,14 +1,11 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to Wix CLI Backend",
-      "type": "node",
-      "request": "attach",
-      "port": 9229,
-      "cwd": "/",
-      "resolveSourceMapLocations": null,
-      "attachExistingChildren": false,
-      "autoAttachChildProcesses": false
+      "command": "./node_modules/.bin/astro dev",
+      "name": "Development server",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }

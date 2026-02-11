@@ -1,0 +1,28 @@
+---
+to: src/extensions/site/widgets/chart-widget/chart-widget.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.customElement({
+  id: '<%= generatePageID() %>',
+  name: 'Chart Widget',
+  width: {
+    defaultWidth: 400,
+    allowStretch: true
+  },
+  height: {
+    defaultHeight: 400
+  },
+  installation: {
+    autoAdd: true,
+    essential: false
+  },
+  presets: [{
+    id: '<%= generatePageID() %>',
+    name: 'Default Preset',
+    thumbnailUrl: '{{BASE_URL}}/thumbnail.png',
+  }],
+  tagName: 'chart-widget',
+  element: './extensions/site/widgets/chart-widget/chart-widget.tsx',
+  settings: './extensions/site/widgets/chart-widget/chart-widget.panel.tsx',
+});

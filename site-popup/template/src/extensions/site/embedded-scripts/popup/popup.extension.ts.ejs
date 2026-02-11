@@ -1,0 +1,12 @@
+---
+to: src/extensions/site/embedded-scripts/popup/popup.extension.ts
+---
+import { extensions } from '@wix/astro/builders';
+
+export default extensions.embeddedScript({
+  id: '<%= generatePageID() %>',
+  name: 'Site Popup',
+  placement: 'BODY_START',
+  scriptType: 'ANALYTICS',
+  source: './extensions/site/embedded-scripts/popup/popup.html',
+});
