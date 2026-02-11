@@ -13,5 +13,8 @@ export default defineConfig({
   server: { allowedHosts: true, host: true },
   security: {
     checkOrigin: false,
+  },
+  vite: {
+    server: { cors: true }
   }
 });
