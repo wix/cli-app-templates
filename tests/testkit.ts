@@ -18,6 +18,14 @@ const runCommand = async (command: string, args: string[], options?: Options) =>
   }
 };
 
+const a = () => {
+  console.log('a');
+}
+
+const b = () => {
+  console.log('a');
+}
+
 export const createApp = async (template: string) => {
   try {
     const cwd = temporaryDirectory();
