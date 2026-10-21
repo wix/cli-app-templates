@@ -4,7 +4,7 @@ import '@wix/design-system/styles.global.css';
 
 const DashboardPage: FC = () => {
   return (
-    <WixDesignSystemProvider features={{ newColorsBranding: true }}>
+    <WixDesignSystemProvider>
       <Page>
         <Page.Header
           title="My Page"
@@ -13,7 +13,7 @@ const DashboardPage: FC = () => {
         <Page.Content>
           <EmptyState
             title="My Page"
-            subtitle="Edit src/extensions/my-page/page.tsx to change this text."
+            subtitle="Edit src/extensions/dashboard/pages/my-page/my-page.tsx to change this text."
             skin="page"
           />
         </Page.Content>

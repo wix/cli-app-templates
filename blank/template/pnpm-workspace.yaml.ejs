@@ -1,0 +1,13 @@
+---
+to: pnpm-workspace.yaml
+skip_if: <%= packageManager.name !== 'pnpm' || isMonorepo %>
+---
+packages: []
+
+# pnpm only runs the install scripts of dependencies approved here.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+  core-js: false
+  sinon: false

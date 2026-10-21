@@ -4,5 +4,11 @@ to: wix.config.json
 {
   "appId": "<%= devCenter.appId %>",
   "projectId": "<%= packageName %>",
+<% if (devCenter.namespace) { -%>
+  "namespace": "<%= devCenter.namespace %>",
+<% } -%>
+<% if (devCenter.codeIdentifier) { -%>
+  "codeIdentifier": "<%= devCenter.codeIdentifier %>",
+<% } -%>
   "projectType": "App"
 }
