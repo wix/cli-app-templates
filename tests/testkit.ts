@@ -60,7 +60,7 @@ npmPreapprovedPackages: ['@wix/*']
 
 export const checkTypes = async (cwd: string) => {
   await runCommand('yarn', ['astro', 'sync'], { cwd })
-  await runCommand('yarn', ['typecheck'], { cwd })
+  await runCommand('yarn', ['tsc', '--noEmit'], { cwd })
 }
 
 export const buildApp = async (cwd: string) =>
