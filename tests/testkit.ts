@@ -47,6 +47,7 @@ export const installDependencies = async (cwd: string) => {
 approvedGitRepositories: []
 enableScripts: false
 enableTelemetry: false
+enableGlobalCache: true
 checksumBehavior: throw
 
 npmMinimalAgeGate: '14d'
