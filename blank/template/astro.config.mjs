@@ -9,12 +9,6 @@ export default defineConfig({
   adapter: wixHostingAdapter(),
   integrations: [wix(), react()],
   image: { domains: ["static.wixstatic.com"] },
-  devToolbar: { enabled: false },
-  server: { allowedHosts: true, host: true },
-  security: {
-    checkOrigin: false,
-  },
-  vite: {
-    server: { cors: true }
-  }
+  security: { checkOrigin: false },
+  devToolbar: { enabled: false }
 });
