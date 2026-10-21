@@ -2,7 +2,7 @@
   "name": "tests",
   "private": true,
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run --no-file-parallelism --bail=1",
     "typecheck": "yarn run -T tsc --noEmit"
   },
   "devDependencies": {
