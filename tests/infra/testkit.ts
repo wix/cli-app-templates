@@ -1,4 +1,4 @@
-import { execa, Options } from 'execa';
+import { execa, type Options } from 'execa';
 import path from "node:path";
 import { appendFile } from "node:fs/promises";
 import { fileURLToPath } from 'node:url';
