@@ -1,5 +1,6 @@
 import { execa, Options } from 'execa';
 import path from "node:path";
+import { appendFile } from "node:fs/promises";
 import { fileURLToPath } from 'node:url';
 import { temporaryDirectory } from 'tempy';
 
@@ -41,8 +42,19 @@ export const createApp = async (template: string) => {
   }
 }
 
-export const installDependencies = async (cwd: string) =>
+export const installDependencies = async (cwd: string) => {
+  await appendFile(path.join(cwd, '.yarnrc.yml'), `
+approvedGitRepositories: []
+enableScripts: false
+enableTelemetry: false
+enableGlobalCache: true
+checksumBehavior: throw
+
+npmMinimalAgeGate: '14d'
+npmPreapprovedPackages: ['@wix/*']
+`);
   await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
+}
 
 export const checkTypes = async (cwd: string) =>
   await runCommand('yarn', ['typecheck'], { cwd })
