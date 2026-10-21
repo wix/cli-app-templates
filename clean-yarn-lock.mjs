@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const yarnLockPath = fileURLToPath(new URL('../yarn.lock', import.meta.url));
+const yarnLockPath = fileURLToPath(new URL('./yarn.lock', import.meta.url));
 const privateResolutionPattern = /(?:::|%3A%3A)__archiveUrl=[^"#]+/g;
 
 const content = readFileSync(yarnLockPath, 'utf8');
