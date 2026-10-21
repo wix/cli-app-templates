@@ -1,6 +1,6 @@
 
 import { describe, expect, it } from 'vitest';
-import { buildApp, checkTypes, createApp, installDependencies } from './testkit';
+import { buildApp, checkTypes, createApp, installDependencies } from '../infra/testkit';
 
 export const templateSanity = (template: string) => {
   describe(`${template} sanity`, () => {

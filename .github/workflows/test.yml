@@ -27,12 +27,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24.22.0"
+          node-version-file: .nvmrc
 
       - name: Enable Corepack
         run: |
           corepack enable
-          corepack prepare yarn@4.18.1 --activate
+          corepack install --global "$(node -p "require('./package.json').packageManager")"
 
       - name: Configure Yarn defaults
         run: |
@@ -41,7 +41,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        working-directory: tests
 
       - name: Initialize git
         run: |
@@ -49,12 +48,10 @@ jobs:
           git config --global user.name "wix cli"
 
       - name: Run TypeScript type check
-        run: yarn typecheck
-        working-directory: tests
+        run: yarn workspaces foreach --all run typecheck
 
       - name: Login to Wix CLI
         run: npx @wix/cli login --api-key ${{ secrets.WIX_API_KEY }}
 
       - name: Test
-        run: yarn test
-        working-directory: tests
+        run: yarn workspaces foreach --all run test

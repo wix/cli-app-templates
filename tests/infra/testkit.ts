@@ -23,7 +23,7 @@ export const createApp = async (template: string) => {
   try {
     const cwd = temporaryDirectory();
     const dirname = path.dirname(fileURLToPath(import.meta.url));
-    const templatePath = path.join(dirname, `../${template}/template`);
+    const templatePath = path.join(dirname, `../../${template}/template`);
     await runCommand('yarn',
       [
         'create',
