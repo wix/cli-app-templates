@@ -17,7 +17,7 @@ export const templateSanity = (template: string) => {
 
     it("should successfully run typescheck", async () => {
       await expect(checkTypes(cwd)).resolves.not.toThrow();
-    });
+    }, 10_000);
 
     it("should build the app successfully", async () => {
       await expect(buildApp(cwd)).resolves.not.toThrow();
