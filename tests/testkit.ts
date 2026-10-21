@@ -27,12 +27,14 @@ export const createApp = async (template: string) => {
     await runCommand('yarn',
       [
         'create',
-        '@wix/app',
+        '@wix/new',
+        'app',
         '--app-name',
         kebabToCamelCase(template),
         '--template-path',
         templatePath,
-        '--skip-install'
+        '--skip-git',
+        '--skip-install',
       ], { cwd, }
     )
     return path.join(cwd, template);
@@ -56,8 +58,10 @@ npmPreapprovedPackages: ['@wix/*']
   await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
 }
 
-export const checkTypes = async (cwd: string) =>
+export const checkTypes = async (cwd: string) => {
+  await runCommand('yarn', ['astro', 'sync'], { cwd })
   await runCommand('yarn', ['typecheck'], { cwd })
+}
 
 export const buildApp = async (cwd: string) =>
   await runCommand('yarn', ['build'], { cwd })
