@@ -23,6 +23,11 @@ jobs:
           corepack enable
           corepack prepare yarn@4.18.1 --activate
 
+      - name: Configure Yarn defaults
+        run: |
+          yarn config set -H npmMinimalAgeGate 14d
+          yarn config set -H npmPreapprovedPackages --json '["@wix/*"]'
+
       - name: Install dependencies
         run: yarn install --immutable
         working-directory: tests
