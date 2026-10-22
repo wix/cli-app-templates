@@ -4,6 +4,8 @@ import { appendFile } from "node:fs/promises";
 import { fileURLToPath } from 'node:url';
 import { temporaryDirectory } from 'tempy';
 
+const repoRoot = fileURLToPath(new URL('../..', import.meta.url));
+
 const kebabToCamelCase = (str: string) =>
   str.replace(/-./g, match => match[1].toUpperCase());
 
@@ -22,8 +24,7 @@ const runCommand = async (command: string, args: string[], options?: Options) =>
 export const createApp = async (template: string) => {
   try {
     const cwd = temporaryDirectory();
-    const dirname = path.dirname(fileURLToPath(import.meta.url));
-    const templatePath = path.join(dirname, `../../${template}/template`);
+    const templatePath = path.join(repoRoot, template, 'template');
     await runCommand('yarn',
       [
         'create',
@@ -56,6 +57,11 @@ npmMinimalAgeGate: '14d'
 npmPreapprovedPackages: ['@wix/*']
 `);
   await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
+}
+
+export const checkFormat = async (cwd: string) => {
+  // run from the repo root so oxfmt picks up the root .editorconfig
+  await runCommand('yarn', ['run', '-T', 'oxfmt', '--check', cwd], { cwd: repoRoot })
 }
 
 export const checkTypes = async (cwd: string) => {

@@ -4,8 +4,12 @@
   "workspaces": [
     "tests"
   ],
+  "scripts": {
+    "check-format": "oxfmt --check"
+  },
   "devDependencies": {
     "@types/node": "^24.19.1",
+    "oxfmt": "^0.72.0",
     "typescript": "^7.0.2"
   },
   "packageManager": "yarn@4.18.1"
