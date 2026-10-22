@@ -6,10 +6,7 @@ const DashboardPage: FC = () => {
   return (
     <WixDesignSystemProvider>
       <Page>
-        <Page.Header
-          title="My Page"
-          subtitle="This is a subtitle for your page"
-        />
+        <Page.Header title="My Page" subtitle="This is a subtitle for your page" />
         <Page.Content>
           <EmptyState
             title="My Page"

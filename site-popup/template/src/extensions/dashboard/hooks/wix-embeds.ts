@@ -8,8 +8,8 @@ type WixError = {
       description: string;
       code: string;
       data: Record<string, unknown>;
-    }
-  }
+    };
+  };
 };
 
 export const QUERY_EMBEDS = 'queryEmbeds';

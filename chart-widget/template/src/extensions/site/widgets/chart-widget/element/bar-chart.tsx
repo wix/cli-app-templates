@@ -40,12 +40,7 @@ export const BarChart: FC<Props> = ({ items, legendStyle }) => {
         <YAxis />
         <Legend layout="horizontal" verticalAlign="bottom" wrapperStyle={legendStyle} />
         {items.map((item, index) => (
-          <Bar
-            key={index}
-            dataKey={item.name}
-            fill={item.color}
-            legendType="line"
-          />
+          <Bar key={index} dataKey={item.name} fill={item.color} legendType="line" />
         ))}
       </RechartsBarChart>
     </ResponsiveContainer>

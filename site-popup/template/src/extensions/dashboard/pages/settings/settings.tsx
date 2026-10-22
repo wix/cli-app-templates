@@ -11,8 +11,7 @@ import { Popup } from '../../../../components/popup/index.js';
 const sitePopupDefaultOptions: SitePopupOptions = {
   headline: 'Sale 20% Off',
   text: 'Sign up and get 20% off on our Winter Sale',
-  imageUrl:
-    'https://static.wixstatic.com/media/11062b_db81bbf678b641ff9e00b768cb155a49~mv2.jpg',
+  imageUrl: 'https://static.wixstatic.com/media/11062b_db81bbf678b641ff9e00b768cb155a49~mv2.jpg',
   imageTitle: 'Clothes For Sale',
   activationMode: 'active',
 };
@@ -20,20 +19,16 @@ const sitePopupDefaultOptions: SitePopupOptions = {
 function SitePopup() {
   const locale = i18n.getLocale();
 
-  const { embedScript, getEmbeddedScript } =
-    useEmbeds<Partial<SitePopupOptions>>();
+  const { embedScript, getEmbeddedScript } = useEmbeds<Partial<SitePopupOptions>>();
 
-  const [sitePopupOptions, setSitePopupOptions] = useState<SitePopupOptions>(
-    sitePopupDefaultOptions
-  );
+  const [sitePopupOptions, setSitePopupOptions] =
+    useState<SitePopupOptions>(sitePopupDefaultOptions);
 
   useEffect(() => {
     setSitePopupOptions((prevOptions) => ({
       ...prevOptions,
       ...getEmbeddedScript.data,
-      imageUrl: (
-        getEmbeddedScript.data?.imageUrl || prevOptions.imageUrl
-      ).replace(/\\/g, ''),
+      imageUrl: (getEmbeddedScript.data?.imageUrl || prevOptions.imageUrl).replace(/\\/g, ''),
     }));
   }, [getEmbeddedScript.data]);
 

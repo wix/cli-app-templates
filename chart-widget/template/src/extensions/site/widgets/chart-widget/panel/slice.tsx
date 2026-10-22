@@ -1,12 +1,5 @@
 import React, { type FC } from 'react';
-import {
-  FormField,
-  FillPreview,
-  Input,
-  NumberInput,
-  SidePanel,
-  Box,
-} from '@wix/design-system';
+import { FormField, FillPreview, Input, NumberInput, SidePanel, Box } from '@wix/design-system';
 import { inputs } from '@wix/editor';
 import type { ChartItem } from '../common.js';
 

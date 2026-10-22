@@ -18,9 +18,7 @@ interface Props {
 }
 
 export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
-  const getFieldStatus = (
-    field: keyof SitePopupOptions
-  ): Partial<FormFieldProps> => {
+  const getFieldStatus = (field: keyof SitePopupOptions): Partial<FormFieldProps> => {
     return !options[field]
       ? {
           status: 'error',
@@ -45,11 +43,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
           <Card.Content>
             <Box gap={3} direction="vertical">
               <Box gap={3} direction="vertical" width={'50%'}>
-                <FormField
-                  labelSize="small"
-                  label="Headline"
-                  {...getFieldStatus('headline')}
-                >
+                <FormField labelSize="small" label="Headline" {...getFieldStatus('headline')}>
                   <Input
                     placeholder="Sale 20% Off"
                     value={options?.headline}
@@ -66,7 +60,7 @@ export const SitePopupSettings: FC<Props> = ({ options, onChange }) => {
                   label="Text"
                   infoContent={
                     options.activationMode == 'timed'
-                      ? 'Include the placeholders {startDate} and {endDate} to show the start and end dates, formatted according to the site\'s regional settings.'
+                      ? "Include the placeholders {startDate} and {endDate} to show the start and end dates, formatted according to the site's regional settings."
                       : undefined
                   }
                   {...getFieldStatus('text')}

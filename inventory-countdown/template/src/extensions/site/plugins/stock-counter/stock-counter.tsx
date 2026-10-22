@@ -38,17 +38,19 @@ function getInventoryStock(productId: string): Promise<InventoryStock> {
         }
 
         const shouldShowInStock = productInventory.variants?.some(
-          (variant) => variant.inStock && variant.quantity === undefined
+          (variant) => variant.inStock && variant.quantity === undefined,
         );
 
         if (shouldShowInStock) {
           return IN_STOCK;
         }
 
-        return productInventory.variants?.reduce((inStockCount, variant) => {
-          inStockCount += variant.quantity || 0;
-          return inStockCount;
-        }, 0) || 0;
+        return (
+          productInventory.variants?.reduce((inStockCount, variant) => {
+            inStockCount += variant.quantity || 0;
+            return inStockCount;
+          }, 0) || 0
+        );
       })
   );
 }
@@ -73,13 +75,7 @@ const CustomElement: FC<Props> = ({ threshold = 3, productId, showBadge, callToA
 
   return (
     <WixDesignSystemProvider features={{ newColorsBranding: true }}>
-      <Box
-        align="left"
-        direction="vertical"
-        gap="1"
-        paddingTop={2}
-        className={styles.root}
-      >
+      <Box align="left" direction="vertical" gap="1" paddingTop={2} className={styles.root}>
         {inventoryStock === IN_STOCK || threshold < inventoryStock ? (
           <Box>
             {showBadge && (
@@ -92,11 +88,7 @@ const CustomElement: FC<Props> = ({ threshold = 3, productId, showBadge, callToA
           <>
             {showBadge && (
               <Box>
-                <Badge
-                  prefixIcon={<TagIcon />}
-                  skin="standard"
-                  uppercase={false}
-                >
+                <Badge prefixIcon={<TagIcon />} skin="standard" uppercase={false}>
                   Selling fast
                 </Badge>
               </Box>
@@ -126,7 +118,7 @@ const customElement = reactToWebComponent(
       callToAction: 'string',
       showBadge: 'boolean',
     },
-  }
+  },
 );
 
 export default customElement;

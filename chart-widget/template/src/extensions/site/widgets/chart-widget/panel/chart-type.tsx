@@ -15,12 +15,7 @@ const options = [
 export const ChartType: FC<Props> = ({ type, onChange }) => {
   return (
     <SidePanel.Field>
-      <FieldSet
-        legend="Chart type"
-        direction="horizontal"
-        gap="medium"
-        columns="min-content"
-      >
+      <FieldSet legend="Chart type" direction="horizontal" gap="medium" columns="min-content">
         {options.map(({ value, icon: Icon }) => (
           <Thumbnail
             key={value}
@@ -31,12 +26,7 @@ export const ChartType: FC<Props> = ({ type, onChange }) => {
             width="38px"
             height="38px"
           >
-            <Box
-              height="100%"
-              width="100%"
-              align="center"
-              verticalAlign="middle"
-            >
+            <Box height="100%" width="100%" align="center" verticalAlign="middle">
               <Icon />
             </Box>
           </Thumbnail>

@@ -47,7 +47,7 @@ const customElement = reactToWebComponent(
       items: 'json',
       legendStyle: 'json',
     },
-  }
+  },
 );
 
 export default customElement;

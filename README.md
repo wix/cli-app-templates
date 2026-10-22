@@ -10,11 +10,11 @@ Starting with an app template fast-tracks the development process, providing a w
 
 Wix app templates showcase a variety of features that apps can add to Wix sites, such as:
 
-+ Live site widgets.
-+ Dashboard pages or components for site admins.
-+ Integration with 3rd-party services.
-+ Live site background scripts for analytics and other purposes.
-+ Backend APIs, Wix event handlers and service plugins
+- Live site widgets.
+- Dashboard pages or components for site admins.
+- Integration with 3rd-party services.
+- Live site background scripts for analytics and other purposes.
+- Backend APIs, Wix event handlers and service plugins
 
 ## The templates in this repo
 
@@ -22,20 +22,21 @@ The app templates in this repo use the [Wix CLI](https://dev.wix.com/docs/build-
 
 The repo contains the following app templates to get you started:
 
-+ [Custom Products Catalog](./custom-products-catalog/README.md)
-+ [Mixpanel Analytics](./mixpanel-analytics/README.md)
-+ [Chart Widget](./chart-widget/README.md)
-+ [Site Popup](./site-popup/README.md)
-+ [Stock Countdown](./inventory-countdown/README.md)
+- [Custom Products Catalog](./custom-products-catalog/README.md)
+- [Mixpanel Analytics](./mixpanel-analytics/README.md)
+- [Chart Widget](./chart-widget/README.md)
+- [Site Popup](./site-popup/README.md)
+- [Stock Countdown](./inventory-countdown/README.md)
 
 ## More templates
 
 Wix also offers templates for developers using other development frameworks:
 
-* [Wix Blocks](https://dev.wix.com/apps-templates?filter=blocks): Build a native-style Wix app in a responsive drag-and-drop editor and incorporate sophisticated functionality with Velo.
-* [Self-hosted](https://dev.wix.com/apps-templates?filter=self-hosted): Develop and host an app on any platform, and integrate with Wix in your [app dashboard](https://dev.wix.com/apps/my-apps).
+- [Wix Blocks](https://dev.wix.com/apps-templates?filter=blocks): Build a native-style Wix app in a responsive drag-and-drop editor and incorporate sophisticated functionality with Velo.
+- [Self-hosted](https://dev.wix.com/apps-templates?filter=self-hosted): Develop and host an app on any platform, and integrate with Wix in your [app dashboard](https://dev.wix.com/apps/my-apps).
 
 Learn more about [Wix app templates](https://dev.wix.com/docs/build-apps/get-started/templates/get-started-from-an-app-template) and explore our full [template collection](https://dev.wix.com/apps-templates?filter=cli).
 
 ## Questions or issues?
+
 Reach us in Discord in case you have more questions https://discord.gg/wixstudio
