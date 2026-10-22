@@ -1,5 +1,6 @@
-import { execa, Options } from 'execa';
+import { execa, type Options } from 'execa';
 import path from "node:path";
+import { appendFile } from "node:fs/promises";
 import { fileURLToPath } from 'node:url';
 import { temporaryDirectory } from 'tempy';
 
@@ -22,16 +23,18 @@ export const createApp = async (template: string) => {
   try {
     const cwd = temporaryDirectory();
     const dirname = path.dirname(fileURLToPath(import.meta.url));
-    const templatePath = path.join(dirname, `../${template}/template`);
+    const templatePath = path.join(dirname, `../../${template}/template`);
     await runCommand('yarn',
       [
         'create',
-        '@wix/app',
+        '@wix/new',
+        'app',
         '--app-name',
         kebabToCamelCase(template),
         '--template-path',
         templatePath,
-        '--skip-install'
+        '--skip-git',
+        '--skip-install',
       ], { cwd, }
     )
     return path.join(cwd, template);
@@ -41,11 +44,24 @@ export const createApp = async (template: string) => {
   }
 }
 
-export const installDependencies = async (cwd: string) =>
-  await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
+export const installDependencies = async (cwd: string) => {
+  await appendFile(path.join(cwd, '.yarnrc.yml'), `
+approvedGitRepositories: []
+enableScripts: false
+enableTelemetry: false
+enableGlobalCache: true
+checksumBehavior: throw
 
-export const checkTypes = async (cwd: string) =>
-  await runCommand('yarn', ['typecheck'], { cwd })
+npmMinimalAgeGate: '14d'
+npmPreapprovedPackages: ['@wix/*']
+`);
+  await runCommand('yarn', ['install', '--silent'], { cwd, env: { YARN_ENABLE_IMMUTABLE_INSTALLS: 'false' } })
+}
+
+export const checkTypes = async (cwd: string) => {
+  await runCommand('yarn', ['astro', 'sync'], { cwd })
+  await runCommand('yarn', ['tsc', '--noEmit'], { cwd })
+}
 
 export const buildApp = async (cwd: string) =>
   await runCommand('yarn', ['build'], { cwd })
