@@ -26,8 +26,7 @@ The repo contains the following app templates to get you started:
 + [Mixpanel Analytics](./mixpanel-analytics/README.md)
 + [Chart Widget](./chart-widget/README.md)
 + [Site Popup](./site-popup/README.md)
-+ [Stock Countdown](./stock-countdown/README.md)
-+ [Shipping Rates](./shipping-rates/README.md)
++ [Stock Countdown](./inventory-countdown/README.md)
 
 ## More templates
 
