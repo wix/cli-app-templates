@@ -916,6 +916,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"outdent@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "outdent@npm:0.8.0"
+  checksum: 10c0/d8a6c38b838b7ac23ebf1cc50442312f4efe286b211dbe5c71fa84d5daa2512fb94a8f2df1389313465acb0b4e5fa72270dd78f519f3d4db5bc22b2762c86827
+  languageName: node
+  linkType: hard
+
 "oxfmt@npm:^0.72.0":
   version: 0.72.0
   resolution: "oxfmt@npm:0.72.0"
@@ -1180,6 +1187,7 @@ __metadata:
   resolution: "tests@workspace:tests"
   dependencies:
     execa: "npm:^10.1.0"
+    outdent: "npm:^0.8.0"
     tempy: "npm:^3.2.0"
     vite: "npm:^8.3.3"
     vitest: "npm:^5.0.3"

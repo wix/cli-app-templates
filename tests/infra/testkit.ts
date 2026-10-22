@@ -2,6 +2,7 @@ import { execa, type Options } from 'execa';
 import path from 'node:path';
 import { appendFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { outdent } from 'outdent';
 import { temporaryDirectory } from 'tempy';
 
 const repoRoot = fileURLToPath(new URL('../..', import.meta.url));
@@ -49,16 +50,16 @@ export const createApp = async (template: string) => {
 export const installDependencies = async (cwd: string) => {
   await appendFile(
     path.join(cwd, '.yarnrc.yml'),
-    `
-approvedGitRepositories: []
-enableScripts: false
-enableTelemetry: false
-enableGlobalCache: true
-checksumBehavior: throw
+    outdent({ trimTrailingNewline: false })`
+      approvedGitRepositories: []
+      enableScripts: false
+      enableTelemetry: false
+      enableGlobalCache: true
+      checksumBehavior: throw
 
-npmMinimalAgeGate: '14d'
-npmPreapprovedPackages: ['@wix/*']
-`,
+      npmMinimalAgeGate: '14d'
+      npmPreapprovedPackages: ['@wix/*']
+    `,
   );
   await runCommand('yarn', ['install', '--silent'], {
     cwd,
