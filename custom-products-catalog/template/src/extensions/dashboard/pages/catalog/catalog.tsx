@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Text,
-  Image,
-  Breadcrumbs
-} from '@wix/design-system';
+import { Box, Text, Image, Breadcrumbs } from '@wix/design-system';
 import '@wix/design-system/styles.global.css';
 import { products } from '@wix/stores';
 import { CollectionPage } from '@wix/patterns/page';
@@ -32,20 +27,22 @@ import { CreateProductModal } from '../../../../components/create-product';
 type TableFilters = {
   productType: Filter<products.ProductType[]>;
   lastUpdated: Filter<RangeItem<Date>>;
-}
+};
 
 // Define the type for supported query fields.
-type SupportedQueryFields = Parameters<products.ProductsQueryBuilder['ascending']>[0] | Parameters<products.ProductsQueryBuilder['descending']>[0]
+type SupportedQueryFields =
+  | Parameters<products.ProductsQueryBuilder['ascending']>[0]
+  | Parameters<products.ProductsQueryBuilder['descending']>[0];
 
 // Map product types to display names.
 const productTypeToDisplayName: { [key in products.ProductType]: string | undefined } = {
   [products.ProductType.physical]: 'Physical',
   [products.ProductType.digital]: 'Digital',
-  [products.ProductType.unspecified_product_type]: undefined
-}
+  [products.ProductType.unspecified_product_type]: undefined,
+};
 
 function Products() {
-  const [shown, setShown] = useState(false); 
+  const [shown, setShown] = useState(false);
 
   const tableState = useTableCollection<products.Product, TableFilters>({
     queryName: 'products-catalog',
@@ -62,7 +59,7 @@ function Products() {
 
       // If a search string is provided, filter the products by name.
       if (search) {
-        queryBuilder = queryBuilder.startsWith("name", search);
+        queryBuilder = queryBuilder.startsWith('name', search);
       }
 
       // If filters are provided, add them to the query.
@@ -86,7 +83,7 @@ function Products() {
 
       // If sorting is provided, add them to the query.
       if (sort) {
-        sort.forEach(s => {
+        sort.forEach((s) => {
           const fieldName = s.fieldName as SupportedQueryFields;
           if (s.order === 'asc') {
             queryBuilder = queryBuilder.ascending(fieldName);
@@ -107,7 +104,7 @@ function Products() {
     fetchErrorMessage: () => 'Error fetching products',
     filters: {
       lastUpdated: dateRangeFilter(), // Filter by date range
-      productType: stringsArrayFilter({ itemName: (p) => productTypeToDisplayName[p] ?? p }) // Filter by product type
+      productType: stringsArrayFilter({ itemName: (p) => productTypeToDisplayName[p] ?? p }), // Filter by product type
     },
   });
 
@@ -120,26 +117,30 @@ function Products() {
           return false;
         }
 
-        if (filters.productType && product.productType && filters.productType.indexOf(product.productType as products.ProductType) === -1) {
+        if (
+          filters.productType &&
+          product.productType &&
+          filters.productType.indexOf(product.productType as products.ProductType) === -1
+        ) {
           return false;
         }
 
         if (filters.lastUpdated && product.lastUpdated) {
           const from = filters.lastUpdated.from;
           const to = filters.lastUpdated.to;
-          const productLastUpdated = (new Date(product.lastUpdated)).getTime();
+          const productLastUpdated = new Date(product.lastUpdated).getTime();
 
           if (from && productLastUpdated < from.getTime()) {
             return false;
           }
-     
+
           if (to && productLastUpdated > to.getTime()) {
             return false;
           }
         }
 
         return true;
-      }
+      };
     },
   });
 
@@ -159,18 +160,16 @@ function Products() {
             ]}
           />
         }
-        primaryAction={
-          <PrimaryActions
-            label="Add Product"
-            onClick={() => setShown(!shown)}
-          />
-        }
+        primaryAction={<PrimaryActions label="Add Product" onClick={() => setShown(!shown)} />}
       />
       <CollectionPage.Content>
-        <CreateProductModal showModal={shown} onSave={(productName: string) => {
-          createProduct(productName);
-          setShown(false);
-        }}/>
+        <CreateProductModal
+          showModal={shown}
+          onSave={(productName: string) => {
+            createProduct(productName);
+            setShown(false);
+          }}
+        />
         <Table
           state={tableState}
           maxSelection={20} // Max selection for bulk actions
@@ -195,9 +194,7 @@ function Products() {
                 primaryActionItems={[
                   {
                     label: 'Delete',
-                    tooltip: disabled
-                      ? 'Deleting is supported for up to 20 items'
-                      : undefined,
+                    tooltip: disabled ? 'Deleting is supported for up to 20 items' : undefined,
                     disabled,
                     onClick: () => {
                       openConfirmModal({
@@ -210,7 +207,7 @@ function Products() {
                   },
                 ]}
               />
-            )
+            );
           }}
           // Enable Custom Columns for the table.
           customColumns={<CustomColumns />}
@@ -220,9 +217,9 @@ function Products() {
               name: 'Avatar',
               title: '',
               width: '72px',
-              render: (product) => <Image src={product.media?.mainMedia?.image?.url}/>,
+              render: (product) => <Image src={product.media?.mainMedia?.image?.url} />,
               reorderDisabled: true,
-              hiddenFromCustomColumnsSelection: true
+              hiddenFromCustomColumnsSelection: true,
             },
             {
               id: 'name',
@@ -239,7 +236,7 @@ function Products() {
               ),
               width: 'auto',
               reorderDisabled: true,
-              hideable: false
+              hideable: false,
             },
             {
               id: 'price',
@@ -253,7 +250,7 @@ function Products() {
               title: 'Type',
               render: (row: products.Product) => {
                 if (!row.productType) {
-                  return ''
+                  return '';
                 }
 
                 return productTypeToDisplayName[row.productType] ?? row.productType;
@@ -264,33 +261,31 @@ function Products() {
               id: 'last-updated',
               title: 'Last Updated',
               render: (row: products.Product) =>
-                row.lastUpdated
-                ? new Date(row.lastUpdated).toLocaleDateString()
-                : '',
+                row.lastUpdated ? new Date(row.lastUpdated).toLocaleDateString() : '',
               width: '100px',
               defaultHidden: true,
             },
           ]}
           actionCell={(_product, _index, actionCellAPI) => ({
-              secondaryActions: [
+            secondaryActions: [
               // Use the predefined deleteSecondaryAction function.
-                deleteSecondaryAction({
-                  optimisticActions,
-                  actionCellAPI,
-                  submit: (deletedProducts: products.Product[]) => (
-                    Promise.all(
-                      deletedProducts.map((product: products.Product) => products.deleteProduct(product._id!))
-                    )
+              deleteSecondaryAction({
+                optimisticActions,
+                actionCellAPI,
+                submit: (deletedProducts: products.Product[]) =>
+                  Promise.all(
+                    deletedProducts.map((product: products.Product) =>
+                      products.deleteProduct(product._id!),
+                    ),
                   ),
-                  successToast: {
-                    message: `${_product.name} deleted successfully.`,
-                    type: 'SUCCESS',
-                  },
-                  errorToast: () => 'Product deletion failed.',
-                }),
-              ]
-            }
-          )}
+                successToast: {
+                  message: `${_product.name} deleted successfully.`,
+                  type: 'SUCCESS',
+                },
+                errorToast: () => 'Product deletion failed.',
+              }),
+            ],
+          })}
         />
       </CollectionPage.Content>
     </CollectionPage>

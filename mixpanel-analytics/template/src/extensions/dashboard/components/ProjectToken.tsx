@@ -46,8 +46,7 @@ export default function ProjectToken() {
           />
           <Button
             disabled={
-              getEmbeddedScript.data?.projectToken === projectToken ||
-              projectToken.length !== 32
+              getEmbeddedScript.data?.projectToken === projectToken || projectToken.length !== 32
             }
             onClick={() => embedScript.mutate({ projectToken })}
           >

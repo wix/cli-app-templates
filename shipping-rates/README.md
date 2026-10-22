@@ -4,7 +4,7 @@ The Shipping Rates Wix app template is part of the [Wix app template collection]
 
 This Wix CLI template demonstrates the use of the Wix Ecom Orders API, App Management API, and [Wix eCommerce Shipping Rates service plugin](https://dev.wix.com/docs/sdk/backend-modules/ecom/service-plugins/shipping-rates/introduction). The app template includes functionality for creating and managing custom shipping methods and costs, and offering a free trial of premium features to users. It is an excellent starting point if you plan on creating an app with [web methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) to fetch data from the backend, [service plugin](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/service-plugins/add-service-plugin-extensions-with-the-cli) integration (particularly shipping rates,) or a free trial offer for users.
 
-The template also demonstrates the basic functionality of the Dashboard SDK, and Wix Design System. 
+The template also demonstrates the basic functionality of the Dashboard SDK, and Wix Design System.
 
 > **Note:** This app is intended for Wix sites with the Wix Stores app installed. For it to function correctly, the site owner must [install Wix Stores](https://www.wix.com/app-market/wix-stores) from the app market.
 
@@ -60,43 +60,46 @@ This process registers a new app in the App Dashboard with the required permissi
 The project includes:
 
 - Initial boilerplate code for a simple app with:
-    - A shipping rates service plugin extension that defines custom shipping rates that are displayed on cart and checkout pages of sites the app is installed on.
-    - Custom [web methods](#backend-api) to get and update app data stored in a collection or database.
-    - [Free trial functionality](#free-trial) with additional features for users that sign up.
-    - A modal instructing users how to activate the shipping rates service plugin.
+  - A shipping rates service plugin extension that defines custom shipping rates that are displayed on cart and checkout pages of sites the app is installed on.
+  - Custom [web methods](#backend-api) to get and update app data stored in a collection or database.
+  - [Free trial functionality](#free-trial) with additional features for users that sign up.
+  - A modal instructing users how to activate the shipping rates service plugin.
 - A `package.json` file with your app’s dependencies.
 - a `tsconfig.json` file configured with path aliases for simple importing.
 
 #### Backend API - Web Methods
 
-[Web methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) are defined in [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts). The purpose of these methods is to abstract underlying functionalities, streamlining data management while simplifying future modifications. 
-
+[Web methods](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/supported-extensions/backend-extensions/web-methods/add-web-method-extensions-with-the-cli) are defined in [`template/src/backend/shipping-data.web.ts`](./template/src/backend/shipping-data.web.ts). The purpose of these methods is to abstract underlying functionalities, streamlining data management while simplifying future modifications.
 
 The methods allow app instances to call the backend to get and update app data stored in a collection or database. The `getShippingData` and `setShippingData` web methods call `getAppData()` and `updateAppData()` respectively, which are defined in [`template/src/backend/database.ts`](./template/src/backend/database.ts). In this template we’re using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. The actual implementation of storing and updating data in a database or collection is left to you.
 
 We call the `getShippingAppData()` and `setShippingAppData()` hooks in the [dashboard page code](./template/src/dashboard/pages/page.tsx). These functions are defined in [`template/src/dashboard/hooks/use-shipping-app-data.ts`](./template/src/dashboard/hooks/use-shipping-app-data.ts).
 
-##### Using web methods 
+##### Using web methods
+
 Wix CLI supports defining custom [paths](https://www.typescriptlang.org/tsconfig/#paths) using the [`tsconfig.json`](./template/src/tsconfig.json) file,
 In this project we've defined the following path:
+
 ```json
 "backend/*": ["./src/backend/*"]
-``` 
+```
+
 This path allows you to import web methods easily from the backend folder, example from the [`use-shipping-app-data.ts`](./template/src/dashboard/hooks/use-shipping-app-data.ts) file:
+
 ```js
-import { getShippingData, setShippingData } from "backend/shipping-data.web";
+import { getShippingData, setShippingData } from 'backend/shipping-data.web';
 ```
 
 #### Free trial
 
 This template adds free trial functionality and additional features to users that sign up. This is implemented through:
 
-- Integration with a free trial in the Wix App Market using [`getAppInstance()`](https://dev.wix.com/docs/sdk/backend-modules/app-management/app-instances/get-app-instance) to detect if the user is currently on a free trial. 
+- Integration with a free trial in the Wix App Market using [`getAppInstance()`](https://dev.wix.com/docs/sdk/backend-modules/app-management/app-instances/get-app-instance) to detect if the user is currently on a free trial.
 - An upgrade card defined in [`template/src/dashboard/components/UpgradeCard.tsx`](./template/src/dashboard/components/UpgradeCard.tsx) prompting the user to start the free trial and linking them to a sign up page. This card is displayed in the dashboard page only if the user hasn't started a free trial.
 - A free trial message component defined in [`template/src/dashboard/components/FreeTrialMessage.tsx`](./template/src/dashboard/components/FreeTrialMessage.tsx) informing the user of the expiry date of their free trial and providing a link to a page where they can manage their subscriptions. This message is displayed in the dashboard page only if the user has started a free trial.
 - An express delivery shipping option. If the user has started the free trial:
-    - Express delivery settings are displayed and can be configured on the dashboard page.
-    - The shipping rates service plugin's response includes the information for express delivery.
+  - Express delivery settings are displayed and can be configured on the dashboard page.
+  - The shipping rates service plugin's response includes the information for express delivery.
 
 ## Step 2 | Test the app
 
@@ -107,6 +110,7 @@ The app creation process installs the app on your chosen development site. Howev
 This app makes calls to the Wix eCommerce [Orders API](https://dev.wix.com/docs/sdk/backend-modules/ecom/orders/setup) to retrieve the latest orders made in the site's store. Before you test this app on your development site, install the [Wix Stores app](https://www.wix.com/app-market/wix-stores) to [add the Wix eCommerce platform's functionality](https://dev.wix.com/docs/rest/business-solutions/e-commerce/wix-e-commerce-platform-handbook/get-started/installation) to your site.
 
 ### Set up a free trial for your app.
+
 Follow the instructions to [Set up a Wix-managed free trial](https://dev.wix.com/docs/build-apps/launch-your-app/pricing-and-billing/set-up-and-manage-free-trials#set-up-a-wix-managed-free-trial) for your app.
 
 ### Set up a local development environment
@@ -121,7 +125,7 @@ This will prompt you with a CLI menu. Follow the instructions to open a browser 
 
 The development environment is set up for hot reloading, so any changes you make to your code will be reflected in the browser.
 
->**Note:** You won't be able to test service plugin extensions in your local development environment before building your app and releasing a version. (See the testing steps below.)
+> **Note:** You won't be able to test service plugin extensions in your local development environment before building your app and releasing a version. (See the testing steps below.)
 
 ### Testing steps
 
@@ -129,21 +133,20 @@ Before testing your app, you must [build and release a version](https://dev.wix.
 
 > **Note:** After releasing a version, you can use the [`logs`](https://dev.wix.com/docs/build-apps/develop-your-app/frameworks/wix-cli/app-development/cli-command-reference#logs) command to view logs from the backend API and the service plugins.
 >
->```bash
-> npm run logs –version <version number> 
->```
+> ```bash
+> npm run logs –version <version number>
+> ```
 
 1. Run `npm run dev` to open the CLI menu.
-1. Press **D** to open the app's dashboard page in your browser. 
+1. Press **D** to open the app's dashboard page in your browser.
 1. Click **Activate Plugin** and follow the plugin activation steps shown in the modal.
-   
-   ![Activate plugin](./images/cli-shipping-rates-activate-plugin.png)
 
+   ![Activate plugin](./images/cli-shipping-rates-activate-plugin.png)
 
 1. Back in the terminal, press **S** to open your development site in your browser.
 1. Add at least 1 item to your cart and navigate to your Cart page.
 1. Open the shipping rates dropdown in the order summary. You should see a new **Standard Delivery** method with the settings defined in your app's shipping rates service plugin.
-   
+
    ![Standard delivery](./images/cli-shipping-rates-standard-delivery.png)
 
 ## Extend and customize the app
@@ -166,12 +169,11 @@ You can customize any of the components used on the dashboard page as you would 
 
 Development entry point: [`template/src/dashboard/components`](./template/src/dashboard/components)
 
-
 ### Backend API customization
 
 The Backend API abstracts underlying functionalities, streamlining data management while simplifying future modifications. It allows app instances to call the backend to get and update app data.
 
-In this template we're using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. Add your own logic to connect to a database or collection, and store and retrieve the user's data.  You can associate data in your database with the specific instance of the app that created it using [app instance IDs](https://dev.wix.com/docs/build-apps/develop-your-app/access/app-instances/about-app-instances#app-instance-id). You can get the app instance ID by calling `getAppInstance()` in [`appInstance.ts`](./template/src/backend/appInstance.ts). 
+In this template we're using a mock database where `getAppData()` returns hardcoded values, and `updateAppData()` logs the update data. Add your own logic to connect to a database or collection, and store and retrieve the user's data. You can associate data in your database with the specific instance of the app that created it using [app instance IDs](https://dev.wix.com/docs/build-apps/develop-your-app/access/app-instances/about-app-instances#app-instance-id). You can get the app instance ID by calling `getAppInstance()` in [`appInstance.ts`](./template/src/backend/appInstance.ts).
 
 Development entry point: [`template/src/backend/database.ts`](./template/src/backend/database.ts)
 
@@ -181,13 +183,13 @@ Development entry point: [`template/src/backend/shipping-data.web.ts`](./templat
 
 ### Service Plugin
 
-This template uses the Shipping Rates service plugin to integrate custom logic for calculating shipping rates. 
+This template uses the Shipping Rates service plugin to integrate custom logic for calculating shipping rates.
 
 Customize the logic used to calculate the existing shipping rates, or add entirely new shipping rates.
 
 Development entry point: [`template/src/backend/service-plugins/ecom-shipping-rates/fast-post/plugin.ts`](./template/src/backend/service-plugins/ecom-shipping-rates/fast-post/plugin.ts)
 
-You can also use a different service plugin entirely. This template's modular design makes it easy to swap out the current shipping rates service plugin with another without having to rework the overall architecture. 
+You can also use a different service plugin entirely. This template's modular design makes it easy to swap out the current shipping rates service plugin with another without having to rework the overall architecture.
 
 ## Learn more
 
@@ -197,6 +199,6 @@ For more information:
 - Check out our [full collection of app templates](https://dev.wix.com/apps-templates?filter=cli).
 - See our documentation for details about [building Wix apps](https://dev.wix.com/docs/build-apps).
 
-
 ## Questions / Issues
+
 Reach us in Discord in case you have more questions https://discord.gg/wixstudio

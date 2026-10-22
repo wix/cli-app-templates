@@ -1,11 +1,5 @@
 import React, { type FC } from 'react';
-import {
-  Cell,
-  Legend,
-  Pie,
-  PieChart as RechartsPieChart,
-  ResponsiveContainer,
-} from 'recharts';
+import { Cell, Legend, Pie, PieChart as RechartsPieChart, ResponsiveContainer } from 'recharts';
 import type { ChartItem, LegendStyle } from '../common.js';
 
 type Props = {
@@ -17,7 +11,7 @@ export const PieChart: FC<Props> = ({ items, legendStyle }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RechartsPieChart>
-        <Legend layout="horizontal" verticalAlign="middle" wrapperStyle={legendStyle}/>
+        <Legend layout="horizontal" verticalAlign="middle" wrapperStyle={legendStyle} />
         <Pie
           data={items}
           cx="50%"
