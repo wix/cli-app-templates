@@ -1,15 +1,9 @@
----
-to: src/extensions/dashboard/hooks/use-shipping-app-data.ts
----
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  getShippingData,
-  setShippingData,
-} from "../../backend/shipping-data.web";
-import type { ShippingAppData } from "../../../types";
-import { DEFAULT_APP_DATA } from "../../../consts";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getShippingData, setShippingData } from '../../backend/shipping-data.web';
+import type { ShippingAppData } from '../../../types';
+import { DEFAULT_APP_DATA } from '../../../consts';
 
-const queryKey = ["shipping-app-data"];
+const queryKey = ['shipping-app-data'];
 
 export const useShippingAppData = () => {
   const queryClient = useQueryClient();
@@ -20,7 +14,7 @@ export const useShippingAppData = () => {
       try {
         return await getShippingData();
       } catch (error) {
-        console.log("error fetching data:", error);
+        console.log('error fetching data:', error);
 
         return DEFAULT_APP_DATA;
       }

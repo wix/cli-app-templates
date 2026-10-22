@@ -1,12 +1,9 @@
----
-to: src/utils/shipping-calculator.ts
----
-import { shippingRates } from "@wix/ecom/service-plugins";
-import type { ShippingCosts } from "../types";
+import { shippingRates } from '@wix/ecom/service-plugins';
+import type { ShippingCosts } from '../types';
 
 export function calculatePrice(
   request: shippingRates.GetShippingRatesRequest,
-  shippingCosts: ShippingCosts
+  shippingCosts: ShippingCosts,
 ): number {
   const units =
     request.lineItems?.reduce((acc, lineItem) => {
@@ -27,8 +24,6 @@ export function calculatePrice(
   } else if (units === 2) {
     return firstItemCost + secondItemCost;
   } else {
-    return (
-      firstItemCost + secondItemCost + Math.ceil(units - 2) * additionalItemCost
-    );
+    return firstItemCost + secondItemCost + Math.ceil(units - 2) * additionalItemCost;
   }
 }

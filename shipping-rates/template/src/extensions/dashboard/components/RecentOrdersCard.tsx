@@ -1,20 +1,10 @@
----
-to: src/extensions/dashboard/components/RecentOrdersCard.tsx
----
-import React from "react";
-import {
-  Box,
-  Card,
-  Text,
-  TextButton,
-  Loader,
-  TableListItem,
-} from "@wix/design-system";
-import { ArrowRight } from "@wix/wix-ui-icons-common";
-import { dashboard } from "@wix/dashboard";
-import { WixPageId } from "../../../consts";
-import { useOrders } from "../hooks/use-orders";
-import { formatCurrency, formatDate } from "../../../utils/utils";
+import React from 'react';
+import { Box, Card, Text, TextButton, Loader, TableListItem } from '@wix/design-system';
+import { ArrowRight } from '@wix/wix-ui-icons-common';
+import { dashboard } from '@wix/dashboard';
+import { WixPageId } from '../../../consts';
+import { useOrders } from '../hooks/use-orders';
+import { formatCurrency, formatDate } from '../../../utils/utils';
 
 export function RecentOrdersCard() {
   const { navigate } = dashboard;
@@ -52,11 +42,9 @@ export function RecentOrdersCard() {
                 },
                 {
                   value: (
-                    <Text size="tiny">
-                      {formatCurrency(order.currency, order.totalPrice)}
-                    </Text>
+                    <Text size="tiny">{formatCurrency(order.currency, order.totalPrice)}</Text>
                   ),
-                  width: "auto",
+                  width: 'auto',
                 },
               ]}
             />

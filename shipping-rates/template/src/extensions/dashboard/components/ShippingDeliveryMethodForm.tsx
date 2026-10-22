@@ -1,18 +1,6 @@
----
-to: src/extensions/dashboard/components/ShippingDeliveryMethodForm.tsx
----
-import React from "react";
-import {
-  Box,
-  Card,
-  Cell,
-  FormField,
-  Input,
-  Layout,
-  NumberInput,
-  Text,
-} from "@wix/design-system";
-import type { ShippingCosts } from "../../../types";
+import React from 'react';
+import { Box, Card, Cell, FormField, Input, Layout, NumberInput, Text } from '@wix/design-system';
+import type { ShippingCosts } from '../../../types';
 
 interface ShippingCostsFormProps {
   title: string;

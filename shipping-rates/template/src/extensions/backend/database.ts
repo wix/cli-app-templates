@@ -1,13 +1,10 @@
----
-to: src/extensions/backend/database.ts
----
-import { DEFAULT_APP_DATA, PREMIUM_APP_DATA } from "../../consts";
-import type { ShippingAppData } from "../../types";
+import { DEFAULT_APP_DATA, PREMIUM_APP_DATA } from '../../consts';
+import type { ShippingAppData } from '../../types';
 
 export const getAppData = ({ isPremium = false }: { isPremium?: boolean }) => {
   return isPremium ? PREMIUM_APP_DATA : DEFAULT_APP_DATA;
 };
 
 export const updateAppData = (updatedData: ShippingAppData) => {
-  console.log("Data updated", updatedData);
+  console.log('Data updated', updatedData);
 };

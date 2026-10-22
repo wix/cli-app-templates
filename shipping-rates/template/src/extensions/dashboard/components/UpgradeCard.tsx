@@ -1,10 +1,7 @@
----
-to: src/extensions/dashboard/components/UpgradeCard.tsx
----
-import React from "react";
-import { Box, Button, Heading } from "@wix/design-system";
-import { appInstances } from "@wix/app-management";
-import { appId } from "../../../../wix.config.json";
+import React from 'react';
+import { Box, Button, Heading } from '@wix/design-system';
+import { appInstances } from '@wix/app-management';
+import { appId } from '../../../../wix.config.json';
 
 interface UpgradeCardProps {
   appInstance: appInstances.AppInstance;
@@ -13,8 +10,7 @@ interface UpgradeCardProps {
 export function UpgradeCard({ appInstance }: UpgradeCardProps) {
   const instanceId = appInstance?.instanceId;
   const pricingPageURL =
-    instanceId &&
-    `https://www.wix.com/apps/upgrade/${appId}?appInstanceId=${instanceId}`;
+    instanceId && `https://www.wix.com/apps/upgrade/${appId}?appInstanceId=${instanceId}`;
 
   return (
     <Box
@@ -28,11 +24,8 @@ export function UpgradeCard({ appInstance }: UpgradeCardProps) {
       direction="vertical"
     >
       <Heading size="medium">Want to offer an express delivery option?</Heading>
-      <Button
-        size="small"
-        onClick={() => window.open(pricingPageURL)}
-      >
-        {appInstance.freeTrialAvailable ? "Start Free Trial" : "Upgrade"}
+      <Button size="small" onClick={() => window.open(pricingPageURL)}>
+        {appInstance.freeTrialAvailable ? 'Start Free Trial' : 'Upgrade'}
       </Button>
     </Box>
   );

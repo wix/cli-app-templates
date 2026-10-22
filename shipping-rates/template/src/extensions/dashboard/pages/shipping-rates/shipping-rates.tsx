@@ -1,27 +1,16 @@
----
-to: src/extensions/dashboard/pages/shipping-rates/shipping-rates.tsx
----
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  Box,
-  Breadcrumbs,
-  Button,
-  Cell,
-  Layout,
-  Loader,
-  Page,
-} from "@wix/design-system";
-import { dashboard } from "@wix/dashboard";
-import { ShippingCostsForm } from "../../components/ShippingDeliveryMethodForm";
-import type { ShippingAppData, ShippingCosts } from "../../../../types";
-import { RecentOrdersCard } from "../../components/RecentOrdersCard";
-import { WixPageId } from "../../../../consts";
-import { useShippingAppData } from "../../hooks/use-shipping-app-data";
-import { withProviders } from "../../withProviders";
-import { UpgradeCard } from "../../components/UpgradeCard";
-import { appInstances } from "@wix/app-management";
-import activateModal from "../../modals/activate-shipping-rates-plugin/modal.extension.ts";
-import shippingRatesPageExtension from "./shipping-rates.extension.ts";
+import React, { useCallback, useEffect, useState } from 'react';
+import { Box, Breadcrumbs, Button, Cell, Layout, Loader, Page } from '@wix/design-system';
+import { dashboard } from '@wix/dashboard';
+import { ShippingCostsForm } from '../../components/ShippingDeliveryMethodForm';
+import type { ShippingAppData, ShippingCosts } from '../../../../types';
+import { RecentOrdersCard } from '../../components/RecentOrdersCard';
+import { WixPageId } from '../../../../consts';
+import { useShippingAppData } from '../../hooks/use-shipping-app-data';
+import { withProviders } from '../../withProviders';
+import { UpgradeCard } from '../../components/UpgradeCard';
+import { appInstances } from '@wix/app-management';
+import activateModal from '../../modals/activate-shipping-rates-plugin/modal.extension.ts';
+import shippingRatesPageExtension from './shipping-rates.extension.ts';
 
 import '@wix/design-system/styles.global.css';
 
@@ -30,9 +19,9 @@ function ShippingRatesPage() {
   const { getShippingAppData, setShippingAppData } = useShippingAppData();
 
   const [appInstance, setAppInstance] = useState<appInstances.AppInstance>();
-  const [currentShippingAppData, setCurrentShippingAppData] = useState<
-    ShippingAppData | undefined
-  >(getShippingAppData.data);
+  const [currentShippingAppData, setCurrentShippingAppData] = useState<ShippingAppData | undefined>(
+    getShippingAppData.data,
+  );
 
   useEffect(() => {
     async function getAppInstance() {
@@ -52,13 +41,13 @@ function ShippingRatesPage() {
       await setShippingAppData.mutateAsync(currentShippingAppData);
 
       showToast({
-        message: "Shipping rates saved successfully.",
-        type: "success",
+        message: 'Shipping rates saved successfully.',
+        type: 'success',
       });
     } catch (error) {
       showToast({
-        message: "Failed to save shipping rates.",
-        type: "error",
+        message: 'Failed to save shipping rates.',
+        type: 'error',
       });
     }
   }, [setShippingAppData.mutateAsync, currentShippingAppData, showToast]);
@@ -67,15 +56,14 @@ function ShippingRatesPage() {
     (shippingMethodCode: string) => (costs: ShippingCosts) => {
       setCurrentShippingAppData({
         ...currentShippingAppData,
-        shippingMethods: currentShippingAppData!.shippingMethods.map(
-          (shippingMethod) =>
-            shippingMethod.code === shippingMethodCode
-              ? { ...shippingMethod, costs }
-              : shippingMethod
+        shippingMethods: currentShippingAppData!.shippingMethods.map((shippingMethod) =>
+          shippingMethod.code === shippingMethodCode
+            ? { ...shippingMethod, costs }
+            : shippingMethod,
         ),
       });
     },
-    [currentShippingAppData]
+    [currentShippingAppData],
   );
 
   return (
@@ -90,11 +78,7 @@ function ShippingRatesPage() {
               Activate Plugin
             </Button>
             <Button onClick={onSave}>
-              {setShippingAppData.isLoading ? (
-                <Loader size="tiny" />
-              ) : (
-                "Save rates"
-              )}
+              {setShippingAppData.isLoading ? <Loader size="tiny" /> : 'Save rates'}
             </Button>
           </Box>
         }
@@ -102,16 +86,16 @@ function ShippingRatesPage() {
           <Breadcrumbs
             activeId={shippingRatesPageExtension.options.id}
             items={[
-              { id: WixPageId.MANAGE_APPS, value: "Apps" },
+              { id: WixPageId.MANAGE_APPS, value: 'Apps' },
               {
                 id: shippingRatesPageExtension.options.id,
-                value: "Shipping Rate App",
+                value: 'Shipping Rate App',
               },
             ]}
             onClick={({ id }) => navigate(id as string)}
           />
         }
-        title={"Shipping Rates App"}
+        title={'Shipping Rates App'}
         subtitle="Customize shipping fees by factor of quanity for a flexible and cost-effective solution for your business."
       />
       <Page.Content>
@@ -123,19 +107,15 @@ function ShippingRatesPage() {
               </Box>
             ) : (
               <Box direction="vertical" gap="SP4">
-                {currentShippingAppData?.shippingMethods.map(
-                  (method, index) => (
-                    <ShippingCostsForm
-                      key={index}
-                      title={method.title}
-                      shippingCosts={method.costs}
-                      onShippingCostsChanged={setCostsForMethod(method.code)}
-                    />
-                  )
-                )}
-                {appInstance?.isFree && (
-                  <UpgradeCard appInstance={appInstance} />
-                )}
+                {currentShippingAppData?.shippingMethods.map((method, index) => (
+                  <ShippingCostsForm
+                    key={index}
+                    title={method.title}
+                    shippingCosts={method.costs}
+                    onShippingCostsChanged={setCostsForMethod(method.code)}
+                  />
+                ))}
+                {appInstance?.isFree && <UpgradeCard appInstance={appInstance} />}
               </Box>
             )}
           </Cell>

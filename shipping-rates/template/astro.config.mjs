@@ -1,17 +1,14 @@
----
-to: astro.config.mjs
----
 // @ts-check
 import { defineConfig } from 'astro/config';
 import wix from '@wix/astro';
-import react from "@astrojs/react";
-import wixHostingAdapter from "@wix/astro-wix-hosting-adapter";
+import react from '@astrojs/react';
+import wixHostingAdapter from '@wix/astro-wix-hosting-adapter';
 
 export default defineConfig({
-  output: "server",
+  output: 'server',
   adapter: wixHostingAdapter(),
   integrations: [wix(), react()],
-  image: { domains: ["static.wixstatic.com"] },
+  image: { domains: ['static.wixstatic.com'] },
   devToolbar: { enabled: false },
   server: { allowedHosts: true, host: true },
   security: {
@@ -21,8 +18,8 @@ export default defineConfig({
     server: { cors: true },
     build: {
       rollupOptions: {
-        external: ['node:crypto']
-      }
-    }
+        external: ['node:crypto'],
+      },
+    },
   },
 });

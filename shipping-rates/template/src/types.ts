@@ -1,7 +1,4 @@
----
-to: src/types.ts
----
-import { shippingRates } from "@wix/ecom/service-plugins";
+import { shippingRates } from '@wix/ecom/service-plugins';
 
 /**
  * Interface for defining shipping costs, based on the number of items or weight.
