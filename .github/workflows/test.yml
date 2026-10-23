@@ -3,7 +3,7 @@ name: Test templates
 on:
   pull_request:
     branches:
-      - astro-app-template
+      - custom-extensions-templates
 
 concurrency:
   group: '${{ github.workflow }} - ${{ github.head_ref || github.ref }}'
