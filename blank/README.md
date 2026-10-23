@@ -1,1 +1,1 @@
-# Astro App Blank Template
+# Custom Extensions App Blank Template
