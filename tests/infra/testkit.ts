@@ -73,8 +73,7 @@ export const checkFormat = async (cwd: string) => {
 };
 
 export const checkTypes = async (cwd: string) => {
-  await runCommand('yarn', ['astro', 'sync'], { cwd });
-  await runCommand('yarn', ['tsc', '--noEmit'], { cwd });
+  await runCommand('yarn', ['typecheck'], { cwd });
 };
 
 export const buildApp = async (cwd: string) => await runCommand('yarn', ['build'], { cwd });
