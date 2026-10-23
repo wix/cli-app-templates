@@ -35,7 +35,6 @@ export const createApp = async (template: string) => {
         kebabToCamelCase(template),
         '--template-path',
         templatePath,
-        '--skip-git',
         '--skip-install',
       ],
       { cwd },
@@ -73,8 +72,24 @@ export const checkFormat = async (cwd: string) => {
 };
 
 export const checkTypes = async (cwd: string) => {
-  await runCommand('yarn', ['astro', 'sync'], { cwd });
-  await runCommand('yarn', ['tsc', '--noEmit'], { cwd });
+  await runCommand('yarn', ['typecheck'], { cwd });
 };
 
 export const buildApp = async (cwd: string) => await runCommand('yarn', ['build'], { cwd });
+
+export const getChangedFiles = async (cwd: string) =>
+  await runCommand(
+    'git',
+    [
+      'status',
+      '--porcelain',
+      '--untracked-files=all',
+      '--',
+      '.',
+      // test-only settings appended by `installDependencies`
+      ':(exclude).yarnrc.yml',
+      // templates don't ship a lockfile, so install always creates it
+      ':(exclude)yarn.lock',
+    ],
+    { cwd },
+  );
