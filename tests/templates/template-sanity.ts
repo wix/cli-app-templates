@@ -4,6 +4,7 @@ import {
   checkFormat,
   checkTypes,
   createApp,
+  getChangedFiles,
   installDependencies,
 } from '../infra/testkit';
 
@@ -31,5 +32,9 @@ export const templateSanity = (template: string) => {
     it('should build the app successfully', async () => {
       await expect(buildApp(cwd)).resolves.not.toThrow();
     }, 60_000);
+
+    it('should not change any files', async () => {
+      await expect(getChangedFiles(cwd)).resolves.toBe('');
+    });
   });
 };

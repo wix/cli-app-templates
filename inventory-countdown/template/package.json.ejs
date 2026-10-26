@@ -3,39 +3,34 @@ to: package.json
 ---
 {
   "name": "<%= packageName %>",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "astro": "astro",
-    "wix": "wix",
-    "env": "wix env",
-    "dev": "wix dev",
-    "build": "wix build",
-    "preview": "wix preview",
-    "release": "wix release",
-    "generate": "wix generate"
+    "build": "wix app build",
+    "dev": "wix app dev",
+    "env": "wix app env",
+    "generate": "wix app generate",
+    "preview": "wix app preview",
+    "release": "wix app release",
+    "typecheck": "tsc --noEmit",
+    "wix": "wix"
   },
   "dependencies": {
-    "@wix/astro": "^2.39.0",
-    "@wix/dashboard": "^1.3.21",
-    "@wix/design-system": "^1.0.0",
+    "@wix/dashboard": "^1.3.48",
+    "@wix/design-system": "^1.341.0",
     "@wix/editor": "^1.308.0",
     "@wix/site-window": "^1.19.0",
     "@wix/stores": "^1.0.239",
-    "@wix/wix-ui-icons-common": "^3.0.0",
-    "astro": "^5.8.0",
-    "react-to-webcomponent": "^2.0.0",
-    "typescript": "^5.8.3"
+    "@wix/wix-ui-icons-common": "^3.191.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-to-webcomponent": "^2.0.0"
   },
   "devDependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.1",
-    "@wix/astro-wix-hosting-adapter": "^2.0.0",
-    "@wix/cli": "^1.1.135",
-    "@wix/sdk-types": "^1.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@wix/cli": "^1.2.2",
+    "@wix/custom-extensions": "^1.0.0",
+    "typescript": "~6.0.2"
   }
 }

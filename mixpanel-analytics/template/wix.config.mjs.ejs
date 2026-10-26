@@ -1,0 +1,21 @@
+---
+to: wix.config.mjs
+---
+// @ts-check
+import { defineWixConfig } from '@wix/cli/config';
+import customExtensions from '@wix/custom-extensions/flow';
+
+export default defineWixConfig({
+  flows: [
+    customExtensions({
+      appId: '<%= devCenter.appId %>',
+      projectId: '<%= packageName %>',
+<% if (devCenter.namespace) { -%>
+      namespace: '<%= devCenter.namespace %>',
+<% } -%>
+<% if (devCenter.codeIdentifier) { -%>
+      codeIdentifier: '<%= devCenter.codeIdentifier %>',
+<% } -%>
+    }),
+  ],
+});
