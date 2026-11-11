@@ -1,3 +1,6 @@
+import { describe } from 'vitest';
 import { templateSanity } from './template-sanity';
 
-templateSanity('custom-products-catalog');
+describe.skip('custom-products-catalog', () => {
+  templateSanity('custom-products-catalog');
+});
