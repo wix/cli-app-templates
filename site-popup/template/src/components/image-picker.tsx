@@ -18,10 +18,7 @@ export const ImagePicker: FC<Props> = ({ onChange, imageTitle }) => {
         onClick={() =>
           dashboard.openMediaManager().then((response) => {
             if (response?.items[0]) {
-              onChange(
-                response?.items[0].url || '',
-                response?.items[0].displayName || ''
-              );
+              onChange(response?.items[0].url || '', response?.items[0].displayName || '');
             }
           })
         }

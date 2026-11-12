@@ -1,1 +1,0 @@
-export const CALL_TO_ACTION = "Don't miss your chance";

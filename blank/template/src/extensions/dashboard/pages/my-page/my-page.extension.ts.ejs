@@ -1,0 +1,16 @@
+---
+to: src/extensions/dashboard/pages/my-page/my-page.extension.ts
+---
+import { extensions } from '@wix/custom-extensions';
+
+export default extensions.dashboardPage({
+  id: '<%= generatePageID() %>',
+  title: 'My Page',
+  routePath: '',
+  component: './extensions/dashboard/pages/my-page/my-page.tsx',
+  fullPage: false,
+  metaData: {
+    searchable: true,
+    description: 'Manage My Page in your dashboard.',
+  },
+});

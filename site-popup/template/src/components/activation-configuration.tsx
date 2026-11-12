@@ -1,6 +1,6 @@
 import React, { type FC } from 'react';
 import { Box, RadioGroup } from '@wix/design-system';
-import { ActivationMode, ActivationOptions } from '../types.js';
+import type { ActivationMode, ActivationOptions } from '../types.js';
 import { DataRangePicker } from './date-range-picker.js';
 
 interface Props {
@@ -8,10 +8,7 @@ interface Props {
   onChange: (activationOptions: ActivationOptions) => void;
 }
 
-export const ActivationConfiguration: FC<Props> = ({
-  onChange,
-  activationOptions,
-}) => {
+export const ActivationConfiguration: FC<Props> = ({ onChange, activationOptions }) => {
   return (
     <Box gap={3} direction="vertical" marginTop={1}>
       <RadioGroup
@@ -31,9 +28,7 @@ export const ActivationConfiguration: FC<Props> = ({
       </RadioGroup>
       {activationOptions.activationMode == 'timed' && (
         <DataRangePicker
-          startDate={Number(
-            activationOptions.startDate || new Date().getTime()
-          )}
+          startDate={Number(activationOptions.startDate || new Date().getTime())}
           endDate={Number(activationOptions.endDate || new Date().getTime())}
           onChange={(startDate, endDate) =>
             onChange({
