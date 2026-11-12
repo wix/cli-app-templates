@@ -3,11 +3,14 @@ name: Test templates
 on:
   pull_request:
     branches:
-      - custom-extensions-templates
+      - master
+  schedule:
+    # Mondays at 02:17 UTC (04:17 Kyiv in winter, 05:17 in summer)
+    - cron: '17 2 * * 1'
 
 concurrency:
   group: '${{ github.workflow }} - ${{ github.head_ref || github.ref }}'
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 env:
   FORCE_COLOR: true
