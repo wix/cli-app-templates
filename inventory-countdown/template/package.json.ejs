@@ -3,34 +3,35 @@ to: package.json
 ---
 {
   "name": "<%= packageName %>",
-  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "wix app build",
+    "dev": "wix app dev",
+    "env": "wix app env",
+    "generate": "wix app generate",
+    "preview": "wix app preview",
+    "release": "wix app release",
+    "typecheck": "tsc --noEmit",
+    "wix": "wix"
+  },
   "dependencies": {
-    "@wix/dashboard": "^1.3.21",
-    "@wix/design-system": "^1.0.0",
+    "@wix/dashboard": "^1.3.48",
+    "@wix/design-system": "^1.341.0",
     "@wix/editor": "^1.308.0",
     "@wix/site-window": "^1.19.0",
     "@wix/stores": "^1.0.239",
-    "@wix/wix-ui-icons-common": "^3.0.0",
+    "@wix/wix-ui-icons-common": "^3.191.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-to-webcomponent": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
-    "@wix/sdk-types": "^1.0.0",
-    "@wix/cli": "^1.0.0",
-    "@wix/cli-app": "^1.0.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "typescript": "^5.4.0"
-  },
-  "scripts": {
-    "wix": "wix",
-    "build": "wix app build",
-    "release": "wix app release",
-    "dev": "wix app dev",
-    "preview": "wix app preview",
-    "generate": "wix app generate",
-    "logs": "wix app logs",
-    "typecheck": "tsc --noEmit"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.1",
+    "@wix/cli": "^1.2.10",
+    "@wix/cli-zero-config-flow": "^1.0.7",
+    "@wix/custom-extensions": "^1.0.8",
+    "typescript": "~6.0.2"
   }
 }

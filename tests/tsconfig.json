@@ -1,19 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "outDir": "dist",
-    "rootDir": ".",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "types": [
-      "node"
-    ]
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.test.ts"
-  ],
+    "module": "preserve",
+    "noEmit": true,
+    "types": ["node"],
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "skipLibCheck": true
+  }
 }

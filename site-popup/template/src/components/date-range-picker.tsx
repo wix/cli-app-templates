@@ -7,11 +7,7 @@ interface Props {
   onChange?: (startDate: number, endDate: number) => void;
 }
 
-export const DataRangePicker: FC<Props> = ({
-  onChange,
-  startDate,
-  endDate,
-}) => {
+export const DataRangePicker: FC<Props> = ({ onChange, startDate, endDate }) => {
   return (
     <Layout>
       <Cell span={6}>
@@ -36,9 +32,7 @@ export const DataRangePicker: FC<Props> = ({
                 width="100%"
                 placeholderText="Select"
                 value={new Date(endDate)}
-                onChange={(value: Date) =>
-                  onChange?.(startDate, value.getTime())
-                }
+                onChange={(value: Date) => onChange?.(startDate, value.getTime())}
               />
             </Box>
           </FormField>
